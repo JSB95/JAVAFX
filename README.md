@@ -16,8 +16,8 @@
 | 1일차 | :ballot_box_with_check: | Topic Selection |
 | 2일차 | :ballot_box_with_check: | Database Design |
 | 3일차 | :ballot_box_with_check: | Controller, Readme, Class Structure, Front Prototype |
-| 4일차 |  | 회원가입 / 로그인 / 아이디 & 비밀번호 찾기 |
-| 5일차 |  | DB생성 / 예매 control|
+| 4일차 |  | DB생성 / 회원가입 |
+| 5일차 |  | 로그인 / 아이디 & 비밀번호 찾기 / 예매 control |
 | 6일차 |  | 예매 control |
 | 7일차 |  | 예매 control |
 | 8일차 |  | 환율 차트 control |
@@ -75,5 +75,10 @@
 ***
 
 ### VIEW[FXML] 프로토타입
+
+![Login](3/readmeimg/login.png)
+![Signup](3/readmeimg/signup.png)
+![Main](3/readmeimg/main.png)
+![Reservationconfirm](3/readmeimg/Reservationconfirm.png)
 
 ***
