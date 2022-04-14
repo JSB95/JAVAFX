@@ -24,17 +24,34 @@
 
 ### 역할
 
+김용준 : DB 생성, 마이페이지 [GitHub][김용준Git]
+정희승 : 회원가입, 아이디 & 비밀번호 찾기
+김지웅 : 로그인, 관리자 페이지
+장승빈 : 예매, 환율조회 페이지[Github][장승빈Git]
+[장승빈Git] : https://github.com/JSB95/Academy
 ***
 
 ### 개발 우선순위
+1. 회원가입
+2. 로그인
+3. 예매
+4. DB 생성
+5. 환율
+6. 관리자 페이지
+7. 마이 페이지
+8. 아아디찾기 & 비밀번호 찾기
 
 ***
 
 ### DB 설계
 
+![Database](3/readmeimg/Database.jpg)
+
 ***
 
 ### 컨트롤 구조도
+
+![Control](3/readmeimg/Control.jpg)
 
 ***
 
