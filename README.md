@@ -10,36 +10,53 @@
 ### 개발 일정
 
 | 일차 | 현황 | 내용 |
-| ------ | ----------------------------- | ---------------- |
+| ------ | --------- | ---------------- |
 | 1일차 | :ballot_box_with_check: | Topic Selection |
 | 2일차 | :ballot_box_with_check: | Database Design |
 | 3일차 | :ballot_box_with_check: | Controller, Readme, Class Structure, Front Prototype |
-| 4일차 |  | 
-| 5일차 |  |  
-| 6일차 |  |  
-| 7일차 |  |  
-| 8일차 |  |  
+| 4일차 |  |  |
+| 5일차 |  |  |
+| 6일차 |  |  |
+| 7일차 |  |  |
+| 8일차 |  |  |
 | 9일차 |  |  |
 | 10일차|  |  | 
 
+***
+
 ### 역할
 
-김용준 : DB 생성, 마이페이지 [GitHub][김용준Git]
-정희승 : 회원가입, 아이디 & 비밀번호 찾기
-김지웅 : 로그인, 관리자 페이지
-장승빈 : 예매, 환율조회 페이지[Github][장승빈Git]
-[장승빈Git] : https://github.com/JSB95/Academy
+- [ ] __김용준 [Github](https://github.com/godoklife/JAVA_study)__
+> DB 생성, 마이페이지 
+
+
+
+- [ ] __정희승 [Github](https://github.com/Heeahn/Ezen_Web_A)__
+> 회원가입, 아이디 & 비밀번호 찾기
+
+
+
+- [ ] __김지웅 [Github](https://github.com/KimJiUng/java2)__
+>로그인, 관리자 페이지
+
+
+
+- [ ] __장승빈 [Github](https://github.com/JSB95/Academy)__
+>예매, 환율조회 페이지
+
 ***
 
 ### 개발 우선순위
-1. 회원가입
-2. 로그인
-3. 예매
-4. DB 생성
-5. 환율
-6. 관리자 페이지
-7. 마이 페이지
-8. 아아디찾기 & 비밀번호 찾기
++ **1순위**
+  - 회원가입
+  - 로그인
+  - 예매
+  - 생성
++ **2순위**
+  - 환율
+  - 관리자 페이지
+  - 마이 페이지
+  - 아아디찾기 & 비밀번호 찾기
 
 ***
 
@@ -58,4 +75,3 @@
 ### VIEW[FXML] 프로토타입
 
 ***
-
