@@ -80,5 +80,5 @@
 ![Signup](3/readmeimg/signup.png)
 ![Main](3/readmeimg/main.png)
 ![Reservationconfirm](3/readmeimg/Reservationconfirm.png)
-
+![결제](3/readmeimg/결제.png)
 ***
