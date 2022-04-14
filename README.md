@@ -15,7 +15,7 @@
 | 2일차 | ☑ | Database Design
 | 3일차 |  | Controller, Readme, Class Structure, Front Prototype
 | 4일차 |<li>- [ ] </li>| 
-| 5일차 |<li>- [x] </li>|  
+| 5일차 | - [x]|  
 | 6일차 |  |  
 | 7일차 |  |  
 | 8일차 |  |  
