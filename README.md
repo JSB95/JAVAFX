@@ -11,11 +11,11 @@
 
 | 일차 | 현황 | 내용 |
 | ------ | ----------------------------- | ---------------- |
-| 1일차 | ☑ | Topic Selection
-| 2일차 | ☑ | Database Design
-| 3일차 |  | Controller, Readme, Class Structure, Front Prototype
-| 4일차 |<li>- [ ] </li>| 
-| 5일차 | - [x]|  
+| 1일차 | :ballot_box_with_check: | Topic Selection |
+| 2일차 | :ballot_box_with_check: | Database Design |
+| 3일차 | :ballot_box_with_check: | Controller, Readme, Class Structure, Front Prototype |
+| 4일차 |  | 
+| 5일차 |  |  
 | 6일차 |  |  
 | 7일차 |  |  
 | 8일차 |  |  
