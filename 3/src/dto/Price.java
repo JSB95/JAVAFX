@@ -1,7 +1,7 @@
 package dto;
 
 public class Price {
-	private int pnum;
+	private int pnum;	// pk
 	private int pseatClass;
 	private int cnum;	// fk, Company cnum
 	private double pfirstSeatRatio;

@@ -6,7 +6,7 @@ package dto;
 
 public class Member {
 
-	private int mnum;
+	private int mnum;		// pk
 	private String mid;
 	private String mpassword;
 	private String mname;

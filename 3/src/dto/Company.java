@@ -1,7 +1,7 @@
 package dto;
 
 public class Company {
-	private int cnum;
+	private int cnum;		// pk
 	private String cname;
 	private String cphone;
 	
