@@ -1,5 +1,9 @@
 package dto;
 
+/*
+ * 
+ */
+
 public class Member {
 
 	private int mnum;
