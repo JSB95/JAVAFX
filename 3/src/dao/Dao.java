@@ -14,9 +14,9 @@ public class Dao {
 	public Dao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC")
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC","root","1234");
 		} catch(Exception e) {
-			System.out.println("DAO error :" + e);
+			System.out.println("DAO DB error :" + e);
 		}
 	}
 	
