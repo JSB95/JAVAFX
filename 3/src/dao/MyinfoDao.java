@@ -4,7 +4,7 @@ import dto.Member;
 
 public class MyinfoDao extends Dao {
 	
-	public static MyinfoDao mypagedao = new MyinfoDao();	// MypageDao를 메모리에 정적형태로 상주시킴
+	public static MyinfoDao myinfoDao = new MyinfoDao();	// MypageDao를 메모리에 정적형태로 상주시킴
 
 	public MyinfoDao() {}	// 빈 생성자, 필요없으면 나중에 지울것
 	
