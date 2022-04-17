@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.main.Searchpage">
+   <children>
+      <DatePicker fx:id="startdate" layoutX="667.0" layoutY="72.0" prefHeight="38.0" prefWidth="345.0" />
+      <Button fx:id="btnsearch" layoutX="1048.0" layoutY="66.0" mnemonicParsing="false" onAction="#search" prefHeight="47.0" prefWidth="147.0" text="항공권 검색" />
+      <ComboBox fx:id="cbbstartplace" layoutX="79.0" layoutY="62.0" prefHeight="55.0" prefWidth="106.0" />
+      <ComboBox fx:id="cbbdestination" layoutX="323.0" layoutY="62.0" prefHeight="55.0" prefWidth="106.0" />
+      <ChoiceBox fx:id="cbperson" layoutX="517.0" layoutY="67.0" prefHeight="47.0" prefWidth="106.0" />
+      <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="234.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../2114846.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="109.0" layoutY="153.0" prefHeight="55.0" prefWidth="106.0" text="출발지" />
+      <Label layoutX="314.0" layoutY="153.0" prefHeight="55.0" prefWidth="106.0" text="도착지" />
+      <Label layoutX="500.0" layoutY="153.0" prefHeight="55.0" prefWidth="115.0" text="출발시간" />
+      <TableView fx:id="searchtable" layoutX="14.0" layoutY="245.0" prefHeight="564.0" prefWidth="1247.0">
+        <columns>
+          <TableColumn prefWidth="150.0" text="항공사" />
+          <TableColumn minWidth="0.0" prefWidth="240.0" text="비행기" />
+            <TableColumn prefWidth="184.0" text="출발시간" />
+            <TableColumn prefWidth="226.0" text="도착시간" />
+            <TableColumn prefWidth="232.0" text="소요시간" />
+            <TableColumn prefWidth="214.0" text="가격" />
+        </columns>
+      </TableView>
+      <Label layoutX="667.0" layoutY="153.0" prefHeight="55.0" prefWidth="106.0" text="도착시간" />
+      <Label layoutX="809.0" layoutY="153.0" prefHeight="55.0" prefWidth="106.0" text="소요시간" />
+      <Label layoutX="959.0" layoutY="153.0" prefHeight="55.0" prefWidth="106.0" text="가격" />
+      <Button fx:id="btnback" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="27.0" prefWidth="106.0" text="뒤로가기" />
+   </children>
+</AnchorPane>
