@@ -2,11 +2,16 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #F4FCFC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Mypage">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #F4FCFC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.myinfo.Myinfo">
    <children>
-      <AnchorPane layoutX="100.0" layoutY="260.0" prefHeight="350.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+      <Line endX="1000.0" fill="BLACK" layoutY="2.0" stroke="#a58245" strokeWidth="8.0" />
+      <Line endX="1000.0" fill="BLACK" layoutY="818.0" stroke="#a58245" strokeWidth="8.0" />
+      <Line endY="820.0" fill="BLACK" layoutX="1.0" stroke="#a58245" strokeWidth="8.0" />
+      <Line endY="820.0" fill="BLACK" layoutX="998.0" stroke="#a58245" strokeWidth="8.0" />
+      <AnchorPane layoutX="106.0" layoutY="263.0" prefHeight="350.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
          <children>
             <Label layoutX="35.0" layoutY="20.0" text="기본정보" textFill="#b0c1c1">
                <font>
@@ -18,7 +23,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblmid" layoutX="147.0" layoutY="75.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+            <Label fx:id="lblmid" layoutX="147.0" layoutY="75.0" prefHeight="20.0" prefWidth="400.0" text="내용 표시할 라벨">
                <font>
                   <Font size="18.0" />
                </font>
@@ -28,7 +33,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblmname" layoutX="147.0" layoutY="125.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+            <Label fx:id="lblmname" layoutX="147.0" layoutY="125.0" prefHeight="20.0" prefWidth="400.0" text="내용 표시할 라벨">
                <font>
                   <Font size="18.0" />
                </font>
@@ -38,7 +43,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblmphone" layoutX="147.0" layoutY="175.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+            <Label fx:id="lblmphone" layoutX="147.0" layoutY="175.0" prefHeight="20.0" prefWidth="400.0" text="내용 표시할 라벨">
                <font>
                   <Font size="18.0" />
                </font>
@@ -48,7 +53,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblmpassport" layoutX="147.0" layoutY="225.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+            <Label fx:id="lblmpassport" layoutX="147.0" layoutY="225.0" prefHeight="20.0" prefWidth="400.0" text="내용 표시할 라벨">
                <font>
                   <Font size="18.0" />
                </font>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane fx:controller="controller.mainpage.Mainpage_exchange_rate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <DatePicker fx:id="startdate" layoutX="272.0" layoutY="494.0" onAction="#date" prefHeight="38.0" prefWidth="437.0" />
+      <Button fx:id="btnsearch" layoutX="272.0" layoutY="576.0" mnemonicParsing="false" onAction="#search" prefHeight="47.0" prefWidth="437.0" text="Button" />
+      <ComboBox fx:id="cbbstartplace" layoutX="272.0" layoutY="390.0" onAction="#startplace" prefHeight="55.0" prefWidth="106.0" />
+      <ComboBox fx:id="cbbdestination" layoutX="429.0" layoutY="390.0" onAction="#destination" prefHeight="55.0" prefWidth="106.0" />
+      <ChoiceBox fx:id="cbperson" layoutX="603.0" layoutY="397.0" prefHeight="47.0" prefWidth="106.0" />
+      <VBox fx:id="exchange" layoutX="272.0" layoutY="160.0" prefHeight="200.0" prefWidth="437.0">
+         <children>
+            <Label text="환율" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
