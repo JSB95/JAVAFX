@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #F4FCFC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="100.0" layoutY="260.0" prefHeight="350.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="35.0" layoutY="20.0" text="기본정보" textFill="#b0c1c1">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="75.0" text="아이디 :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblmid" layoutX="147.0" layoutY="75.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="77.0" layoutY="125.0" text="이름 :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblmname" layoutX="147.0" layoutY="125.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="175.0" text="이메일 :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblmemail" layoutX="147.0" layoutY="175.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="225.0" text="연락처 :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblmphone" layoutX="147.0" layoutY="225.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="275.0" text="여권번호 :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblmpassport" layoutX="147.0" layoutY="275.0" prefHeight="20.0" prefWidth="290.0" text="내용 표시할 라벨">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
