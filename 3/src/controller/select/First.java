@@ -38,13 +38,22 @@ public class First implements Initializable {
 			button.setText((i+1)+"");
 			button.setId(i+"");
 			button.setOnAction(e ->{
-				System.out.println(e);
+				int num = Integer.parseInt(e.toString().split("'")[1]);
+				String seat = "F-"+num;
+				Class.seat.add(seat);
+				if(Class.seat!=null) {
+					for(int j=0; j<Class.seat.size(); j++) {
+						System.out.println(Class.seat.get(j));
+					}
+				}
+				
 			});
 			gridPane.add(button, row, 1);
 			i++;
 		}
 		vbox.getChildren().add(gridPane);
 	}
+
 	
     @FXML
     private ScrollPane scrollpane;
@@ -58,6 +67,7 @@ public class First implements Initializable {
     @FXML
     private Button btnback;
 
+    
     @FXML
     void back(ActionEvent event) {
     	Selectseatclass.instance.loadpage("/view/select/class.fxml");

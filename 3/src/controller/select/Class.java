@@ -1,7 +1,7 @@
 package controller.select;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -10,13 +10,16 @@ import javafx.scene.input.MouseEvent;
 
 public class Class implements Initializable {
 
-	public static ArrayList<String> seat;
+	public static HashSet<String> seat;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		for(int i=0; i<seat.size(); i++) {
-//			seat.remove(i);
-//		}
+		if(seat!=null) {
+			for(int i=0; i<seat.size(); i++) {
+				seat.remove(i);
+			}
+		}
+
 	}
 	
     @FXML
