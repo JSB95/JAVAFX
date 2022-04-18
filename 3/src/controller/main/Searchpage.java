@@ -1,11 +1,9 @@
 package controller.main;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-import controller.Main;
 import dao.RouteDao;
 import dto.Route;
 import javafx.collections.FXCollections;
@@ -14,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -43,7 +40,7 @@ public class Searchpage implements Initializable {
 		searchtable.setOnMouseClicked(e ->{
 			int selectrnum = searchtable.getSelectionModel().getSelectedItem().getRnum();
 			route = RouteDao.routeDao.numgetroute(selectrnum);
-			Main.instance.loadpage("/view/main/pay.fxml");
+			Mainpage.instance.loadpage("/view/select/selectseatclass.fxml");
 		});
 	}
 	
@@ -68,11 +65,6 @@ public class Searchpage implements Initializable {
     
     @FXML
     private Button btnback;
-
-    @FXML
-    void back(ActionEvent event) {
-    	Main.instance.loadpage("/view/main/Mainpage.fxml");
-    }
 
     @FXML
     void search(ActionEvent event) {
