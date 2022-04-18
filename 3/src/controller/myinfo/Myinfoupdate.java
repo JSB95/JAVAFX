@@ -14,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 public class Myinfoupdate implements Initializable {
 
@@ -48,8 +49,8 @@ public class Myinfoupdate implements Initializable {
         		alert.setHeaderText("정보를 수정하시겠습니까?");
         		Optional<ButtonType> result = alert.showAndWait();
         		if(result.get() == ButtonType.OK) {
-        			Member member = new Member(1, "godoklife", "password", "김아무개", "010-1111-2222", "M11112222", "1111-2222-3333-4444");
-//        			Member member = new Member(Login.member.getMnum, null, null, null, null, null, null)
+        			Member member = new Member(1, "godoklife", "password", "김아무개", "010-1111-2222", "M11112222", "1111-2222-3333-4444", 0);
+//        			Member member = new Member(Login.member.getMnum, null, null, null, null, null, null, null);
         			MyinfoDao.myinfodao.update(member);
         			alert = new Alert(AlertType.INFORMATION);
         			alert.setTitle("완료");
@@ -73,7 +74,27 @@ public class Myinfoupdate implements Initializable {
     		alert.showAndWait();
     	}
 	}
-
+	@FXML
+	void accdelete(ActionEvent event) {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("탈퇴 재확인");
+		dialog.setHeaderText("정말 탈퇴하시겠습니까?");
+		dialog.setContentText("탈퇴하시려면 '탈퇴' 를 입력해주세요->");
+		Optional<String> result = dialog.showAndWait();
+		if(result.get().equals("탈퇴")) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("탈퇴 완료");
+			alert.setHeaderText("탈퇴처리가 완료되었습니다.");
+//			MyinfoDao.myinfodao.delete(Login.member.getMnum);		// 코드 병합할때 살릴것.
+			alert.showAndWait();
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("불일치");
+			alert.setHeaderText("탈퇴 문자를 잘못 입력하셨습니다.");
+			alert.showAndWait();
+		}
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 //    	txtphone.setText(Login.member.getMphone);

@@ -13,10 +13,14 @@ public class Member {
 	private String mphone;
 	private String mpassport;
 	private String mcard;
+	private int mpoint;
 	
 	public Member() {}
 
-	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String mpassport, String mcard) {
+	
+
+	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String mpassport, String mcard,
+			int mpoint) {
 		this.mnum = mnum;
 		this.mid = mid;
 		this.mpassword = mpassword;
@@ -24,7 +28,10 @@ public class Member {
 		this.mphone = mphone;
 		this.mpassport = mpassport;
 		this.mcard = mcard;
+		this.mpoint = mpoint;
 	}
+
+
 
 	public int getMnum() {
 		return mnum;
@@ -80,6 +87,14 @@ public class Member {
 
 	public void setMcard(String mcard) {
 		this.mcard = mcard;
+	}
+
+	public int getMpoint() {
+		return mpoint;
+	}
+
+	public void setMpoint(int mpoint) {
+		this.mpoint = mpoint;
 	}
 	
 }

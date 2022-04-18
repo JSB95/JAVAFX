@@ -21,7 +21,7 @@ public class Mainpage_sidemenu implements Initializable{
     private Label lblmupdate;
 
     @FXML
-    private Label lblmat;
+    private Label lbltest;
 
     @FXML
     private Label lbllogout;
@@ -51,5 +51,10 @@ public class Mainpage_sidemenu implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		System.out.println("sidemenu initialized");
 	}
+	
+    @FXML
+    void test(MouseEvent event) {
+    	Mainpage.instance.loadmainmenu("/view/mainpage/web.fxml");
+    }
 	
 }

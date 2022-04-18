@@ -39,7 +39,12 @@
          </font>
       </Label>
       <TextField fx:id="txtpassport" layoutX="427.0" layoutY="490.0" prefHeight="50.0" prefWidth="350.0" promptText="여권번호 입력" />
-      <Button layoutX="362.0" layoutY="605.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="50.0" prefWidth="300.0" text="수정하기">
+      <Button layoutX="527.0" layoutY="607.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #E5FFCC;" text="수정하기">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="224.0" layoutY="607.0" mnemonicParsing="false" onAction="#accdelete" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #FFCCCC;" text="회원탈퇴">
          <font>
             <Font size="36.0" />
          </font>

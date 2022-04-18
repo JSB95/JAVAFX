@@ -19,7 +19,7 @@ public class MyinfoDao extends Dao {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
-						rs.getString(5), rs.getString(6), rs.getString(7));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
 				return member;
 			}
 		} catch (Exception e) {System.out.println("MyinfoDao - myinfopage exception : "+e);}

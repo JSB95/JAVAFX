@@ -58,6 +58,16 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Label layoutX="56.0" layoutY="275.0" text="포인트 : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblmpoint" layoutX="147.0" layoutY="275.0" prefHeight="20.0" prefWidth="400.0" text="내용 표시할 라벨">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
