@@ -43,7 +43,7 @@ public class First implements Initializable {
 				Class.seat.add(seat);
 				if(Class.seat!=null) {
 					for(int j=0; j<Class.seat.size(); j++) {
-						System.out.println(Class.seat.get(j));
+
 					}
 				}
 				
