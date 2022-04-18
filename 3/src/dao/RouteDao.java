@@ -58,7 +58,7 @@ public class RouteDao extends Dao {
 	public ObservableList<Route> getroute(String departure, String destination) {
 		try {
 			ObservableList<Route> list = FXCollections.observableArrayList();
-			String sql = "select * from route where rdeparture=? and rdestination=?";
+			String sql = "select * from route where rdeparture=? and rdestination=? order by rbaseprice";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, departure);
 			ps.setString(2, destination);

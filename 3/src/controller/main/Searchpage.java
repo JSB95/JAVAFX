@@ -1,6 +1,7 @@
 package controller.main;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
@@ -34,7 +35,11 @@ public class Searchpage implements Initializable {
 		cbbstartplace.setItems(combox1);
 		ObservableList<String> combox2 = FXCollections.observableArrayList(destination);
 		cbbdestination.setItems(combox2);
-		
+		ObservableList<Integer> choicebox = FXCollections.observableArrayList();
+		for(int i=1; i<11; i++) {
+			choicebox.add(i);
+		}
+		cbbperson.setItems(choicebox);
 		searchtable.setOnMouseClicked(e ->{
 			int selectrnum = searchtable.getSelectionModel().getSelectedItem().getRnum();
 			route = RouteDao.routeDao.numgetroute(selectrnum);
@@ -56,7 +61,7 @@ public class Searchpage implements Initializable {
     private ComboBox<String> cbbdestination;
 
     @FXML
-    private ChoiceBox<Integer> cbperson;
+    private ComboBox<Integer> cbbperson;
     
     @FXML
     private TableView<Route> searchtable;
