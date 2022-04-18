@@ -3,6 +3,7 @@ package controller.login;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import controller.Main;
@@ -144,24 +145,56 @@ public class Signup implements Initializable {
     	String card = txtcardname.getText();
     	String passport = txtpassportnum.getText();
     	String phone = txtphone.getText();
-    	if(!btnidcheck.isDisable()) {
-    		alert.setHeaderText("아이디 중복체크 버튼을 눌러주세요.");
-    		alert.showAndWait();
-    		return;
-    	}
-    	if(!password.equals(passwordconfirm)) {
-    		alert.setHeaderText("비밀번호가 비밀번호 확인과 일치하지 않습니다.");
-    		alert.showAndWait();
-    		return;
-    	}
-    	///////// 비밀번호 유효성 체크 추후 추가 /////////////
-    	///////// 이름 유효성 체크 추후 추가 /////////////
-    	if(!btnphonecheck.isDisable()) {
-    		alert.setHeaderText("전화번호 중복체크 버튼을 눌러주세요.");
-    		alert.showAndWait();
-    		return;
-    	}
-    	///////// 카드번호 유효성 체크 추후 추가 /////////////
+    	///////////// 유효성 검사 ////////////////
+//    	if(!btnidcheck.isDisable()) {
+//    		alert.setHeaderText("아이디 중복체크 버튼을 눌러주세요.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	if(password.length()<1 || passwordconfirm.length()<1) {
+//    		alert.setHeaderText("비밀번호를 입력해주세요.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	if(!password.equals(passwordconfirm)) {
+//    		alert.setHeaderText("비밀번호가 비밀번호 확인과 일치하지 않습니다.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	 Pattern pwpattern = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$");
+//    	 Matcher pwmatcher = pwpattern.matcher(password);
+//    	 if(!pwmatcher.find()) {
+//    		alert.setHeaderText("비밀번호는 영문과 특수문자, 숫자를 포함하며 8자 이상이어야 합니다.");
+//     		alert.showAndWait();
+//     		return;
+//    	 }
+//    	if(name.length()<1) {
+//    		alert.setHeaderText("이름을 입력해주세요.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	String namepattern = "^[a-z|A-Z|\\s]*$";
+//    	if(!Pattern.matches(namepattern, name)){
+//    		alert.setHeaderText("이름에는 한글,숫자,특수문자가 들어갈 수 없습니다.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	if(!btnphonecheck.isDisable()) {
+//    		alert.setHeaderText("전화번호 중복체크 버튼을 눌러주세요.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	String cardpattern = "^[0-9]{16}$";
+//    	if(!Pattern.matches(cardpattern, card)){
+//    		alert.setHeaderText("카드번호 형식 오류");
+//    		alert.showAndWait();
+//    		return;
+//    	}
+//    	if(passport.length()<1) {
+//    		alert.setHeaderText("여권번호를 입력해주세요.");
+//    		alert.showAndWait();
+//    		return;
+//    	}
     	///////// 여권번호 유효성 체크 추후 추가 /////////////
     	Member member = new Member(0, id, password, name, phone, passport, card);
     	boolean result = MemberDao.memberDao.signup(member);

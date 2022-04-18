@@ -16,12 +16,12 @@
       </Label>
       <TextField fx:id="txtid" layoutX="452.0" layoutY="158.0" prefHeight="36.0" prefWidth="273.0" promptText="아이디" />
       <Button fx:id="btnidcheck" layoutX="744.0" layoutY="158.0" mnemonicParsing="false" onAction="#idcheck" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #02BE6E;" text="중복체크" />
-      <PasswordField fx:id="txtpassword" layoutX="452.0" layoutY="227.0" prefHeight="36.0" prefWidth="376.0" promptText="비밀번호" />
+      <PasswordField fx:id="txtpassword" layoutX="452.0" layoutY="227.0" prefHeight="36.0" prefWidth="376.0" promptText="비밀번호 : 영문,특수문자,숫자 포함 8~20자리" />
       <PasswordField fx:id="txtconfirmpw" layoutX="452.0" layoutY="275.0" prefHeight="36.0" prefWidth="376.0" promptText="비밀번호 확인" />
-      <TextField fx:id="txtname" layoutX="452.0" layoutY="336.0" prefHeight="36.0" prefWidth="376.0" promptText="이름" />
-      <TextField fx:id="txtphone" layoutX="452.0" layoutY="394.0" prefHeight="36.0" prefWidth="273.0" promptText="전화번호" />
+      <TextField fx:id="txtname" layoutX="451.0" layoutY="336.0" prefHeight="36.0" prefWidth="376.0" promptText="영문 이름" />
+      <TextField fx:id="txtphone" layoutX="452.0" layoutY="394.0" prefHeight="36.0" prefWidth="273.0" promptText="전화번호 : '-' 제외 숫자만 입력" />
       <Button fx:id="btnphonecheck" layoutX="744.0" layoutY="394.0" mnemonicParsing="false" onAction="#phonecheck" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #02BE6E;" text="중복체크" />
-      <TextField fx:id="txtcardname" layoutX="452.0" layoutY="455.0" prefHeight="36.0" prefWidth="376.0" promptText="카드번호" />
+      <TextField fx:id="txtcardname" layoutX="452.0" layoutY="455.0" prefHeight="36.0" prefWidth="376.0" promptText="카드번호 : 공백 제외 숫자만 입력" />
       <TextField fx:id="txtpassportnum" layoutX="452.0" layoutY="511.0" prefHeight="36.0" prefWidth="376.0" promptText="여권번호" />
       <Button fx:id="btnsignup" layoutX="452.0" layoutY="581.0" mnemonicParsing="false" onAction="#signup" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="회원가입" />
       <Button fx:id="btnback" layoutX="744.0" layoutY="94.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #02BE6E;" text="뒤로가기" />
