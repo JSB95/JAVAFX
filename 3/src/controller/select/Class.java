@@ -10,14 +10,12 @@ import javafx.scene.input.MouseEvent;
 
 public class Class implements Initializable {
 
-	public static HashSet<String> seat;
+	public static HashSet<String> seat = new HashSet<>();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		if(seat!=null) {
-			for(int i=0; i<seat.size(); i++) {
-				seat.remove(i);
-			}
+			seat.clear();
 		}
 
 	}

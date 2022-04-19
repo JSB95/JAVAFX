@@ -1,6 +1,7 @@
 package controller.main;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
@@ -11,19 +12,24 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Searchpage implements Initializable {
 
 	public static Route route;
 	
+	public static int person;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		String rdeparture = "rdeparture";
 		String rdestination = "rdestination";
 		HashSet<String> departure = RouteDao.routeDao.getdeparture(rdeparture);
@@ -42,6 +48,9 @@ public class Searchpage implements Initializable {
 			route = RouteDao.routeDao.numgetroute(selectrnum);
 			Mainpage.instance.loadpage("/view/select/selectseatclass.fxml");
 		});
+		cbbperson.getSelectionModel().selectFirst();
+		cbbstartplace.getSelectionModel().selectFirst();
+		cbbdestination.getSelectionModel().selectFirst();
 	}
 	
 
@@ -65,9 +74,19 @@ public class Searchpage implements Initializable {
     
     @FXML
     private Button btnback;
+    
+    LocalDate date;
 
     @FXML
     void search(ActionEvent event) {
+    	date = startdate.getValue();
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	person = cbbperson.getValue();
+    	if(date==null) {
+    		alert.setHeaderText("날짜를 선택해주세요.");
+    		alert.showAndWait();
+    		return;
+    	}
     	searchtableshow();
     }
     

@@ -4,6 +4,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import dto.Route;
@@ -114,6 +115,24 @@ public class RouteDao extends Dao {
 			}
 		} catch(Exception e) {System.out.println("항공사 이름 가져오기 오류 : "+e);}
 		
+		return null;
+	}
+	
+	// 6. 선택된 좌석 불러오기
+	public ArrayList<String> getseat(int rnum){
+		try {
+			ArrayList<String> seatlist = new ArrayList<>();
+			String sql = "select tseatnum from ticket where rnum=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, rnum);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				seatlist.add(rs.getString(1));
+			}
+			return seatlist;
+		} catch(Exception e) {
+			System.out.println("좌석 불러오기 오류 : "+e);
+		}
 		return null;
 	}
 	

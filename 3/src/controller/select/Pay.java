@@ -3,7 +3,7 @@ package controller.select;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.Main;
+import controller.main.Mainpage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +14,13 @@ public class Pay implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+	
+		for(String temp : Class.seat) {
+			System.out.println();
+			
+			txtname.appendText(temp);
+		}
+		
 		
 	}
 	
@@ -34,7 +41,7 @@ public class Pay implements Initializable {
 
     @FXML
     void back(ActionEvent event) {
-    	Main.instance.loadpage("/view/select/class.fxml");
+    	Mainpage.instance.loadpage("/view/select/selectseatclass.fxml");
     }
 
     @FXML
