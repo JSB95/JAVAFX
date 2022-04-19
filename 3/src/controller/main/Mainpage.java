@@ -61,6 +61,10 @@ public class Mainpage implements Initializable {
     	loadpage("/view/main/searchpage.fxml");
     }
     
+    @FXML
+    void exchange(MouseEvent e) {
+    	
+    }
 	
 	public void loadpage(String page) {
 		try {

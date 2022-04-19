@@ -39,7 +39,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblexchange" layoutX="114.0" layoutY="648.0" text="환율">
+      <Label fx:id="lblexchange" onMouseClicked="#exchange" layoutX="114.0" layoutY="648.0" text="환율">
          <font>
             <Font size="20.0" />
          </font>
