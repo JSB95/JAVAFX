@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.main.Searchpage">
+   <children>
+      <DatePicker fx:id="startdate" layoutX="547.0" layoutY="86.0" prefHeight="38.0" prefWidth="181.0" />
+      <Button fx:id="btnsearch" layoutX="794.0" layoutY="81.0" mnemonicParsing="false" onAction="#search" prefHeight="47.0" prefWidth="147.0" text="항공권 검색" />
+      <ComboBox fx:id="cbbstartplace" layoutX="35.0" layoutY="85.0" prefHeight="38.0" prefWidth="98.0" promptText="출발지" />
+      <ComboBox fx:id="cbbdestination" layoutX="238.0" layoutY="86.0" prefHeight="38.0" prefWidth="98.0" promptText="도착지" />
+      <ComboBox fx:id="cbbperson" layoutX="402.0" layoutY="86.0" prefHeight="38.0" prefWidth="98.0" promptText="인원수" />
+      <ImageView fitHeight="62.0" fitWidth="79.0" layoutX="153.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" rotate="-23.0">
+         <image>
+            <Image url="@../../img/비행기.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="searchtable" layoutX="14.0" layoutY="230.0" prefHeight="564.0" prefWidth="977.0">
+        <columns>
+          <TableColumn prefWidth="95.0" text="항공사" />
+          <TableColumn minWidth="0.0" prefWidth="153.0" text="비행기" />
+            <TableColumn prefWidth="225.0" text="출발시간" />
+            <TableColumn prefWidth="225.0" text="도착시간" />
+            <TableColumn prefWidth="115.0" text="소요시간" />
+            <TableColumn prefWidth="163.0" text="가격" />
+        </columns>
+      </TableView>
+      <Label layoutX="35.0" layoutY="46.0" prefHeight="21.0" prefWidth="98.0" text="출발지" />
+      <Label layoutX="238.0" layoutY="46.0" prefHeight="21.0" prefWidth="98.0" text="도착지" />
+      <Label layoutX="402.0" layoutY="46.0" prefHeight="21.0" prefWidth="98.0" text="인원수" />
+      <Label layoutX="547.0" layoutY="46.0" prefHeight="21.0" prefWidth="98.0" text="날짜" />
+   </children>
+</AnchorPane>
