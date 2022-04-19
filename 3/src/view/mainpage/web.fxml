@@ -7,8 +7,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #e8e8e8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.webview.Web">
    <children>
-      <TextField fx:id="txturl" layoutX="197.0" layoutY="82.0" prefHeight="78.0" prefWidth="479.0" promptText="url" />
-      <Button fx:id="btnconnect" layoutX="701.0" layoutY="55.0" mnemonicParsing="false" onAction="#accconnect" prefHeight="132.0" prefWidth="116.0" text="Load" />
+      <TextField fx:id="txtsearch" layoutX="197.0" layoutY="82.0" prefHeight="78.0" prefWidth="479.0" promptText="검색할 공항의 국가 또는 도시를 입력하세요." />
+      <Button fx:id="btnsearch" layoutX="701.0" layoutY="55.0" mnemonicParsing="false" onAction="#accsearch" prefHeight="132.0" prefWidth="116.0" text="Search" />
       <Button fx:id="btnhome" layoutX="847.0" layoutY="55.0" mnemonicParsing="false" onAction="#acchome" prefHeight="132.0" prefWidth="116.0" text="Home" />
       <WebView fx:id="mywebview" layoutY="200.0" prefHeight="620.0" prefWidth="1000.0" />
    </children>

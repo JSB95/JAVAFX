@@ -20,4 +20,16 @@
 		6. 성별		// 상동
 		
 	
+	engine.load("https://www.google.com/maps/search/?api=1&query=공항");	// 내 주변의 '공항' 검색
+
+	https://developers.google.com/maps/url-encoding	
+		// URL 인코딩 문법
+	스냅샷 : https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=400x400&key=APIKEY
 	
+	
+	1. 글 쓸떄 공항 선택 새 scene을 띄움
+	2. webview로 적절한 공항 찾으면 url에서 좌표 가져옴
+		-> url에서 따오지 말고 xml이나 json 파싱하는걸로 바꿔야함. 
+	3. 가져온 좌표로 스냅샷 찍음.
+	4 . 스냅샷을 본문 이미지에 첨부
+	5. 글 읽을때 스냅샷 이미지 누르면 새 scene 에 webview googlemaps 띄우기
