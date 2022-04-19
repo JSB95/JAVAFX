@@ -29,7 +29,7 @@ public class AplaneDao extends Dao {
 			if(seatclass.equals("economy")) {
 				return 1;
 			}else {
-				String sql = "select p"+seatclass+"seatratio from price where ="+cnum;
+				String sql = "select p"+seatclass+"seatratio from price where cnum="+cnum;
 				ps = con.prepareStatement(sql);
 				rs =ps.executeQuery();
 				if(rs.next()) {
