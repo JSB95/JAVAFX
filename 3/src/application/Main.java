@@ -19,7 +19,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("환율 계산기");
-			primaryStage.getIcons().add(new Image("/img/icon3.png"));
+//			primaryStage.getIcons().add(new Image("/img/icon3.png"));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
