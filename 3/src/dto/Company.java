@@ -1,9 +1,9 @@
 package dto;
 
 public class Company {
-	private int cnum;		// pk
-	private String cname;
-	private String cphone;
+	private int cnum;		// 항공사 번호 pk
+	private String cname;	// 항공사 이름
+	private String cphone;	// 항공사 전화번호
 	
 	public Company() {}
 

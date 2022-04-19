@@ -2,12 +2,12 @@ package dto;
 
 public class Aplane {
 	
-	private String aname;	// pk, not null
-	private int cnum;	// fk, Company cnum
-	private int afirstSeatCount;
-	private int abusinessSeatCount;
-	private int aeconomySeatCount;
-	private int astate;
+	private String aname;			// 비행기명 pk, not null
+	private int cnum;				// 항공사번호 fk, Company cnum
+	private int afirstSeatCount; 	// 퍼스트클래스 좌석수
+	private int abusinessSeatCount; // 비즈니스 클래스 좌석수
+	private int aeconomySeatCount; 	// 이코노미 클래스 좌석수
+	private int astate; 			// 비행기 상태
 
 	public Aplane() {
 		// TODO Auto-generated constructor stub

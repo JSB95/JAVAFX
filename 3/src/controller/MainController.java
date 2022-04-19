@@ -166,7 +166,7 @@ public class MainController {
 		  for (CashVO data : list) {
 			  nationNames.forEach(nationName ->{
 				  String dataName = data.getName().substring(0, nationName.length());
-				  if (dataName.equals(nationNames)) {
+				  if (dataName.equals(nationName)) {
 					  int idx = nationNames.indexOf(nationName);
 					  dblsBias[idx] = Double.parseDouble(data.getBias().replaceAll(",", ""));
 					  if (nationName.equals("¿œ∫ª")) {
@@ -179,7 +179,7 @@ public class MainController {
 		  }
 		  int inputValue1= Integer.parseInt(this.input1.getText());
 		  double krMoney = inputValue1 * dblsBias[0];
-		  this.input2.setText(String.format("%.2f",krMoney / dblsBias[1]));
+		  this.input2.setText(String.format("%.2f", new Object[] { Double.valueOf(krMoney / dblsBias[1]) }));
 	  }
   }
 }
