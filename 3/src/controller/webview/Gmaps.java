@@ -124,10 +124,19 @@ public class Gmaps {
 			        JSONObject obj = jsonArray.getJSONObject(i);
 			        String name = obj.getString("name");	
 			        System.out.println("name(" + i + "): " + name);// 배열 i번 인덱스에서 key(name)의 value값 저장
-			        String formatted_address = obj.getString("formatted_address");	// 세계 통합 주소 코드
+			        String formatted_address = obj.getString("formatted_address");	
 			        System.out.println("formatted_address(" + i + "): " + formatted_address);
-			        String global_code = obj.getString("global_code");	// 세계 통합 주소 코드
-			        System.out.println("global_code(" + i + "): " + global_code);
+			        
+			        JSONObject rootobj = obj.optJSONObject("plus_code");	// 하위오브젝트 plus_code의 키에 접근하기 위해 새로운 JSONObject 선언
+			        String global_code;
+			        if(rootobj != null) {
+				        global_code = rootobj.getString("global_code");	// 하위 키 global_code의 value 빼오기
+				        System.out.println("formatted_address(" + i + "): " + global_code);
+			        }else {
+			        	global_code = null;
+			        	System.out.println("global_code(" + i + "): " + global_code);
+			        }
+
 			        System.out.print("\n");
 			        Mapsearchfield tmp = new Mapsearchfield(name, formatted_address, global_code);
 			        searchlist.add(i, tmp);
