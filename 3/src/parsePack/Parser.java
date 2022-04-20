@@ -31,6 +31,7 @@ public class Parser {
 	            String urlLink = value.selectFirst("td:nth-child(1) > a").attr("href");
 	            CashVO temp = new CashVO(name, bias, salePrice, buyPrice, urlLink);
 	            mList.add(temp);
+	            
 			});
 			
 			
@@ -48,7 +49,7 @@ public class Parser {
 			
 			Document doc2 = Jsoup.connect(graphUrl).get();
 			Elements list = doc2.select(".tbl_exchange > tbody > tr");
-			System.out.println(list.size());
+			//System.out.println(list.size());
 			list.forEach(value ->{
 				
 				String date = value.selectFirst(".date").text();

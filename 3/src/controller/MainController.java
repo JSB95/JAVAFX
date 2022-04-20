@@ -47,34 +47,38 @@ public class MainController {
   
   @FXML
   private void initialize() {
-    boolean MIN = false;
-    boolean MAX = true;
-    this.parser = new Parser();
-    this.nationList = FXCollections.observableArrayList();
+//    boolean MIN = false;
+//    boolean MAX = true;
+    parser = new Parser();
+    nationList = FXCollections.observableArrayList();
+    ObservableList<NationVO> Listtest = FXCollections.observableArrayList();
     try {
     	
     	String line;
-    	File dataFile = new File(this.getClass().getResource("/resources/data.txt").getFile());
+    	File dataFile = new File(getClass().getResource("/resources/data.txt").getFile());
     	FileInputStream fis = new FileInputStream(dataFile);
     	InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
     	BufferedReader br = new BufferedReader(isr);
-    	List<CashVO> list = this.parser.getCashData();
+//    	List<CashVO> list = this.parser.getCashData();
     	while ((line = br.readLine()) != null) {
     		String[] lines = line.split("#");
     		NationVO temp = new NationVO(lines[0], lines[1]);
-    		this.nationList.add(temp);
+    		nationList.add(temp);
+    		System.out.println(br.readLine());
     	}
-    	this.box1.setItems(this.nationList);
-    	this.box2.setItems(this.nationList);
-    	this.box1.setValue((NationVO)this.nationList.get(0));
-    	this.box2.setValue((NationVO)this.nationList.get(1));
+    	box1.setItems(nationList);
+    	box2.setItems(nationList);
+
+    	
+    	box1.setValue(nationList.get(0));
+    	box2.setValue(nationList.get(1));
     	
     } catch (Exception e) {
     	e.printStackTrace();
     }
     
     ChangeListener<NationVO> funcBox1Changed = (ob, o, v) -> {
-    	List<CashVO> list = this.parser.getCashData();
+    	List<CashVO> list = parser.getCashData();
         String nationName = v.getName();
         List<GraphVO> graphList = new ArrayList<GraphVO>();
         for (CashVO data : list) {
@@ -89,12 +93,12 @@ public class MainController {
                 for (int i = 0; i < 6; ++i) {
                     String graphUrl = "https://finance.naver.com/marketindex/exchangeDailyQuote.nhn?" + url;
                     graphUrl = String.valueOf(graphUrl) + String.format("&page=%d", i + 1);
-                    this.parser.getGraphData(graphUrl).forEach(graphItem -> graphList.add(graphItem));
+                    parser.getGraphData(graphUrl).forEach(graphItem -> graphList.add(graphItem));
                 }
                 break;
             }
         }
-        this.lineChart.getData().clear();
+        lineChart.getData().clear();
         XYChart.Series series = new XYChart.Series();
         series.setName(nationName);
         graphList.sort((a, b) -> a.getDate().compareTo(b.getDate()));
@@ -111,16 +115,16 @@ public class MainController {
         	}
         	series.getData().add((Object)new XYChart.Data((Object)nIdx, (Object)dblValue));
         });
-        this.lineChart.getData().add(series);
+        lineChart.getData().add(series);
         double yTickSpace = Math.floor(dblMinMax[0]) / 100.0;
-        NumberAxis yAxis = (NumberAxis)this.lineChart.getYAxis();
+        NumberAxis yAxis = (NumberAxis)lineChart.getYAxis();
         yAxis.setForceZeroInRange(false);
         yAxis.setAutoRanging(false);
         yAxis.setTickUnit(yTickSpace);
         yAxis.setTickLength(yTickSpace);
         yAxis.setLowerBound(dblMinMax[0] - yTickSpace);
         yAxis.setUpperBound(dblMinMax[1] + yTickSpace);
-        NumberAxis xAxis = (NumberAxis)this.lineChart.getXAxis();
+        NumberAxis xAxis = (NumberAxis)lineChart.getXAxis();
         xAxis.setTickUnit(1.0);
         xAxis.setTickLength(1.0);
         xAxis.setUpperBound((double)(graphList.size() - 1));
@@ -137,24 +141,24 @@ public class MainController {
         });
     };
     
-    this.input1.textProperty().addListener((observable, oldValue, newValue) -> {
+    input1.textProperty().addListener((observable, oldValue, newValue) -> {
     	if (!newValue.matches("\\d*") && newValue.charAt(newValue.length() - 1) != '.'){
-    		this.input1.setText(newValue.replaceAll("[^\\d]",""));
+    		input1.setText(newValue.replaceAll("[^\\d]",""));
     	}
     });
-    this.box1.valueProperty().addListener(funcBox1Changed);
-    funcBox1Changed.changed(null, (NationVO)this.nationList.get(0), (NationVO)this.nationList.get(1));
+    box1.valueProperty().addListener(funcBox1Changed);
+    funcBox1Changed.changed(null, nationList.get(0), nationList.get(1));
     
     
 
   }
   
   public void getData() {
-	  List<CashVO> list = this.parser.getCashData();
-	  NationVO value = this.box1.getValue();
-	  NationVO value2 = this.box2.getValue();
+	  List<CashVO> list = parser.getCashData();
+	  NationVO value = box1.getValue();
+	  NationVO value2 = box2.getValue();
 	  
-	  if (value == null || value2 == null || this.input1.getCharacters().length() == 0) {
+	  if (value == null || value2 == null || input1.getCharacters().length() == 0) {
 		  Alert alert = new Alert(AlertType.WARNING);
 		  alert.setTitle("WARNING");
 		  alert.setHeaderText("비어있는 입력칸이 있습니다.");
@@ -177,9 +181,9 @@ public class MainController {
 				  }
 			  });
 		  }
-		  int inputValue1= Integer.parseInt(this.input1.getText());
+		  int inputValue1= Integer.parseInt(input1.getText());
 		  double krMoney = inputValue1 * dblsBias[0];
-		  this.input2.setText(String.format("%.2f", new Object[] { Double.valueOf(krMoney / dblsBias[1]) }));
+		  input2.setText(String.format("%.2f", new Object[] { Double.valueOf(krMoney / dblsBias[1]) }));
 	  }
   }
 }

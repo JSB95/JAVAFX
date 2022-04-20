@@ -63,7 +63,7 @@ public class Mainpage implements Initializable {
     
     @FXML
     void exchange(MouseEvent e) {
-    	
+    	loadpage("/view/MainLayout.fxml");
     }
 	
 	public void loadpage(String page) {
