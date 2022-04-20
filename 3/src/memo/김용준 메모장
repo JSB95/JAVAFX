@@ -24,8 +24,13 @@
 
 	https://developers.google.com/maps/url-encoding	
 		// URL 인코딩 문법
+		// %2C = 쉼표
+		
 	스냅샷 : https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=400x400&key=APIKEY
 	
+	
+	스냅샷 https://maps.googleapis.com/maps/api/staticmap?center=lat값,lng값&zoom=12&size=400x400&key=
+		//location
 	
 	1. 글 쓸떄 공항 선택 새 scene을 띄움
 	2. webview로 적절한 공항 찾으면 url에서 좌표 가져옴

@@ -16,13 +16,24 @@ import org.json.JSONObject;
 
 public class Gmaps {
 	public class Mapsearchfield{
+		/*
+		 * name : 검색 결과의 명칭
+		 * formatted_address : 해당(검색대상이 위치한)국가의 체계로 변환된 주소
+		 * place_id : 지도 스냅샷에 저장할 링크에 쓰일 정확한 검색대상
+		 * latitude : 지도 스냅샷 찍을때 url에 넣을 위도
+		 * longtitude : 스냅샷 찍을때 쓸 경도
+		 */
 		String name;
 		String formatted_address;
-		String global_code;
-		public Mapsearchfield(String name, String formatted_address, String global_code) {
+		String place_id;
+		String latitude;
+		String longitude;
+		public Mapsearchfield(String name, String formatted_address,String place_id, String latitude, String longitude) {
 			this.name = name;
 			this.formatted_address = formatted_address;
-			this.global_code = global_code;
+			this.place_id = place_id;
+			this.latitude = latitude;
+			this.longitude = longitude;
 		}
 		public String getName() {
 			return name;
@@ -33,14 +44,26 @@ public class Gmaps {
 		public String getFormatted_address() {
 			return formatted_address;
 		}
+		public String getPlace_id() {
+			return place_id;
+		}
+		public void setPlace_id(String place_id) {
+			this.place_id = place_id;
+		}
 		public void setFormatted_address(String formatted_address) {
 			this.formatted_address = formatted_address;
 		}
-		public String getGlobal_code() {
-			return global_code;
+		public String getLatitude() {
+			return latitude;
 		}
-		public void setGlobal_code(String global_code) {
-			this.global_code = global_code;
+		public void setLatitude(String latitude) {
+			this.latitude = latitude;
+		}
+		public String getLongitude() {
+			return longitude;
+		}
+		public void setLongitude(String longitude) {
+			this.longitude = longitude;
 		}
 	}
 	
@@ -105,7 +128,7 @@ public class Gmaps {
 				ArrayList<Mapsearchfield> resultlist = jsonparser(returnData);
 				return resultlist;
 			} catch (IOException e) {e.printStackTrace();}finally{ 
-				//http 요청 및 응답 완료 후 BufferedReader를 닫아줍니다
+				//http 요청 및 응답 완료 후 BufferedReader를 닫기
 				try {
 					if (br != null) {
 						br.close();	
@@ -126,19 +149,18 @@ public class Gmaps {
 			        System.out.println("name(" + i + "): " + name);// 배열 i번 인덱스에서 key(name)의 value값 저장
 			        String formatted_address = obj.getString("formatted_address");	
 			        System.out.println("formatted_address(" + i + "): " + formatted_address);
-			        
-			        JSONObject rootobj = obj.optJSONObject("plus_code");	// 하위오브젝트 plus_code의 키에 접근하기 위해 새로운 JSONObject 선언
-			        String global_code;
-			        if(rootobj != null) {
-				        global_code = rootobj.getString("global_code");	// 하위 키 global_code의 value 빼오기
-				        System.out.println("formatted_address(" + i + "): " + global_code);
-			        }else {
-			        	global_code = null;
-			        	System.out.println("global_code(" + i + "): " + global_code);
-			        }
+			        String place_id = obj.getString("place_id");	
+			        System.out.println("place_id(" + i + "): " + place_id);
 
+			        
+			        obj = obj.optJSONObject("geometry");	// 하위오브젝트 plus_code의 키에 접근하기 위해 새로운 JSONObject 선언
+			        obj = obj.optJSONObject("location");
+				    String latitude = obj.getDouble("lat")+"";	// 하위 키 global_code의 value 빼오기
+				    String longitude = obj.getDouble("lng")+"";	// 구글에서 리턴하는 위도 경도는 float형태이나 변환하기 커찮으니 그냥 String으로 바로 변환 저장.
+				    System.out.println("latitude(" + i + "): " + latitude);
+				    System.out.println("longitude(" + i + "): " + longitude);
 			        System.out.print("\n");
-			        Mapsearchfield tmp = new Mapsearchfield(name, formatted_address, global_code);
+			        Mapsearchfield tmp = new Mapsearchfield(name, formatted_address, place_id, latitude, longitude);
 			        searchlist.add(i, tmp);
 			    }
 				return searchlist;

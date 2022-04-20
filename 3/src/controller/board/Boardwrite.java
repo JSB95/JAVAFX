@@ -89,18 +89,16 @@ public class Boardwrite implements Initializable{
 			tc = tableresult.getColumns().get(1);
 			tc.setCellValueFactory( new PropertyValueFactory<>("formatted_address")); 
 				
-			// 글로벌코드는 출력할 필요 없으므로 생략.
+			// 위도, 경도는 출력할 필요 없으므로 생략.
 				
 			tableresult.setItems(oresultarray);
 			btnsearch.setText("선택");
     	}else {
-    		
 			mapsearchfield = tableresult.getSelectionModel().getSelectedItem();	// 사용자가 리스트에서 선택한 대상을 저장.
 			btnsearch.setText("검색");
 	    }
     }
     
-    String selectedlocation;	// 사용자가 선택한 지역 저장할 변수. 아직 설계 안됨.
     String key = controller.webview.Gmaps.gmaps.getAPIkey();	// 내 노트북 파일로 들어있는 구글맵스 api 키
     @FXML
     void accwrite(ActionEvent event) {
@@ -110,8 +108,11 @@ public class Boardwrite implements Initializable{
     	Optional<ButtonType> result = alert.showAndWait();
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     	if(result.get() == ButtonType.OK) {
+    		String blocation = "https://www.google.com/maps/search/?api=1&query="+mapsearchfield.getLatitude()+
+    				"%2C"+mapsearchfield.getLongitude()+"&query_place_id="+mapsearchfield.getPlace_id();
+    		
     		Board board = new Board(0, 0, txttitle.getText(), txtcontent.getText(), 
-    				selectedlocation, null, 0);		
+    				blocation, null, 0);		
     			// 코드 병합할 때 로그인 한 사용자의 회원번호 따와야함. 나머지는 바꿀 거 없음.
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     		BoardDao.boardDao.wrtite(board);
