@@ -14,17 +14,17 @@
          </font>
       </Label>
       <Line endX="-80.0" endY="723.0" layoutX="347.0" layoutY="97.0" startX="-80.0" startY="-97.0" />
-      <Label fx:id="lblmim" layoutX="71.0" layoutY="278.0" text="회원정보 조회">
+      <Label fx:id="lblmim" onMouseClicked="#mim" layoutX="71.0" layoutY="278.0" text="회원정보 조회">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblmupdate" layoutX="58.0" layoutY="360.0" text="내 정보 수정하기">
+      <Label fx:id="lblmupdate" onMouseClicked="#mupdate" layoutX="58.0" layoutY="360.0" text="내 정보 수정하기">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblmat" layoutX="68.0" layoutY="442.0" text="내 항공권 조회">
+      <Label fx:id="lblmat" onMouseClicked="#mat" layoutX="68.0" layoutY="442.0" text="내 항공권 조회">
          <font>
             <Font size="20.0" />
          </font>
@@ -39,7 +39,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblexchange" layoutX="114.0" layoutY="648.0" text="환율">
+      <Label fx:id="lblexchange" onMouseClicked="#exchange" layoutX="114.0" layoutY="648.0" text="환율">
          <font>
             <Font size="20.0" />
          </font>
@@ -50,12 +50,12 @@
          </font>
       </Label>
       <BorderPane fx:id="boderpane" layoutX="280.0" layoutY="8.0" prefHeight="820.0" prefWidth="1000.0" />
-      <Label fx:id="lblloginid" layoutX="32.0" layoutY="126.0" prefHeight="25.0" prefWidth="209.0" text="oooo님! 환영합니다.">
+      <Label layoutX="32.0" layoutY="126.0" prefHeight="25.0" prefWidth="209.0" text="oooo님! 환영합니다.">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblpoint" layoutX="30.0" layoutY="174.0" prefHeight="25.0" prefWidth="209.0" text="oooo님 포인트 :">
+      <Label layoutX="30.0" layoutY="174.0" prefHeight="25.0" prefWidth="209.0" text="oooo님 포인트 :">
          <font>
             <Font size="15.0" />
          </font>

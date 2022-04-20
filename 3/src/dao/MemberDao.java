@@ -1,9 +1,5 @@
 package dao;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import controller.login.Login;
 import dto.Member;
 
 
@@ -29,6 +25,7 @@ public class MemberDao extends Dao {
 		} catch(Exception e) { System.out.println("회원가입 SQL 오류 : "+ e); }
 		return false;
 	}
+	
 	// 2. 중복체크
 	public boolean check(String column,String value) {
 		try {
@@ -57,7 +54,23 @@ public class MemberDao extends Dao {
 		return false;
 	}
 	
-	// 4. 아이디로 회원정보 호출
+	// 4. 회원번호로 회원정보 호출
+	public Member getMember(int mnum) {
+		try {
+			String sql = "select * from member where mnum=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mnum);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(6), 
+						rs.getString(4), rs.getString(7), rs.getString(5),rs.getString(8),rs.getInt(9));
+				return member;
+			}
+		} catch(Exception e) { System.out.println("회원정보 호출 오류 : "+ e); }
+		return null;
+	}
+	
+	// 5. 회원아이디로 회원정보 호출
 	public Member getMember(String id) {
 		try {
 			String sql = "select * from member where mid=?";
@@ -65,14 +78,15 @@ public class MemberDao extends Dao {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(6), rs.getString(4), rs.getString(7), rs.getString(5),rs.getString(8),rs.getString(9),rs.getInt(10));
+				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(6), 
+						rs.getString(4), rs.getString(7), rs.getString(5),rs.getString(8),rs.getInt(9));
 				return member;
 			}
 		} catch(Exception e) { System.out.println("회원정보 호출 오류 : "+ e); }
 		return null;
 	}
 	
-	// 5. 아이디 찾기
+	// 6. 아이디 찾기
 	public String findid(String name, String phone) {
 		try {
 			String sql = "select * from member where mname=? and mphone=?";

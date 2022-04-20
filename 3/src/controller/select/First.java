@@ -49,7 +49,7 @@ public class First implements Initializable {
 			ArrayList<String> seatlist = RouteDao.routeDao.getseat(Searchpage.route.getRnum());
 			if(seatlist!=null) {
 				for(String temp : seatlist) {
-					if(button.getText().equals(temp.split("-")[1] ) ) {
+					if(("F-"+button.getText()).equals(temp) ) {
 						button.setDisable(true);
 					}
 				}

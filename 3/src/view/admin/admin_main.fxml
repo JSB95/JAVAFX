@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.Admin_main">
+   <children>
+      <Line endX="-80.0" endY="723.0" layoutX="347.0" layoutY="97.0" startX="-80.0" startY="-97.0" />
+      <Label fx:id="mypage" layoutX="52.0" layoutY="27.0" text="관리자 페이지">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbllogout" layoutX="185.0" layoutY="106.0" onMouseClicked="#logout" prefHeight="25.0" prefWidth="64.0" text="Log_out">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Line endX="165.5" layoutX="102.0" layoutY="172.0" startX="-100.0" />
+      <Label fx:id="lblcadd" layoutX="58.0" layoutY="217.0" onMouseClicked="#cadd" text="항공사 추가">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblcupdate" layoutX="58.0" layoutY="271.0" onMouseClicked="#cupdate" text="항공사 수정/삭제">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblapadd" layoutX="58.0" layoutY="329.0" onMouseClicked="#apadd" text="비행기 추가">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblapupdate" layoutX="58.0" layoutY="385.0" onMouseClicked="#apupdate" text="비행기 수정/삭제">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblradd" layoutX="58.0" layoutY="449.0" onMouseClicked="#radd" text="항공일지 추가">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblrupdate" layoutX="58.0" layoutY="510.0" onMouseClicked="#rupdate" text="항공일지 수정/삭제">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <BorderPane fx:id="boderpane" layoutX="280.0" layoutY="8.0" prefHeight="820.0" prefWidth="1000.0" />
+   </children>
+</AnchorPane>

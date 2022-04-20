@@ -23,5 +23,27 @@ public class AplaneDao extends Dao {
 		return null;
 	}
 	
+	// 2. 좌석배율 가져오기
+	public double getratio(int cnum,String seatclass) {
+		try {
+			if(seatclass.equals("economy")) {
+				return 1;
+			}else {
+				String sql = "select p"+seatclass+"seatratio from price where cnum="+cnum;
+				ps = con.prepareStatement(sql);
+				rs =ps.executeQuery();
+				if(rs.next()) {
+					return rs.getDouble(1);
+				}
+			}
+			
+		} catch(Exception e) { System.out.println("배율 가져오기 오류 : "+e);}
+		return 1;
+	}
+	
+	// 3. 항공사 추가하기
+	//public boolean addcompany(String cname,String cphone,double pfirstseatratio, )
+	
+	// 4. 비행기 추가하기
 	
 }

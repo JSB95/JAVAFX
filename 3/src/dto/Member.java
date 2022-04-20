@@ -9,35 +9,39 @@ public class Member {
 	private String mphone;		// 회원 전화번호
 	private String mpassport;	// 회원 여권번호
 	private String mcard;		// 회원 카드번호
-	private String mtoday;
-	private String msince; // 가입일
-	private int mpoint;
+	private String msince; 		// 가입일
+	private int mpoint;			// 포인트
 	
 	public Member() {}
+
 	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String mpassport, String mcard,
-		String msince) {
-		super();
+			String msince, int mpoint) {
 		this.mnum = mnum;
 		this.mid = mid;
 		this.mpassword = mpassword;
 		this.mname = mname;
 		this.mphone = mphone;
 		this.mpassport = mpassport;
-		this.msince = msince;
 		this.mcard = mcard;
+		this.msince = msince;
+		this.mpoint = mpoint;
 	}
-	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String mpassport, String mcard,
-			String mtoday, String msince, int mpoint) {
-		super();
-		this.mnum = mnum;
-		this.mid = mid;
-		this.mpassword = mpassword;
-		this.mname = mname;
-		this.mphone = mphone;
-		this.mpassport = mpassport;
-		this.mcard = mcard;
-		this.mtoday = mtoday;
+
+	
+
+	public String getMsince() {
+		return msince;
+	}
+
+	public void setMsince(String msince) {
 		this.msince = msince;
+	}
+
+	public int getMpoint() {
+		return mpoint;
+	}
+
+	public void setMpoint(int mpoint) {
 		this.mpoint = mpoint;
 	}
 
@@ -95,30 +99,6 @@ public class Member {
 
 	public void setMcard(String mcard) {
 		this.mcard = mcard;
-	}
-
-	public int getMpoint() {
-		return mpoint;
-	}
-
-	public void setMpoint(int mpoint) {
-		this.mpoint = mpoint;
-	}
-
-	public String getMsince() {
-		return msince;
-	}
-
-	public void setMsince(String msince) {
-		this.msince = msince;
-	}
-
-	public String getMtoday() {
-		return mtoday;
-	}
-
-	public void setMtoday(String mtoday) {
-		this.mtoday = mtoday;
 	}
 	
 }

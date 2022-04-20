@@ -58,18 +58,23 @@ public class Login implements Initializable {
     	login();
     }
     
-	void login() {
+	void login() {	
 		String id = txtid.getText();
     	String password = txtpassword.getText();
-    	boolean result = MemberDao.memberDao.login(id, password);
-    	if(result) {
-    		member = MemberDao.memberDao.getMember(id);
-    		Main.instance.loadpage("/view/main/Mainpage.fxml");
+    	if(id.equals("admin") && password.equals("1234")) {
+    		Main.instance.loadpage("/view/admin/admin_main.fxml");
     	}else {
-    		Alert alert = new Alert(AlertType.INFORMATION);
-    		alert.setHeaderText("일치하는 회원정보가 없습니다.");
-    		alert.showAndWait();
+			boolean result = MemberDao.memberDao.login(id, password);
+	    	if(result) {
+	    		member = MemberDao.memberDao.getMember(id);
+	    		Main.instance.loadpage("/view/main/Mainpage.fxml");
+	    	}else {
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+	    		alert.setHeaderText("일치하는 회원정보가 없습니다.");
+	    		alert.showAndWait();
+	    	}
     	}
+    	
 	}
 	
 	@FXML

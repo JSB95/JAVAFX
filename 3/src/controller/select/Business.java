@@ -32,69 +32,134 @@ public class Business implements Initializable {
 		}
 		GridPane gridPane = new GridPane();
 		gridPane.setPadding(new Insets(10));
-		gridPane.setHgap(20);
-		gridPane.setVgap(10);
+		gridPane.setHgap(30);
+		gridPane.setVgap(20);
 		Aplane aplane = AplaneDao.aplaneDao.getaplane(Searchpage.route.getAname());
 		int i=0;
 		
-		for(int row=0; row<aplane.getAbusinessSeatCount(); row++) {
-			ImageView imageView = new ImageView("/img/business.png");
-			imageView.setFitHeight(50);
-			imageView.setFitWidth(50);
-			ToggleButton button = new ToggleButton(null,imageView);
-			button.setText((i+1)+"");
-			button.setId(i+"");
-			ArrayList<String> seatlist = RouteDao.routeDao.getseat(Searchpage.route.getRnum());
-			if(seatlist!=null) {
-				for(String temp : seatlist) {
-					if(button.getText().equals(temp.split("-")[1] ) ) {
-						button.setDisable(true);
+		for(int row=0; row<aplane.getAbusinessSeatCount()/8; row++) {
+			for(int col=0; col<8; col++) {
+				ImageView imageView = new ImageView("/img/business.png");
+				imageView.setFitHeight(50);
+				imageView.setFitWidth(50);
+				ToggleButton button = new ToggleButton(null,imageView);
+				button.setText((i+1)+"");
+				button.setId(i+"");
+				button.setMaxSize(1.0, 1.0);
+				ArrayList<String> seatlist = RouteDao.routeDao.getseat(Searchpage.route.getRnum());
+				if(seatlist!=null) {
+					for(String temp : seatlist) {
+						if(("B-"+button.getText()).equals(temp) ) {
+							button.setDisable(true);
+						}
 					}
 				}
+			
+				button.setOnAction(e ->{
+					try {
+						int num = Integer.parseInt(e.toString().split("'")[1]);
+						String seat = "B-"+num;
+						boolean duplicate = true;
+						
+						if(Searchpage.person==j) {
+							for(String temp : Class.seat) {
+								if(temp.equals(seat)) {
+									Class.seat.remove(seat);
+									duplicate = false;
+									j--;
+								}
+							}
+							if(duplicate) {
+								Alert alert = new Alert(AlertType.INFORMATION);
+								button.setSelected(false);
+								alert.setHeaderText("더 이상 선택할 수 없습니다.");
+								alert.showAndWait();
+								return;
+							}
+						}
+						else if(Searchpage.person>j) {
+							for(String temp : Class.seat) {
+								if(temp.equals(seat)) {
+									Class.seat.remove(seat);
+									duplicate = false;
+									j--;
+								}
+							}
+							if(duplicate) {
+								Class.seat.add(seat);
+								j++;
+								
+							}
+						}
+					} catch(Exception a) {System.out.println(a);}
+	
+				});
+				gridPane.add(button, col, row);
+				i++;
 			}
-		
-			button.setOnAction(e ->{
-				try {
-					int num = Integer.parseInt(e.toString().split("'")[1]);
-					String seat = "F-"+num;
-					boolean duplicate = true;
-					
-					if(Searchpage.person==j) {
-						for(String temp : Class.seat) {
-							if(temp.equals(seat)) {
-								Class.seat.remove(seat);
-								duplicate = false;
-								j--;
-							}
-						}
-						if(duplicate) {
-							Alert alert = new Alert(AlertType.INFORMATION);
-							button.setSelected(false);
-							alert.setHeaderText("더 이상 선택할 수 없습니다.");
-							alert.showAndWait();
-							return;
-						}
-					}
-					else if(Searchpage.person>j) {
-						for(String temp : Class.seat) {
-							if(temp.equals(seat)) {
-								Class.seat.remove(seat);
-								duplicate = false;
-								j--;
-							}
-						}
-						if(duplicate) {
-							Class.seat.add(seat);
-							j++;
-							
-						}
-					}
-				} catch(Exception a) {System.out.println(a);}
-
-			});
-			gridPane.add(button, row, 1);
-			i++;
 		}
+		int row = aplane.getAbusinessSeatCount()/8;
+		int remain = aplane.getAbusinessSeatCount()%8;
+		if(remain !=0 ) {
+			for(int col=0; col<remain; col++) {
+				ImageView imageView = new ImageView("/img/business.png");
+				imageView.setFitHeight(50);
+				imageView.setFitWidth(50);
+				ToggleButton button = new ToggleButton(null,imageView);
+				button.setText((i+1)+"");
+				button.setId(i+"");
+				ArrayList<String> seatlist = RouteDao.routeDao.getseat(Searchpage.route.getRnum());
+				if(seatlist!=null) {
+					for(String temp : seatlist) {
+						if(("B-"+button.getText()).equals(temp) ) {
+							button.setDisable(true);
+						}
+					}
+				}
+				button.setOnAction(e ->{
+					try {
+						int num = Integer.parseInt(e.toString().split("'")[1]);
+						String seat = "B-"+num;
+						boolean duplicate = true;
+						
+						if(Searchpage.person==j) {
+							for(String temp : Class.seat) {
+								if(temp.equals(seat)) {
+									Class.seat.remove(seat);
+									duplicate = false;
+									j--;
+								}
+							}
+							if(duplicate) {
+								Alert alert = new Alert(AlertType.INFORMATION);
+								button.setSelected(false);
+								alert.setHeaderText("더 이상 선택할 수 없습니다.");
+								alert.showAndWait();
+								return;
+							}
+						}
+						else if(Searchpage.person>j) {
+							for(String temp : Class.seat) {
+								if(temp.equals(seat)) {
+									Class.seat.remove(seat);
+									duplicate = false;
+									j--;
+								}
+							}
+							if(duplicate) {
+								Class.seat.add(seat);
+								j++;
+								
+							}
+						}
+					} catch(Exception a) {System.out.println(a);}
+	
+				});
+				gridPane.add(button, col, row);
+				i++;
+			}
+		}
+		
 		vbox.getChildren().add(gridPane);
 	}
 	
