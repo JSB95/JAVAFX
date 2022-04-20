@@ -3,6 +3,7 @@ package controller.board;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controller.mainpage.Mainpage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,27 +48,30 @@ public class Boardcon implements Initializable{
 
     @FXML
     void accsearch(ActionEvent event) {
-
+    	System.out.println("accsearch");
     }
 
     @FXML
     void accwrite(ActionEvent event) {
-
+    	Mainpage.instance.loadmainmenu("/view/board/board_write.fxml");
     }
 
     @FXML
     void hotcontent1(MouseEvent event) {
+    	System.out.println("hotcontent1");
 
     }
 
     @FXML
     void hotcontent2(MouseEvent event) {
+    	System.out.println("hotcontent2");
 
     }
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	
+    	System.out.println("initialized");
+
     }
 
 }

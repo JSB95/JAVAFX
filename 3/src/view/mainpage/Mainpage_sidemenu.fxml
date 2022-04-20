@@ -23,12 +23,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lbltest" onMouseClicked="#test" layoutX="75.0" layoutY="398.0" text="내 항공권 조회">
+      <Label fx:id="lbltest" layoutX="75.0" layoutY="398.0" onMouseClicked="#test" text="내 항공권 조회">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lbllogout" layoutX="46.0" layoutY="756.0" onMouseClicked="#logout" prefHeight="25.0" prefWidth="64.0" text="Log_out">
+      <Label fx:id="lblboard" layoutX="46.0" layoutY="563.0" onMouseClicked="#clickboard" prefHeight="218.0" prefWidth="117.0" text="게시파나나나나">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

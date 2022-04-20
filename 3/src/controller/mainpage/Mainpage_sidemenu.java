@@ -24,14 +24,14 @@ public class Mainpage_sidemenu implements Initializable{
     private Label lbltest;
 
     @FXML
-    private Label lbllogout;
+    private Label lblboard;
 
     @FXML
     private Label lblmdelete;
 
     @FXML
-    void logout(MouseEvent event) {
-    	
+    void clickboard(MouseEvent event) {
+    	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
     }
     
     @FXML
