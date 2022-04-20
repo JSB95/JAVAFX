@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.board.Boardwrite">
+   <children>
+      <Label layoutX="85.0" layoutY="26.0" prefHeight="63.0" prefWidth="188.0" text="후기 게시판">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Line endX="172.0" layoutX="143.0" layoutY="92.0" startX="-100.0" stroke="#1ecc52" strokeWidth="5.0" />
+      <Button fx:id="btnwrite" layoutX="45.0" layoutY="714.0" mnemonicParsing="false" onAction="#write" prefHeight="48.0" prefWidth="920.0" style="-fx-background-color: #0873ff;" text="글 작성" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txttitle" layoutX="40.0" layoutY="215.0" prefHeight="48.0" prefWidth="920.0" />
+      <Label layoutX="45.0" layoutY="195.0" prefHeight="20.0" prefWidth="55.0" text="제목" />
+      <TextArea fx:id="txtcontent" layoutX="45.0" layoutY="302.0" prefHeight="390.0" prefWidth="920.0" />
+      <Label layoutX="45.0" layoutY="282.0" prefHeight="20.0" prefWidth="55.0" text="내용" />
+      <Button fx:id="btnback" layoutX="857.0" layoutY="140.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="96.0" style="-fx-background-color: #0873ff;" text="목록보기" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

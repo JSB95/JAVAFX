@@ -67,6 +67,21 @@ public class Mainpage implements Initializable {
     }
     
     @FXML
+    void mim(MouseEvent e) {
+    	loadpage("/view/myinfo/myinfo.fxml");
+    }
+    
+    @FXML
+    void mupdate(MouseEvent e) {
+    	loadpage("/view/myinfo/myinfoPasswordCheck.fxml");
+    }
+    
+    @FXML
+    void board(MouseEvent e) {
+    	loadpage("/view/board/board.fxml");
+    }
+    
+    @FXML
     void mat(MouseEvent e) {
     	loadpage("/view/main/myticket.fxml");
     }

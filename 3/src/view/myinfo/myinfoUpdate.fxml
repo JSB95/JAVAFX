@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #F4FCFC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.myinfo.Myinfoupdate">
+   <children>
+      <PasswordField fx:id="txtpassword" layoutX="427.0" layoutY="170.0" prefHeight="50.0" prefWidth="350.0" promptText="비밀번호 입력" />
+      <Label layoutX="224.0" layoutY="170.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #edf3fd;" text="비밀번호">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtpasswordconfirm" layoutX="427.0" layoutY="250.0" prefHeight="50.0" prefWidth="350.0" promptText="비밀번호 재입력" />
+      <Label layoutX="224.0" layoutY="250.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #edf3fd;" text="비밀번호 확인">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="224.0" layoutY="330.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #edf3fd;" text="연락처">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtphone" layoutX="427.0" layoutY="330.0" prefHeight="50.0" prefWidth="350.0" promptText="전화번호 입력" />
+      <Label layoutX="224.0" layoutY="410.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #edf3fd;" text="카드번호">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtcard" layoutX="427.0" layoutY="410.0" prefHeight="50.0" prefWidth="350.0" promptText="카드번호 입력" />
+      <Label layoutX="224.0" layoutY="490.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #edf3fd;" text="여권번호">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtpassport" layoutX="427.0" layoutY="490.0" prefHeight="50.0" prefWidth="350.0" promptText="여권번호 입력" />
+      <Button layoutX="527.0" layoutY="607.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #E5FFCC;" text="수정하기">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="224.0" layoutY="607.0" mnemonicParsing="false" onAction="#accdelete" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #FFCCCC;" text="회원탈퇴">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

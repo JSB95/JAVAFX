@@ -1,6 +1,8 @@
 package controller.login;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -145,6 +147,8 @@ public class Signup implements Initializable {
     	String card = txtcardname.getText();
     	String passport = txtpassportnum.getText();
     	String phone = txtphone.getText();
+    	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	String since = simpleDateFormat.format(new Date());
     	///////////// 유효성 검사 ////////////////
 //    	if(!btnidcheck.isDisable()) {
 //    		alert.setHeaderText("아이디 중복체크 버튼을 눌러주세요.");
@@ -196,7 +200,7 @@ public class Signup implements Initializable {
 //    		return;
 //    	}
     	///////// 여권번호 유효성 체크 추후 추가 /////////////
-    	Member member = new Member(0, id, password, name, phone, passport, card);
+    	Member member = new Member(0, id, password, name, phone, passport, card, since, 0);
     	boolean result = MemberDao.memberDao.signup(member);
     	if(result) {
     		alert.setHeaderText("회원가입이 완료되었습니다.");

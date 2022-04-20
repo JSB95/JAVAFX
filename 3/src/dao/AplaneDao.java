@@ -41,4 +41,9 @@ public class AplaneDao extends Dao {
 		return 1;
 	}
 	
+	// 3. 항공사 추가하기
+	//public boolean addcompany(String cname,String cphone,double pfirstseatratio, )
+	
+	// 4. 비행기 추가하기
+	
 }
