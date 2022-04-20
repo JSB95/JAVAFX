@@ -33,3 +33,14 @@
 	3. 가져온 좌표로 스냅샷 찍음.
 	4 . 스냅샷을 본문 이미지에 첨부
 	5. 글 읽을때 스냅샷 이미지 누르면 새 scene 에 webview googlemaps 띄우기
+	
+	
+	
+	create table test.board(
+	bnum int primary key auto_increment,
+    mnum int not null,
+    btitle varchar(100),
+    bcontent varchar(5000),
+    blocation varchar(100),
+    bdate datetime default now()
+)

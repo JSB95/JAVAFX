@@ -40,8 +40,8 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <ListView layoutX="25.0" layoutY="606.0" prefHeight="200.0" prefWidth="410.0" />
-      <TextField fx:id="txtsearch1" layoutX="565.0" layoutY="560.0" prefHeight="40.0" prefWidth="300.0" promptText="업로드 하실 이미지를 선택해주세요." />
+      <ListView fx:id="listlocation" layoutX="25.0" layoutY="606.0" prefHeight="200.0" prefWidth="410.0" />
+      <TextField fx:id="txtimglocation" layoutX="565.0" layoutY="560.0" prefHeight="40.0" prefWidth="300.0" promptText="업로드 하실 이미지를 선택해주세요." />
       <Button fx:id="btnsearch1" layoutX="874.0" layoutY="560.0" mnemonicParsing="false" onAction="#accsearch" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="선택" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
