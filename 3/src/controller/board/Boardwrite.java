@@ -38,7 +38,7 @@ public class Boardwrite implements Initializable{
     private Button btnsearch;
 
     @FXML
-    private TextField txtsearch1;
+    private TextField txtimglocation;
 
     @FXML
     private Button btnsearch1;
@@ -59,7 +59,7 @@ public class Boardwrite implements Initializable{
     @FXML
     void accsearch(ActionEvent event) {
     	// 만약에 사용자가 지도 목록 누르면 검색버튼 -> 선택 버튼으로 버튼의 텍스트와 기능을을 바꾸기.
-    	
+    	String search =txts
     }
     
     String selectedlocation;	// 사용자가 선택한 지역 저장할 변수. 아직 설계 안됨.
