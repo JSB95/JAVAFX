@@ -65,6 +65,11 @@ public class Mainpage implements Initializable {
     void exchange(MouseEvent e) {
     	
     }
+    
+    @FXML
+    void mat(MouseEvent e) {
+    	loadpage("/view/main/myticket.fxml");
+    }
 	
 	public void loadpage(String page) {
 		try {

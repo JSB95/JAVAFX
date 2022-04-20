@@ -24,7 +24,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblmat" layoutX="68.0" layoutY="442.0" text="내 항공권 조회">
+      <Label fx:id="lblmat" onMouseClicked="#mat" layoutX="68.0" layoutY="442.0" text="내 항공권 조회">
          <font>
             <Font size="20.0" />
          </font>
