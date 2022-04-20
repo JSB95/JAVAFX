@@ -25,8 +25,5 @@ public class Time {
 	public void setGmt(int gmt) {
 		this.gmt = gmt;
 	}
-	
-	
-	
 
 }

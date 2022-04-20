@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
 public class BoardDao {
 	
 	// 필드 
-	private Connection conn; // 1. DB 연결 클래스
+	private Connection con; // 1. DB 연결 클래스
 	private PreparedStatement ps; // 2. 연결된 DB내 SQL 조작 인터페이스
 	private ResultSet rs; // 3. SQL 결과 레코드를 가져오는 인터페이스
 	
@@ -28,7 +28,7 @@ public class BoardDao {
 	public BoardDao() { // 생성자에서 연동하는 이유 : 객체 생성시 바로 db연동하기 위해 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); // JDBC 드라이브 클래스 호출
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=UTC",
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=UTC",
 					"root","1234");
 		}catch( Exception e ) {}
 	}
@@ -39,7 +39,7 @@ public class BoardDao {
 		// 1. SQL 작성
 			String sql = "insert into board(btitle , bcontent , bwrite) values(?,?,?)";
 		// 2. SQL 조작
-			ps = conn.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setString( 1 , board.getBtitle() ); 
 			ps.setString( 2 , board.getBcontent() ); 
 			ps.setString( 3 , board.getBwrite() );
@@ -60,7 +60,7 @@ public class BoardDao {
 				//		 order by 필드명 desc	 [ 해당 필드명 기준으로 내림차순 ] 
 			String sql = "select * from board order by bnum desc";
 		// 2. SQL 조작
-			ps = conn.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 		// 3. SQL 실행
 			rs = ps.executeQuery(); //select
 		// 4. SQL 결과
@@ -87,7 +87,7 @@ public class BoardDao {
 	public boolean delete( int bnum ) { 
 		try {
 			String sql = "delete from board where bnum=?"; // 1. SQL 작성
-			ps = conn.prepareStatement(sql); // 2. SQL 조작
+			ps = con.prepareStatement(sql); // 2. SQL 조작
 			ps.setInt( 1 , bnum);
 			ps.executeUpdate(); // 3. SQL 실행 
 			return true; // 4. SQL 결과
@@ -143,7 +143,7 @@ public class BoardDao {
 						temp.setDate(today);
 						String sql = "update board set bview=? where bnum=?";
 						// 2. sql 조작
-						ps = conn.prepareStatement(sql);
+						ps = con.prepareStatement(sql);
 						int new_view = view + 1;
 						controller.board.Board.board.setBview(new_view);
 						ps.setInt(1, new_view);
@@ -173,7 +173,7 @@ public class BoardDao {
 		// 1. SQL 작성
 			String sql = "update board set btitle=? , bcontent=? where bnum=?";
 		// 2. SQL 조작
-			ps = conn.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setString( 1 , title );
 			ps.setString( 2 , content );
 			ps.setInt( 3 , bnum );
@@ -189,7 +189,7 @@ public class BoardDao {
 	public boolean rwrite( Reply reply ) {
 		try {
 			String sql = "insert into reply(rcontent,rwrite,bnum)values(?,?,?)";
-			ps = conn.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setString( 1 , reply.getRcontent() );
 			ps.setString( 2 , reply.getRwrite() );
 			ps.setInt( 3 , reply.getBnum() );
@@ -206,7 +206,7 @@ public class BoardDao {
 		
 		try {
 			String sql = "select * from reply where bnum =? order by rnum desc";
-			ps = conn.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setInt( 1 , bnum);
 			rs = ps.executeQuery();
 			
