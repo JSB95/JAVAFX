@@ -10,7 +10,7 @@ public class MemberDao extends Dao {
 	// 1. 회원가입
 	public boolean signup(Member member) {
 		try {
-			String sql = "insert into member(mid,mpassword,mphone,mcard,mname,mpassport) values(?,?,?,?,?,?)";
+			String sql = "insert into member(mid,mpassword,mphone,mcard,mname,mpassport,msince) values(?,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, member.getMid());
 			ps.setString(2, member.getMpassword());
@@ -18,6 +18,7 @@ public class MemberDao extends Dao {
 			ps.setString(4, member.getMcard());
 			ps.setString(5, member.getMname());
 			ps.setString(6, member.getMpassport());
+			ps.setString(7, member.getMsince());
 			ps.executeUpdate();
 			return true;
 			
