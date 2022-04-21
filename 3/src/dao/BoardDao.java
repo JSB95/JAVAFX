@@ -166,6 +166,22 @@ public class BoardDao extends Dao {
 		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
 		return false; 
 	}
+	// 4. 글 수정 메소드
+	public boolean reupdate( int rnum , String rcontent ) {
+		try {
+		// 1. SQL 작성
+			String sql = "update reply set rcontent=?  where rnum=?";
+		// 2. SQL 조작
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , rcontent );
+			ps.setInt( 2 , rnum );
+		// 3. SQL 실행
+			ps.executeUpdate();
+		// 4. SQL 결과
+			return true;
+		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
+		return false; 
+	}
 	
 	// 5. 댓글 작성 메소드[ 회원가입, 글쓰기 유사 ]
 	public boolean rwrite( Reply reply ) {
