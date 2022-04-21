@@ -41,6 +41,7 @@ public class Boardwrite implements Initializable{
 	Mapsearchfield mapsearchfield;
     private String pimage;	// 파일 경로 저장용 변수
     private File file;
+    boolean calledforupdate = false;
 
 	@FXML
     private Button btnwrite;
@@ -70,7 +71,12 @@ public class Boardwrite implements Initializable{
     	alert.setHeaderText("작성을 취소하고 뒤로 가시겠습니까?");
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
-        	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+    		System.out.println(calledforupdate);
+    		if(calledforupdate) {	// 
+    			Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		}else {
+    			Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+    		}
     	}else {
     		return;		// 사용자가 뒤로 가시겠습니까?? ->> 취소 버튼 눌렀을 때
     	}
@@ -104,8 +110,12 @@ public class Boardwrite implements Initializable{
 				tableresult.setItems(oresultarray);
 				
 	    	}else {
+	    		txtsearch.setEditable(false);
+
 				mapsearchfield = tableresult.getSelectionModel().getSelectedItem();	// 사용자가 리스트에서 선택한 대상을 저장.
 				btnsearch.setText("검색");
+	    		txtsearch.setEditable(true);
+
 		    }
     	}else {
     		Alert alert = new Alert(AlertType.INFORMATION);
@@ -133,25 +143,44 @@ public class Boardwrite implements Initializable{
     		}else {
     			String blocation = null;
     			String bsnapshoturl = null;
+    			Board board;
+    			
+    			if(pimage!=null) copyimgfile();	// 사용자가 이미지를 업로드 했을 경우에만 이미지 카피 메서드 실행.=
+    			
     			if(mapsearchfield!=null) {	// 사용자가 지도 위치를 선택했으면 구글 url을 저장. 아니면 안해!
     				blocation = "https://www.google.com/maps/search/?api=1&query="+mapsearchfield.getLatitude()+
             				"%2C"+mapsearchfield.getLongitude()+"&query_place_id="+mapsearchfield.getPlace_id();
             		bsnapshoturl = "https://maps.googleapis.com/maps/api/staticmap?center="+mapsearchfield.getLatitude()+
             				"%2C"+mapsearchfield.getLongitude()+"&zoom=12&size=400x400&key="+Gmaps.gmaps.getAPIkey();
     			}
-    			if(pimage!=null)
-    				copyimgfile();	// 사용자가 이미지를 업로드 했을 경우에만 이미지 카피 메서드 실행.=
         		
-        		Board board = new Board(0, 0, txttitle.getText(), txtcontent.getText(), 
-        				blocation, bsnapshoturl, pimage, null, 0);		
-        			// 코드 병합할 때 로그인 한 사용자의 회원번호 따와야함. 나머지는 바꿀 거 없음.
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-        		BoardDao.boardDao.wrtite(board);
-        		alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle("완료");
-        		alert.setHeaderText("글 게시가 완료되었습니다.");
+        		if(calledforupdate) {
+        			if(mapsearchfield==null) {
+        				blocation = Boardcon.boardinstance.getBlocation();
+        				bsnapshoturl = Boardcon.boardinstance.getBsnapshoturl();
+        			}
+        			if(file==null) pimage = Boardcon.boardinstance.getBimgurl();	// 사용자가 글 수정때 이미지를 변경하지 않았다면
+        			
+        			board = new Board(Boardcon.boardinstance.getBnum(), 0, txttitle.getText(), txtcontent.getText(), 
+                			blocation, bsnapshoturl, pimage, null, 0);
+    				BoardDao.boardDao.update(board);
+    				alert = new Alert(AlertType.INFORMATION);
+            		alert.setTitle("완료");
+            		alert.setHeaderText("글 수정이 완료되었습니다.");
+            		
+        		}else {
+	        		board = new Board(0, 0, txttitle.getText(), txtcontent.getText(), 
+	            			blocation, bsnapshoturl, pimage, null, 0);		
+	            		// 코드 병합할 때 로그인 한 사용자의 회원번호 따와야함.
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	        		BoardDao.boardDao.wrtite(board);
+	        		alert = new Alert(AlertType.INFORMATION);
+	        		alert.setTitle("완료");
+	        		alert.setHeaderText("글 게시가 완료되었습니다.");
+        		}
         		alert.showAndWait();
             	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+        		
     		}
     		    	}else {
     		return;	// 사용자가 글을 게시하시겠습니까?  ->> 취소 버튼 눌렀을 때
@@ -178,7 +207,7 @@ public class Boardwrite implements Initializable{
     	// 1. 파일 입력 스트림 [ 이돈 단위 : byte ] 
     	FileInputStream fileInputStream = new FileInputStream(file);	// file : fileChooser에서 선택된 파일 객체.
     	// 2. 파일 출력 스트림
-    	File copyfile = new File("C:\\JAVAlibrary\\img"+file.getName());
+    	File copyfile = new File("C:\\JAVAlibrary\\img\\test"+file.getName());
     		// 새로운 경로 설정의 용도.
     	FileOutputStream fileOutputStream = new FileOutputStream(copyfile);
     	// 3. 바이트 배열 선언
@@ -199,6 +228,15 @@ public class Boardwrite implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+		if(Boardcon.boardinstance!=null) {	// 만약 Boardwrite가 글 수정용으로 호출된거라면
+			calledforupdate=true;
+			txttitle.setText(Boardcon.boardinstance.getBtitle());
+    		txtcontent.setText(Boardcon.boardinstance.getBcontent());
+    		if(Boardcon.boardinstance.getBimgurl()!=null) {
+    			imgshow.setImage(new Image(Boardcon.boardinstance.getBimgurl()));
+    		}
+    		// 지도는 표시할곳이 없음. 수정 후 저장할때 기존값과 다르다면 변경하고, 같다면 냅두는걸로.
+    	}
     	pimage=null;	
     	file=null;
     	mapsearchfield=null;

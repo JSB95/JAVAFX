@@ -1,7 +1,5 @@
 package dao;
 
-import java.sql.DriverManager;
-
 import dto.Board;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,12 +45,32 @@ public class BoardDao extends Dao{
 		return null;
 	}
 	// 3. 글 삭제 메서드
+	public void delete(int bnum) {
+		try {
+			sql = "delete from board where bnum=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, bnum);
+			ps.executeUpdate();
+		} catch (Exception e) {System.out.println("BoardDao_delete_method_exception : "+e);}
+	}
 	
 	// 4. 글 수정 메서드
+	public boolean update(Board board) {
+		try {
+			sql = "update board set btitle=?, blocation=?, bsnapshoturl=?, bimgurl=? where bnum=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.getBtitle());
+			ps.setString(2, board.getBlocation());
+			ps.setString(3, board.getBsnapshoturl());
+			ps.setString(4, board.getBimgurl());
+			ps.setInt(5, board.getBnum());
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {System.out.println("BoardDao_update_method_exception : "+e);}
+		return false;
+	}
 	
 	// 5. 글 찾기 메서드
-	
-	// 6. 글 보기 메서드
 	
 	// 7. 핫게시글 2개 뽑아내기 메서드
 	

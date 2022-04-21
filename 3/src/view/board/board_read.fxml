@@ -16,15 +16,20 @@
    <children>
       <Label fx:id="lbltitle" layoutX="25.0" layoutY="29.0" prefHeight="47.0" prefWidth="683.0" text="제목 출력">
          <font>
-            <Font size="40.0" />
+            <Font size="32.0" />
          </font></Label>
       <Line endX="822.0" layoutX="153.0" layoutY="76.0" startX="-126.0" />
-      <Button fx:id="btnback" layoutX="730.0" layoutY="24.0" mnemonicParsing="false" onAction="#accback" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="목록보기" textFill="WHITE">
+      <Button fx:id="btndelete" layoutX="596.0" layoutY="34.0" mnemonicParsing="false" onAction="#accdelete" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #f29330;" text="삭제하기" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnupdate" layoutX="864.0" layoutY="24.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="수정하기" textFill="WHITE">
+      <Button fx:id="btnback" layoutX="864.0" layoutY="34.0" mnemonicParsing="false" onAction="#accback" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="목록보기" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnupdate" layoutX="730.0" layoutY="34.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="수정하기" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

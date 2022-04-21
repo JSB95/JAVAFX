@@ -78,6 +78,7 @@ public class Boardcon implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+    	Boardcon.boardinstance = null;
     	System.out.println("initialized");
     	ObservableList<Board> list = BoardDao.boardDao.list();
     	
@@ -85,7 +86,7 @@ public class Boardcon implements Initializable{
     	tc.setCellValueFactory(new PropertyValueFactory<>("bnum"));
 //////////////////////////////////////////////////////////////////////////////////////////    	
     	tc = boardtable.getColumns().get(1);	// 테이블에서 두번째 열 가져오기
-    	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));		
+    	tc.setCellValueFactory( new PropertyValueFactory<>("btitle"));		
 
     	tc = boardtable.getColumns().get(2);	// 테이블에서 세번째 열 가져오기
     	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));

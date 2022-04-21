@@ -49,3 +49,7 @@
     blocation varchar(100),
     bdate datetime default now()
 )
+
+
+	남은 해야할 일
+	리플, 조회수, 핫게시글

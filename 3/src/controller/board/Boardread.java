@@ -1,17 +1,18 @@
 package controller.board;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-import controller.login.Login;
+import controller.mainpage.Mainpage;
 import dao.BoardDao;
 import dto.Board;
-import dto.Reply;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -26,6 +27,9 @@ public class Boardread implements Initializable{
 
     @FXML
     private Label lbltitle;
+    
+    @FXML
+    private Button btndelete;
 
     @FXML
     private Button btnback;
@@ -53,7 +57,7 @@ public class Boardread implements Initializable{
 
     @FXML
     void accback(ActionEvent event) {
-
+    	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
     }
 
     @FXML
@@ -67,21 +71,46 @@ public class Boardread implements Initializable{
     		System.out.println(txtreply.getText());
     	}
     }
+    
+    @FXML
+    void accdelete(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("확인");
+		alert.setHeaderText("글을 수정하시겠습니까?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if(result.get() == ButtonType.OK) {
+    		BoardDao.boardDao.delete(Boardcon.boardinstance.getBnum());
+    		alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("완료");
+    		alert.setHeaderText("글 삭제가 완료되었습니다.");
+    		alert.showAndWait();
+        	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+
+    	}
+    }
 
     @FXML
     void accupdate(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("수정하기");
+    	alert.setHeaderText("글을 수정하시겠습니까?");
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if(result.get() == ButtonType.OK) {
+    		Mainpage.instance.loadmainmenu("/view/board/board_write.fxml");
+    	}else return;
     	
     }
 
     @FXML
     void imgclicked(MouseEvent event) {
-
+    	// 별 기능 없음.
     }
 
     @FXML
     void snapshotsclicked(MouseEvent event) {
     	if(board.getBsnapshoturl()!=null) {
-    		board.getBsnapshoturl();
+    		String url = board.getBsnapshoturl();
+    		// 새 스테이지 띄우는건 좀 있다 하자 
     	}
     }
 	
@@ -108,14 +137,12 @@ public class Boardread implements Initializable{
 		if(board.getBimgurl()!=null) 
 			imgshow.setImage(new Image(board.getBimgurl()));
     	
-		if(board.getBsnapshoturl()!=null) 	// 여기까지 짜다가 일시정지, 글 쓸때 스냅샷이미지 로컬에 저장해야함.
-			// 안그러면 내 돈 너무많이 깨짐
+		if(board.getBsnapshoturl()!=null) 	
 			imgsnaphot.setImage(new Image(board.getBsnapshoturl()));
-    	
 		
-		
-		
-	
-		
+		txtcontent.setEditable(false);
+//////////////////////////////////////////////////////////////////////////////////////////		
+//		로그인한 사용자의 mnum과 글의 mnum이 같을때만 글수정 버튼, 글삭제 활성화. 코드 작성해야함.
+//////////////////////////////////////////////////////////////////////////////////////////			
 	}
 }
