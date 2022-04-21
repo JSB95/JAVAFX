@@ -11,11 +11,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -56,7 +58,23 @@ public class Boardcon implements Initializable{
 
     @FXML
     void accsearch(ActionEvent event) {
-    	System.out.println("accsearch");
+    	if(txtsearch.getText().equals("")) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("알림");
+    		alert.setHeaderText("모든 게시글을 표시합니다.");
+    		alert.showAndWait();
+    		initialize(null,null);
+    	}else {
+        	ObservableList<Board> result =  BoardDao.boardDao.list(txtsearch.getText());
+        	if(result==null) {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("결과");
+        		alert.setHeaderText("검색 결과가 없습니다.");
+        		alert.showAndWait();
+        	}else {
+        		setboardlist(result);
+        	}
+    	}
     }
 
     @FXML
@@ -75,13 +93,7 @@ public class Boardcon implements Initializable{
     	System.out.println("hotcontent2");
 
     }
-    
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-    	Boardcon.boardinstance = null;
-    	System.out.println("initialized");
-    	ObservableList<Board> list = BoardDao.boardDao.list();
-    	
+    public void setboardlist(ObservableList<Board> list) {
     	TableColumn tc = boardtable.getColumns().get(0);
     	tc.setCellValueFactory(new PropertyValueFactory<>("bnum"));
 //////////////////////////////////////////////////////////////////////////////////////////    	
@@ -99,6 +111,16 @@ public class Boardcon implements Initializable{
     	tc.setCellValueFactory( new PropertyValueFactory<>("bview"));
     	
     	boardtable.setItems(list);
+    }
+    
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    	Boardcon.boardinstance = null;
+    	System.out.println("initialized");
+    	ObservableList<Board> list = BoardDao.boardDao.list(null);
+    	
+    	setboardlist(list);
     	
     	boardtable.setOnMouseClicked( e -> {
     		// 1. 테이블에서 클릭한 객체를 임시 객체에 저장
@@ -112,11 +134,6 @@ public class Boardcon implements Initializable{
     		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
     	});
     	
-    	
     }
-
-    
-    
-   
     
 }

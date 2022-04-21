@@ -28,17 +28,29 @@ public class BoardDao extends Dao{
 	}
 	
 	// 2. 전체 글 목록 가져오기 메서드
-	public ObservableList<Board> list()	{
+	public ObservableList<Board> list(String title)	{
 		// * 리스트 선언
+		
 		ObservableList<Board> boardlist = FXCollections.observableArrayList();
 		try {
-			sql = "select * from test.board";
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while(rs.next()) {	// 다음 레코드가 없을 때 까지 반복
-				Board board = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), 
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
-				boardlist.add(board);
+			if(title==null) {
+				sql = "select * from test.board";
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {	// 다음 레코드가 없을 때 까지 반복
+					Board board = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), 
+							rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
+					boardlist.add(board);
+				}
+			}else {
+				sql = "select * from board where btitle like '%"+title+"%' order by bnum desc";
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {	// 다음 레코드가 없을 때 까지 반복
+					Board board = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), 
+							rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
+					boardlist.add(board);
+				}
 			}
 			return boardlist;
 		} catch (Exception e) {System.out.println("BoadrdDao_list_method_exception : "+e);}
@@ -71,6 +83,7 @@ public class BoardDao extends Dao{
 	}
 	
 	// 5. 글 찾기 메서드
+	
 	
 	// 7. 핫게시글 2개 뽑아내기 메서드
 	

@@ -35,7 +35,7 @@
          </font>
       </Button>
       <TextArea fx:id="txtcontent" layoutX="25.0" layoutY="95.0" prefHeight="455.0" prefWidth="683.0" />
-      <ImageView fx:id="imgshow" fitHeight="213.0" fitWidth="220.0" layoutX="751.0" layoutY="95.0" onMouseClicked="#imgclicked" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <ImageView fx:id="imgshow" fitHeight="213.0" fitWidth="220.0" layoutX="751.0" layoutY="95.0" onMouseClicked="#imgclicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/uploadplz.png" />
          </image></ImageView>
@@ -44,17 +44,22 @@
             <Image url="@../../img/uploadplz.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtreply" layoutX="25.0" layoutY="560.0" prefHeight="40.0" prefWidth="837.0" promptText="덧글을 달아 보세요!" />
-      <Button fx:id="btnreply" layoutX="874.0" layoutY="560.0" mnemonicParsing="false" onAction="#accreply" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="입력" textFill="WHITE">
+      <TextField fx:id="txtreply" layoutX="25.0" layoutY="560.0" prefHeight="40.0" prefWidth="683.0" promptText="덧글을 달아 보세요!" />
+      <Button fx:id="btnreply" layoutX="730.0" layoutY="560.0" mnemonicParsing="false" onAction="#accreply" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="입력" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btndeletereply" layoutX="874.0" layoutY="560.0" mnemonicParsing="false" onAction="#accdeletereply" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="덧글삭제" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <TableView fx:id="tablereply" layoutX="25.0" layoutY="606.0" prefHeight="202.0" prefWidth="949.0">
         <columns>
           <TableColumn prefWidth="165.0" text="아이디" />
-          <TableColumn prefWidth="596.0" text="내용" />
-            <TableColumn prefWidth="187.0" text="작성일시" />
+          <TableColumn prefWidth="545.0" text="내용" />
+            <TableColumn prefWidth="238.0" text="작성일시" />
         </columns>
       </TableView>
    </children>

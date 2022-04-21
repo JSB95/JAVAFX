@@ -52,4 +52,13 @@
 
 
 	남은 해야할 일
-	리플, 조회수, 핫게시글
+	리플, 조회수, 핫게시글,
+	
+	sql 
+	fk가지고 원하는 값 따오는 방법 : left outter join OR right outter join...
+	select mid from member left join reply on member.mnum = reply.mnum
+	
+	
+	
+	
+	
