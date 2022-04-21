@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.Airplaneadd">
+   <children>
+      <Label fx:id="lblmenuname" layoutX="382.0" layoutY="87.0" text="비행기 추가">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtcname" layoutX="124.0" layoutY="158.0" prefHeight="36.0" prefWidth="274.0" promptText="항공사 이름" />
+      <TextField fx:id="txtaname" layoutX="485.0" layoutY="158.0" prefHeight="36.0" prefWidth="315.0" promptText="비행기 이름" />
+      <TextField fx:id="txtfseatcount" layoutX="124.0" layoutY="241.0" prefHeight="36.0" prefWidth="194.0" promptText="퍼스트 클래스 좌석수" />
+      <TextField fx:id="txtbseatcount" layoutX="365.0" layoutY="241.0" prefHeight="36.0" prefWidth="194.0" promptText="비즈니스 클래스 좌석수" />
+      <Button fx:id="btnadd" layoutX="274.0" layoutY="323.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="추가" />
+      <Button fx:id="btndelete" layoutX="278.0" layoutY="392.0" mnemonicParsing="false" onAction="#delete" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="삭제" />
+      <TableView fx:id="atable" layoutX="182.0" layoutY="471.0" prefHeight="285.0" prefWidth="578.0">
+        <columns>
+          <TableColumn prefWidth="96.0" text="항공사 이름" />
+          <TableColumn prefWidth="149.0" text="비행기  이름" />
+            <TableColumn prefWidth="103.0" text="퍼스트 좌석수" />
+            <TableColumn prefWidth="108.0" text="비즈니스 좌석수" />
+            <TableColumn prefWidth="121.0" text="이코노미 좌석수" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txteseatcount" layoutX="607.0" layoutY="241.0" prefHeight="36.0" prefWidth="194.0" promptText="이코노미 클래스 좌석수" />
+   </children>
+</AnchorPane>

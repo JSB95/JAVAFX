@@ -5,13 +5,20 @@ import java.util.ResourceBundle;
 
 import controller.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class Admin_main implements Initializable {
 
+	public static Admin_main instance;
+	public Admin_main() {instance = this;}
+	
+	public boolean update = false;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -46,22 +53,26 @@ public class Admin_main implements Initializable {
 
     @FXML
     void apadd(MouseEvent event) {
-
+    	update = false;
+    	loadpage("/view/admin/airplaneadd.fxml");
     }
 
     @FXML
     void apupdate(MouseEvent event) {
-
+    	update = true;
+    	loadpage("/view/admin/airplaneadd.fxml");
     }
 
     @FXML
     void cadd(MouseEvent event) {
-
+    	update = false;
+    	loadpage("/view/admin/cadd.fxml");
     }
 
     @FXML
     void cupdate(MouseEvent event) {
-
+    	update = true;
+    	loadpage("/view/admin/cadd.fxml");
     }
 
     @FXML
@@ -78,4 +89,13 @@ public class Admin_main implements Initializable {
     void rupdate(MouseEvent event) {
 
     }
+    
+    public void loadpage(String page) {
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource(page));
+			boderpane.setCenter(parent);
+		} catch(Exception e) { System.out.println("admin 페이지 불러오기 실패 :" + e); }
+		
+	}
+    
 }
