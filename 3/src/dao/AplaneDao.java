@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.util.HashSet;
 
 import dto.Aplane;
 import dto.Company;
@@ -23,8 +24,6 @@ public class AplaneDao extends Dao {
 				return aplane;
 			}
 		} catch(Exception e) { System.out.println("비행기 정보 가져오기 오류 : "+e);}
-		
-		
 		return null;
 	}
 	
@@ -34,7 +33,7 @@ public class AplaneDao extends Dao {
 			if(seatclass.equals("economy")) {
 				return 1;
 			}else {
-				String sql = "select p"+seatclass+"seatratio from company where cnum="+cnum;
+				String sql = "select c"+seatclass+"seatratio from company where cnum="+cnum;
 				ps = con.prepareStatement(sql);
 				rs =ps.executeQuery();
 				if(rs.next()) {
@@ -73,11 +72,7 @@ public class AplaneDao extends Dao {
 			ps.setInt(3, aplane.getAfirstSeatCount());
 			ps.setInt(4, aplane.getAbusinessSeatCount());
 			ps.setInt(5, aplane.getAeconomySeatCount());
-			System.out.println(aplane.getaname());
-			System.out.println(aplane.getCnum());
-			System.out.println(aplane.getAfirstSeatCount());
-			System.out.println(aplane.getAbusinessSeatCount());
-			System.out.println(aplane.getAeconomySeatCount());
+			ps.executeUpdate();
 			
 			return true;
 		}catch(Exception e) {System.out.println("비행기 추가 오류 : "+e);}
@@ -152,7 +147,7 @@ public class AplaneDao extends Dao {
 	// 9. 비행기 수정하기
 	public boolean aupdate(Aplane aplane,String aname) {
 		try {
-			String sql = "update aplane set aname=?, cnum=?, afirstseatcount=?, abusinessseatcount=?, aeconomyseatcount=? where aname=?";
+			String sql = "update airplane set aname=?, cnum=?, afirstseatcount=?, abusinessseatcount=?, aeconomyseatcount=? where aname=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, aplane.getaname());
 			ps.setInt(2, aplane.getCnum());
@@ -183,7 +178,33 @@ public class AplaneDao extends Dao {
 		} catch(Exception e) {System.out.println("항공사 정보 불러오기 오류 : "+e);}
 		return null;
 	}
-	// 11. 비행기 삭제하기
+	// 11. 항공사명 불러오기
+	public HashSet<String> getlist(){
+		try {
+			HashSet<String> list = new HashSet<>();
+			String sql = "select cname from company";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+			return list;
+		} catch(Exception e) {System.out.println("항공사명 불러오기 오류 : "+e);}
+		return null;
+	}
+	
+	// 12. 비행기 삭제
+	public boolean adelete(String aname) {
+		try {
+			String sql = "delete from airplane where aname=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, aname);
+			ps.executeUpdate();
+			return true;
+		} catch(Exception e) {System.out.println("비행기 삭제 오류 : "+e);}
+	
+		return false;
+	}
 	
 	
 	

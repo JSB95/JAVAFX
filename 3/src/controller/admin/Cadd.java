@@ -87,10 +87,10 @@ public class Cadd implements Initializable {
     	String cphone = txtcphone.getText();
     	double fratio = Double.parseDouble(txtfratio.getText());
     	double bratio = Double.parseDouble(txtbratio.getText());
-    	int cnum = company.getCnum();
-    	Company company = new Company(cnum, cname, cphone, fratio, bratio);
+    	
     	if(Admin_main.instance.update) {
-    		System.out.println(cname+"\t"+cphone+"\t"+fratio+"\t"+bratio);
+    		int cnum = company.getCnum();
+    		Company company = new Company(cnum, cname, cphone, fratio, bratio);
     		boolean result = AplaneDao.aplaneDao.cupdate(company);
     		if(result) {
         		alert.setHeaderText("항공사 수정이 완료되었습니다.");

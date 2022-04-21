@@ -1,16 +1,22 @@
 package controller.admin;
 
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import dao.AplaneDao;
+import dao.RouteDao;
 import dto.Aplane;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,12 +32,15 @@ public class Airplaneadd implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btndelete.setVisible(false);
 		atable.setVisible(false);
+		HashSet<String> company = AplaneDao.aplaneDao.getlist();
+		ObservableList<String> combo = FXCollections.observableArrayList(company);
+		cbbcname.setItems(combo);
 		if(Admin_main.instance.update) {
 			btndelete.setVisible(true);
 			atable.setVisible(true);
 			btnadd.setText("수정");
 			lblmenuname.setText("비행기 수정/삭제");
-			
+		
 			ObservableList<Aplane> alist = AplaneDao.aplaneDao.getairplane();
 			TableColumn tc = atable.getColumns().get(0);
 			tc.setCellValueFactory(new PropertyValueFactory<>("astate"));
@@ -46,8 +55,23 @@ public class Airplaneadd implements Initializable {
 			atable.setItems(alist);
 			
 			atable.setOnMouseClicked(e->{
-				aplane = atable.getSelectionModel().getSelectedItem();
-				System.out.println(aplane.getAstate());
+				try {
+					aplane = atable.getSelectionModel().getSelectedItem();
+					txtaname.setText(aplane.getaname());
+					
+					txtfseatcount.setText(Integer.toString(aplane.getAfirstSeatCount()));
+					txtbseatcount.setText(Integer.toString(aplane.getAbusinessSeatCount()));
+					txteseatcount.setText(Integer.toString(aplane.getAeconomySeatCount()));
+					String c =RouteDao.routeDao.getcname(aplane.getAname());
+					int k=0;
+					for(int i=0; i<combo.size(); i++) {
+						if(combo.get(i).equals(c)) {
+							k=i;
+						}
+					}
+					cbbcname.getSelectionModel().select(k);
+				} catch(Exception ee) {}
+				
 			});
 		}
 	}
@@ -56,7 +80,7 @@ public class Airplaneadd implements Initializable {
     private Label lblmenuname;
 
     @FXML
-    private TextField txtcname;
+    private ComboBox<String> cbbcname;
 
     @FXML
     private TextField txtaname;
@@ -82,7 +106,7 @@ public class Airplaneadd implements Initializable {
     @FXML
     void add(ActionEvent event) {
     	Alert alert = new Alert(AlertType.INFORMATION);
-    	String cname = txtcname.getText();
+    	String cname = cbbcname.getValue();
     	String aname = txtaname.getText();
     	int fcount = Integer.parseInt(txtfseatcount.getText());
     	int bcount = Integer.parseInt(txtbseatcount.getText());
@@ -122,6 +146,19 @@ public class Airplaneadd implements Initializable {
     @FXML
     void delete(ActionEvent event) {
 
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setHeaderText("정말 삭제하시겠습니까?");
+    	Optional<ButtonType> optional = alert.showAndWait();
+    	if(optional.get()==ButtonType.OK) {
+    		boolean result = AplaneDao.aplaneDao.adelete(aplane.getaname());
+        	if(result) {
+        		Alert alert2 = new Alert(AlertType.INFORMATION);
+        		alert2.setHeaderText("삭제가 완료되었습니다.");
+        		alert2.showAndWait();
+        		Admin_main.instance.loadpage("/view/admin/airplaneadd.fxml");
+        	}
+    	}
+    	
     }
 	
 }
