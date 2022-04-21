@@ -6,17 +6,22 @@ public class Board {
 	private String btitle;	// 제목
 	private String bcontent;	// 내용
 	private String blocation;	// 사용자가 지정한 공항 이름 저장용 필드
+	private String bsnapshoturl;
+	private String bimgurl;
 	private String bdate;	// 글 작성일자, SQL이 알아서 찍을거임.
 	private int bview;		// 조회수
 	
 	public Board() {}
-	
-	public Board(int bnum, int mnum, String btitle, String bcontent, String blocation, String bdate, int bview) {
+
+	public Board(int bnum, int mnum, String btitle, String bcontent, String blocation, String bsnapshoturl,
+			String bimgurl, String bdate, int bview) {
 		this.bnum = bnum;
 		this.mnum = mnum;
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 		this.blocation = blocation;
+		this.bsnapshoturl = bsnapshoturl;
+		this.bimgurl = bimgurl;
 		this.bdate = bdate;
 		this.bview = bview;
 	}
@@ -53,12 +58,28 @@ public class Board {
 		this.bcontent = bcontent;
 	}
 
-	public String getblocation() {
+	public String getBlocation() {
 		return blocation;
 	}
 
-	public void setblocation(String blocation) {
+	public void setBlocation(String blocation) {
 		this.blocation = blocation;
+	}
+
+	public String getBsnapshoturl() {
+		return bsnapshoturl;
+	}
+
+	public void setBsnapshoturl(String bsnapshoturl) {
+		this.bsnapshoturl = bsnapshoturl;
+	}
+
+	public String getBimgurl() {
+		return bimgurl;
+	}
+
+	public void setBimgurl(String bimgurl) {
+		this.bimgurl = bimgurl;
 	}
 
 	public String getBdate() {

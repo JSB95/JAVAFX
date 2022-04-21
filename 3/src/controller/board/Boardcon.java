@@ -22,6 +22,8 @@ import javafx.scene.input.MouseEvent;
 
 public class Boardcon implements Initializable{
 	
+	public static dto.Board boardinstance;
+	
     @FXML
     private TableView<Board> boardtable;
 
@@ -81,13 +83,14 @@ public class Boardcon implements Initializable{
     	
     	TableColumn tc = boardtable.getColumns().get(0);
     	tc.setCellValueFactory(new PropertyValueFactory<>("bnum"));
-    	
+//////////////////////////////////////////////////////////////////////////////////////////    	
     	tc = boardtable.getColumns().get(1);	// 테이블에서 두번째 열 가져오기
-    	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));		// fk로 테이블 들어가서 id 따와야함. 내일하자 졸리다
-    	
+    	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));		
+
     	tc = boardtable.getColumns().get(2);	// 테이블에서 세번째 열 가져오기
-    	tc.setCellValueFactory( new PropertyValueFactory<>("bwrite"));
-    	
+    	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));
+			// fk로 테이블 들어가서 id 따와야함. 일단은 mnum 출력하는 걸로. ->> 나중에 수정해야 함.
+//////////////////////////////////////////////////////////////////////////////////////////
     	tc = boardtable.getColumns().get(3);	// 테이블에서 네번째 열 가져오기
     	tc.setCellValueFactory( new PropertyValueFactory<>("bdate"));
     	
@@ -95,6 +98,24 @@ public class Boardcon implements Initializable{
     	tc.setCellValueFactory( new PropertyValueFactory<>("bview"));
     	
     	boardtable.setItems(list);
+    	
+    	boardtable.setOnMouseClicked( e -> {
+    		// 1. 테이블에서 클릭한 객체를 임시 객체에 저장
+    		boardinstance = boardtable.getSelectionModel().getSelectedItem();	// 사용자가 클릭한 객체의 메모리 주소를 Board(dto) board 객체에 저장
+    		// 2. 조회수 증가
+    			// 1) 리플중에 사용자 이름, 동일한 날짜가 있는지 확인.
+    			// 2-1) 없으면 조회수 1 추가 후 리플에 내용이 null, 글쓴이가 사용자인 리플 추가
+    			// 2-2) 있으면 3번으로 바로 넘어감.
+    			
+    		// 3. 클릭하면 화면 전환
+    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    	});
+    	
+    	
     }
 
+    
+    
+   
+    
 }

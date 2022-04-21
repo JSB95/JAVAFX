@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -41,13 +42,10 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="txtimglocation" layoutX="565.0" layoutY="560.0" prefHeight="40.0" prefWidth="300.0" promptText="업로드 하실 이미지를 선택해주세요." />
-      <Button fx:id="btnsearch1" layoutX="874.0" layoutY="560.0" mnemonicParsing="false" onAction="#accsearch" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="선택" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="200.0" fitWidth="410.0" layoutX="565.0" layoutY="606.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgshow" fitHeight="257.0" fitWidth="290.0" layoutX="633.0" layoutY="549.0" onMouseClicked="#imgclicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/uploadplz.png" />
+         </image></ImageView>
       <TableView fx:id="tableresult" layoutX="25.0" layoutY="606.0" prefHeight="200.0" prefWidth="490.0">
         <columns>
           <TableColumn prefWidth="146.0" text="이름" />
