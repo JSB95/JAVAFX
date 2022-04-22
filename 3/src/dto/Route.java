@@ -1,28 +1,26 @@
 package dto;
 
 public class Route {
-	private int rnum;				// 항공일지 번호 pk
-	private String aname;			// 비행기명 fk, Plane
-	private String rdeparture;		// 출발지
-	private String rdestination;	// 도착지
-	private String rflightTime;		// 비행시간
-	private String rdeparturedate;	// 비행 출발 날짜
-	private int rbaseprice;			// 이코노미 가격
+	private int rnum;	// pk
+	private String pname;	// fk, Plane
+	private String rdeparture;
+	private String rdestination;
+	private String rflightTime;
+	private String rdepartureDate;
+	private int rbasePrice;
 	
 	public Route() {}
 
-	public Route(int rnum, String aname, String rdeparture, String rdestination, String rflightTime,
-			String rdeparturedate, int rbaseprice) {
+	public Route(int rnum, String pname, String rdeparture, String rdestination, String rflightTime,
+			String rdepartureDate, int rbasePrice) {
 		this.rnum = rnum;
-		this.aname = aname;
+		this.pname = pname;
 		this.rdeparture = rdeparture;
 		this.rdestination = rdestination;
 		this.rflightTime = rflightTime;
-		this.rdeparturedate = rdeparturedate;
-		this.rbaseprice = rbaseprice;
+		this.rdepartureDate = rdepartureDate;
+		this.rbasePrice = rbasePrice;
 	}
-
-
 
 	public int getRnum() {
 		return rnum;
@@ -32,12 +30,12 @@ public class Route {
 		this.rnum = rnum;
 	}
 
-	public String getAname() {
-		return aname;
+	public String getPname() {
+		return pname;
 	}
 
-	public void setAname(String aname) {
-		this.aname = aname;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 
 	public String getRdeparture() {
@@ -64,23 +62,21 @@ public class Route {
 		this.rflightTime = rflightTime;
 	}
 
-	public String getRdeparturedate() {
-		return rdeparturedate;
+	public String getRdepartureDate() {
+		return rdepartureDate;
 	}
 
-	public void setRdeparturedate(String rdeparturedate) {
-		this.rdeparturedate = rdeparturedate;
+	public void setRdepartureDate(String rdepartureDate) {
+		this.rdepartureDate = rdepartureDate;
 	}
 
-	public int getRbaseprice() {
-		return rbaseprice;
+	public int getRbasePrice() {
+		return rbasePrice;
 	}
 
-	public void setRbaseprice(int rbaseprice) {
-		this.rbaseprice = rbaseprice;
+	public void setRbasePrice(int rbasePrice) {
+		this.rbasePrice = rbasePrice;
 	}
-
-
 	
 	
 	

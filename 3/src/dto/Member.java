@@ -1,14 +1,18 @@
 package dto;
 
+/*
+ * 
+ */
+
 public class Member {
 
-	private int mnum;			// 회원 번호 pk
-	private String mid;			// 회원 아이디
-	private String mpassword;	// 회원 비밀번호
-	private String mname;		// 회원 이름
-	private String mphone;		// 회원 전화번호
-	private String mpassport;	// 회원 여권번호
-	private String mcard;		// 회원 카드번호
+	private int mnum;		// pk
+	private String mid;
+	private String mpassword;
+	private String mname;
+	private String mphone;
+	private String mpassport;
+	private String mcard;
 	
 	public Member() {}
 
