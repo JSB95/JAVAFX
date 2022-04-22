@@ -22,7 +22,7 @@ import javafx.scene.input.MouseEvent;
 public class Board implements Initializable {
 	
     public static ArrayList<MemberView> mview = new ArrayList<>();
-
+    
     
     @FXML
     private Button btnwrite;
