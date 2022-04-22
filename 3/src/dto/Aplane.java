@@ -7,14 +7,14 @@ public class Aplane {
 	private int afirstSeatCount; 	// 퍼스트클래스 좌석수
 	private int abusinessSeatCount; // 비즈니스 클래스 좌석수
 	private int aeconomySeatCount; 	// 이코노미 클래스 좌석수
-	private int astate; 			// 비행기 상태
+	private String astate; 			// 비행기 상태
 
-	public Aplane() {
-		// TODO Auto-generated constructor stub
-	}
+	public Aplane() {}
+
+	
 
 	public Aplane(String aname, int cnum, int afirstSeatCount, int abusinessSeatCount, int aeconomySeatCount,
-			int astate) {
+			String astate) {
 		this.aname = aname;
 		this.cnum = cnum;
 		this.afirstSeatCount = afirstSeatCount;
@@ -22,6 +22,8 @@ public class Aplane {
 		this.aeconomySeatCount = aeconomySeatCount;
 		this.astate = astate;
 	}
+
+
 
 	public String getaname() {
 		return aname;
@@ -63,13 +65,31 @@ public class Aplane {
 		this.aeconomySeatCount = aeconomySeatCount;
 	}
 
-	public int getAstate() {
+
+
+	public String getAname() {
+		return aname;
+	}
+
+
+
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+
+
+
+	public String getAstate() {
 		return astate;
 	}
 
-	public void setAstate(int astate) {
+
+
+	public void setAstate(String astate) {
 		this.astate = astate;
 	}
+
+	
 	
 	
 	
