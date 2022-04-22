@@ -23,6 +23,7 @@ public class Board implements Initializable {
 	
     public static ArrayList<MemberView> mview = new ArrayList<>();
 
+    
     @FXML
     private Button btnwrite;
     @FXML
@@ -35,6 +36,7 @@ public class Board implements Initializable {
     	// * Home클래스내 borderpane center 변경
     	Mainpage.instance.loadpage("/view/board/boardwrite.fxml");
     }
+    
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
