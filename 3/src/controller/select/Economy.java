@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class Economy implements Initializable {
+public class Economy2 implements Initializable {
 
 	int j=0;
 	@Override
