@@ -249,10 +249,5 @@ public class Boardview implements Initializable {
 				btnreupdate.setVisible(false);
 			}
 		});
-		
-		
 	}
-	
-	
-
 }
