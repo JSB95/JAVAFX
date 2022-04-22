@@ -256,26 +256,3 @@ public class Boardview implements Initializable {
 	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
