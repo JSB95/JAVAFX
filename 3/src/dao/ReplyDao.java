@@ -11,11 +11,12 @@ public class ReplyDao extends Dao{
 	// 1. 리플 쓰기
 	public boolean replywrite(Reply reply) {
 		try {
-			String sql = "insert into reply(bnum, mnum, replycontent)values(?,?,?)";
+			String sql = "insert into reply(bnum, mnum, replycontent, replyid)values(?,?,?,?)";
 			ps=con.prepareStatement(sql);
 			ps.setInt(1, reply.getBnum());
 			ps.setInt(2, reply.getMnum());
 			ps.setString(3, reply.getReplycontent());
+			ps.setString(4, reply.getReplyid());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {System.out.println("ReplyDao_replywrite_Exception : "+e);}
@@ -35,7 +36,7 @@ public class ReplyDao extends Dao{
 			// 리플의 내용이 널이 아닐때만 객체화 ㄱㄱ
 			if( (rs.getString(4)!=null)) {
 			Reply reply = new Reply(rs.getInt(1), rs.getInt(2), rs.getInt(3), 
-					rs.getString(4), rs.getString(5));
+					rs.getString(4), rs.getString(5), rs.getString(6));
 			replylist.add(reply);
 			}
 		}
@@ -46,7 +47,14 @@ public class ReplyDao extends Dao{
 	
 	// 3. 리플 수정
 	public void replymodify(int replynum, String replycontent) {
-		// 몰루
+		try {
+			String sql = "update reply set replycontent=? where reply=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, replycontent);
+			ps.setInt(2, replynum);
+			ps.executeUpdate();
+		} catch (Exception e) {System.out.println("ReplyDao_replymodify_Exception : "+e);}
+		
 	}
 	
 	// 4. 게시글 조회수 올릴지 말지 결졍하기 위해 리플테이블에서 플래그 찾기
@@ -76,10 +84,13 @@ public class ReplyDao extends Dao{
 		} catch (Exception e) {System.out.println("ReplyDao_viewcountup_Exception : "+e);}
 	}
 	
-	// 6. 리플 테이블 뷰에 아이디 출력하기 위해 mnum으로 아이디 따오기(상당히 비효율적인거 같은데 일단은 fk만 사용함)
-	public void idsearchforreplytable() {
+	// 6. 리플 삭제
+	public void delete(int rnum) {
 		try {
-			sql = "select mid from member inner join reply on mnum=1"
-		}
+			String sql = "delete from reply where replynum=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, rnum);
+			ps.executeUpdate();
+		} catch (Exception e) {System.out.println("ReplyDao_idsearchforreplytable_Exception : "+e);}
 	}
 }

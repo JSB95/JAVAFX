@@ -1,17 +1,19 @@
 package dto;
 
 public class Reply {
-	private int replynum;
-	private int bnum;
-	private int mnum;
+	private int replynum;	// pk
+	private int bnum;		// fk references test.board(bnum),
+	private int mnum;		// fk references test.member(mnum)
 	private String replycontent;
+	private String replyid;
 	private String replydate;
 	
-	public Reply(int replynum, int bnum, int mnum, String replycontent, String replydate) {
+	public Reply(int replynum, int bnum, int mnum, String replycontent, String replyid, String replydate) {
 		this.replynum = replynum;
 		this.bnum = bnum;
 		this.mnum = mnum;
 		this.replycontent = replycontent;
+		this.replyid = replyid;
 		this.replydate = replydate;
 	}
 
@@ -47,6 +49,14 @@ public class Reply {
 		this.replycontent = replycontent;
 	}
 
+	public String getReplyid() {
+		return replyid;
+	}
+
+	public void setReplyid(String replyid) {
+		this.replyid = replyid;
+	}
+
 	public String getReplydate() {
 		return replydate;
 	}
@@ -54,6 +64,6 @@ public class Reply {
 	public void setReplydate(String replydate) {
 		this.replydate = replydate;
 	}
-	
+
 	
 }

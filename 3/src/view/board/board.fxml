@@ -31,7 +31,7 @@
          <image>
             <Image url="@../../img/boardbg.png" />
          </image></ImageView>
-      <AnchorPane layoutX="27.0" layoutY="84.0" onMouseClicked="#hotcontent1" prefHeight="141.0" prefWidth="370.0">
+      <AnchorPane fx:id="panehot1" layoutX="27.0" layoutY="84.0" onMouseClicked="#hotcontent1" prefHeight="141.0" prefWidth="370.0">
          <children>
             <ImageView fx:id="imghotphoto1" fitHeight="150.0" fitWidth="150.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,10 +39,10 @@
                </image>
             </ImageView>
             <Label fx:id="lblhottitle1" layoutX="166.0" layoutY="77.0" prefHeight="50.0" prefWidth="190.0" text="인기글1 제목" />
-            <Label fx:id="lblhotwriter1" layoutX="166.0" layoutY="14.0" prefHeight="50.0" prefWidth="190.0" text="인기글1 글쓴이" />
+            <Label fx:id="lblhotviewcount1" layoutX="166.0" layoutY="14.0" prefHeight="50.0" prefWidth="190.0" text="인기글1 조회수 " />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="416.0" layoutY="84.0" onMouseClicked="#hotcontent2" prefHeight="141.0" prefWidth="370.0">
+      <AnchorPane fx:id="panehot2" layoutX="416.0" layoutY="84.0" onMouseClicked="#hotcontent2" prefHeight="141.0" prefWidth="370.0">
          <children>
             <ImageView fx:id="imghotphoto2" fitHeight="150.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -50,7 +50,7 @@
                </image>
             </ImageView>
             <Label fx:id="lblhottitle2" layoutX="169.0" layoutY="77.0" prefHeight="50.0" prefWidth="190.0" text="인기글2 제목" />
-            <Label fx:id="lblhotwriter2" layoutX="169.0" layoutY="14.0" prefHeight="50.0" prefWidth="190.0" text="인기글2 글쓴이" />
+            <Label fx:id="lblhotviewcount2" layoutX="169.0" layoutY="14.0" prefHeight="50.0" prefWidth="190.0" text="인기글2 조회수" />
          </children>
       </AnchorPane>
       <Button fx:id="btnwrite" layoutX="864.0" layoutY="24.0" mnemonicParsing="false" onAction="#accwrite" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="글 등록" textFill="WHITE">

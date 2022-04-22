@@ -36,6 +36,7 @@ import javafx.stage.Stage;
 public class Boardread implements Initializable{
 	Board board =  Boardcon.boardinstance;
 	ObservableList<Reply> reply;
+	public static Reply selectedreply;
 
     @FXML
     private Label lbltitle;
@@ -83,7 +84,9 @@ public class Boardread implements Initializable{
     		alert.setHeaderText("덧글 내용을 입력해 주세요.");
     		alert.showAndWait();
     	}else {
-    		Reply reply = new Reply(0, 0, 0, txtreply.getText(), null);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    		Reply reply = new Reply(0, board.getBnum(), 0, txtreply.getText(), "사용자아이디", null);		// 사용자 아이디 지우고 메모리에서 mid, mnum 따와야함.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////    		
     		ReplyDao.replyDao.replywrite(reply);
     		alert.setTitle("알림");
     		alert.setHeaderText("덧글을 게시했습니다.");
@@ -94,7 +97,26 @@ public class Boardread implements Initializable{
     
     @FXML
     void accdeletereply(ActionEvent event) {
-
+    	
+//		if(로그인 한 사용자의 mnum ==  selectedreply.getMnum()) {
+    	if(0 ==  selectedreply.getMnum()) {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("확인");
+			alert.setHeaderText("덧글을 삭제하시겠습니까?");
+	    	Optional<ButtonType> result = alert.showAndWait();
+	    	if(result.get() == ButtonType.OK) {
+	    		ReplyDao.replyDao.delete(selectedreply.getReplynum());
+	    		alert.setTitle("완료");
+	    		alert.setHeaderText("덧글 삭제가 완료되었습니다.");
+	    		alert.showAndWait();
+	    		initialize(null, null);
+	    	}
+	    }else{
+	    	Alert alert = new Alert(AlertType.ERROR);
+	    	alert.setTitle("실패");
+			alert.setHeaderText("본인이 작성한 덧글만 삭제 할 수 있습니다.");
+			alert.showAndWait();
+		}
     }
     
     @FXML
@@ -190,19 +212,20 @@ public class Boardread implements Initializable{
 		
 		
 		// 리플 테이블에 오늘 날짜로 로그인 한 사용자의 내용이 null인 리플이 없으면 조회수 올리고, 있으면 아무것도 안하는 코드.
-			// 나중에 다시 완성할것.
-//    	if ( !(BoardDao.boardDao.nullreplycheck( Login.member.getMid(), board.getBnum() ) ) ) {
+			// 대부분 수정했음. 멤버쪽만 연결해주면 됨.
+//    	if ( !(ReplyDao.replyDao.nullreplycheck( board.getBnum(), Login.member.getMnum() ) ) ) {
 //			// NOT 게이트를 붙였음으로 반대로 해석할것 ->  리플중에 내용이 null AND 작성자ID=사용자 AND 작성날짜=curdate() => if문 미실행
-//		BoardDao.boardDao.viewcountup(board.getBview()+1, board.getBnum());	// DB에 조회수 1 올려주기
+//		ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	// DB에 조회수 1 올려주기
 //		board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
-//		Reply writeNullReply = new Reply(0, null, Login.member.getMid(), null, board.getBnum());	// null리플(=플래그 역할) 작성하기 위해 객체화
-//		BoardDao.boardDao.rwrite(writeNullReply);	// 리플 작성
+//		Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid, null);	// null리플(=플래그 역할) 작성하기 위해 객체화
+//		ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
 //		Alert alert = new Alert(AlertType.INFORMATION);
 //		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
 //		alert.showAndWait();
 //		}
-		reply = ReplyDao.replyDao.replylist(board.getBnum());
+//		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.
+		
 		
 		lbltitle.setText(board.getBtitle());
 		txtcontent.setText(board.getBcontent());
@@ -215,7 +238,9 @@ public class Boardread implements Initializable{
 		
 		
 		txtcontent.setEditable(false);
-		
+		tablereply.setOnMouseClicked( e -> {
+			selectedreply = tablereply.getSelectionModel().getSelectedItem();
+		});
 		
 //////////////////////////////////////////////////////////////////////////////////////////		
 //		로그인한 사용자의 mnum과 글의 mnum이 같을때만 글수정 버튼, 글삭제, 리플 수정, 리플 삭제 활성화. 코드 작성해야함.
