@@ -26,8 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Boardview implements Initializable {
-    public static Reply reply;
-
+	public static Reply reply;
+	
     @FXML
     private Button btnrewrite;
 
@@ -45,10 +45,10 @@ public class Boardview implements Initializable {
 
     @FXML
     private Button btnupdate;
-
+    
     @FXML
     private Button btnreupdate;
-	
+    
     @FXML
     private Button btnredel;
 
@@ -63,6 +63,7 @@ public class Boardview implements Initializable {
 
     @FXML
     private TextArea txtrecontent;
+    
 
     @FXML
     private TableView<Reply> replytable;
@@ -87,33 +88,89 @@ public class Boardview implements Initializable {
     	// 4. 테이블뷰에 리스트 넣어주기 
     	replytable.setItems(replylist);
     }
-
+    boolean reupdatecheck = false;
  
     @FXML
-    void rewrite(ActionEvent event) { // 댓글 작성 버튼 눌렀을
-    	
-    	// 1. 컨트롤에 입뭇 데이터 가져오기
-    	String rcontent = txtrecontent.getText();
-    	// 2. 현재 로그인된 정보에서 아이디 가져오기
-    	String rwrite = Login.member.getMid();
-    	// 3. 현재 테이블뷰에서 클릭된 게시물의 게시물번호 가져오기
-    	int bnum = controller.board.Board.board.getBnum();
-    	// 객체화
-    	Reply reply = new Reply(0, rcontent, rwrite, null , bnum);
-    	// db 처리
-    	boolean result = BoardDao.boardDao.rwrite(reply);
-    	if( result ) {
-    		Alert alert = new Alert( AlertType.INFORMATION);
-    			alert.setHeaderText("댓글 등록 성공");
-    		alert.showAndWait();
-    		// 댓글 입력창 초기화
-    		txtrecontent.setText("");
-    		// 댓글 작성후 테이블 새로고침
-    		replytableshow();
+    void rewrite(ActionEvent event) {
+    	if(reupdatecheck) {
+    		String rcontent = txtrecontent.getText();
+        	int rnum = reply.getRnum();
+        	boolean result = BoardDao.boardDao.reupdate(rnum, rcontent);
+        	if(result) {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setHeaderText("수정이 완료되었습니다.");
+        		alert.showAndWait();
+        		btnredel.setVisible(false);
+        		btnreupdate.setVisible(false);
+        		btnrewrite.setText("댓글작성");
+        		reupdatecheck=false;
+            	Mainpage.instance.loadpage("/view/board/boardview.fxml");
+        		
+        	}
+    	}else {
+    		String recontent = txtrecontent.getText();
+        	String rwrite = Login.member.getMid();
+        	int bnum = controller.board.Board.board.getBnum();
+        	
+        	Reply reply = new Reply(0, recontent, rwrite, null, bnum);
+        	boolean result = ReplyDao.replyDao.wirte(reply);
+        	if(result) {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setHeaderText("댓글이 작성 되었습니다.");
+        		alert.showAndWait();
+            	Mainpage.instance.loadpage("/view/board/boardview.fxml");
+        	}
     	}
+    	
+    }
+    boolean updatecheck = true;
+    
+    @FXML
+    void accreupdate(ActionEvent event) {
+    	
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	
+    	if(updatecheck) { // 수정 시작
+    		btnreupdate.setVisible(false);
+    		alert.setHeaderText("댓글 수정후 수정완료 버튼 눌러주세요");
+    		alert.showAndWait();
+    		btnrewrite.setText("수정 완료");
+    		reupdatecheck=true;
+    		replytableshow();
+    	} else {
+        
+    	}
+    }
+    @FXML
+    void redel(ActionEvent event) {
+    	if(reply.getRwrite().equals(Login.member.getMid())) {
+    		// 1. 경고 메세지 알림
+        	Alert alert = new Alert(AlertType.CONFIRMATION);
+        	alert.setHeaderText("정말 삭제하시겠습니까?");
+        	Optional<ButtonType> optional = alert.showAndWait();
+        	// 2. 확인 버튼 눌렀을때
+        	if(optional.get()==ButtonType.OK) {
+        		// 3. 삭제처리
+        		boolean result = ReplyDao.replyDao.replydelete(reply.getRnum());
+        		if(result) {
+        			Alert alert2 = new Alert(AlertType.INFORMATION);
+            		alert2.setHeaderText("삭제가 완료되었습니다.");
+            		alert2.showAndWait();
+        			reply=null;
+        			Mainpage.instance.loadpage("/view/board/boardview.fxml");
+        		}else {
+        			System.out.println("삭제실패 DB오류");
+        		}
+        	}
+		}
+    	else {
+    		System.out.println("삭제불가");
+    	}
+    	
     }
 
     boolean upcheck = true; // 수정 버튼 스위치 변수
+    
     @FXML
     void update(ActionEvent event) {
     	Alert alert = new Alert( AlertType.INFORMATION );
@@ -180,31 +237,17 @@ public class Boardview implements Initializable {
 		// 제목 과 내용을 수정 못하게 수정 금지
 		txttitle.setEditable(false);
 		txtcontent.setEditable(false);
+		
+		replytable.setOnMouseClicked(e ->{
+			reply = replytable.getSelectionModel().getSelectedItem();
+			if(reply.getRwrite().equals(Login.member.getMid())) {
+				btnreupdate.setVisible(true);
+				btnredel.setVisible(true);
+			}
+			else {
+				btnredel.setVisible(false);
+				btnreupdate.setVisible(false);
+			}
+		});
 	}
-	
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
