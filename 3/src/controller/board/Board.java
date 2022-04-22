@@ -30,13 +30,12 @@ public class Board implements Initializable {
     private TableView<dto.Board> boardtable; // 테이블에 넣을 자료형 선택 [ 테이블에 게시물 표시하기위해 ]
     
     public static dto.Board board; // 테이블에서 클릭한 객체를 저장하는 객체
-    
+
     @FXML
     void accwrite(ActionEvent event) {
     	// * Home클래스내 borderpane center 변경
     	Mainpage.instance.loadpage("/view/board/boardwrite.fxml");
     }
-    
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -89,8 +88,6 @@ public class Board implements Initializable {
     }
 
 }
-
-
 
 
 
