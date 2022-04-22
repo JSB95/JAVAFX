@@ -1,10 +1,8 @@
 package controller.admin;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import dao.AplaneDao;
@@ -16,13 +14,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Routeadd implements Initializable {
@@ -74,7 +74,17 @@ public class Routeadd implements Initializable {
 						}
 						i++;
 					}
-					
+					String year = route.getRdeparturedate().split(" ")[0].split("-")[0];
+					System.out.println(route.getRdeparturedate().split(" ")[0].split("-")[0]);
+					txtyear.setText(year);
+					String month = route.getRdeparturedate().split(" ")[0].split("-")[1];
+					txtmonth.setText(month);
+					String day = route.getRdeparturedate().split(" ")[0].split("-")[2];
+					txtday.setText(day);
+					String hour = route.getRdeparturedate().split(" ")[1].split(":")[0];
+					txthour.setText(hour);
+					String min = route.getRdeparturedate().split(" ")[1].split(":")[1];
+					txtmin.setText(min);
 					
 				} catch(Exception ee) {}
 			});
@@ -85,6 +95,7 @@ public class Routeadd implements Initializable {
 	
 
 	
+
     @FXML
     private Label lblmenuname;
 
@@ -92,10 +103,31 @@ public class Routeadd implements Initializable {
     private TextField txtstart;
 
     @FXML
+    private TextField txtend;
+
+    @FXML
     private TextField txtftime;
 
     @FXML
     private TextField txtprice;
+
+    @FXML
+    private ComboBox<String> cbbaname;
+
+    @FXML
+    private TextField txtyear;
+
+    @FXML
+    private TextField txtmonth;
+
+    @FXML
+    private TextField txtday;
+
+    @FXML
+    private TextField txthour;
+
+    @FXML
+    private TextField txtmin;
 
     @FXML
     private Button btnadd;
@@ -107,23 +139,35 @@ public class Routeadd implements Initializable {
     private TableView<Route> rtable;
 
     @FXML
-    private ComboBox<String> cbbaname;
-
-    @FXML
-    private TextField txtend;
-
-    @FXML
-    private DatePicker datestart;
-
-    @FXML
     void add(ActionEvent event) {
-
+    	String aname = cbbaname.getValue();
+    	String departure = txtstart.getText();
+    	String destination = txtend.getText();
+    	String flighttime = txtftime.getText();
+    	
+    	if(Admin_main.instance.update) {
+    		
+    	}else {
+    		
+    	}
     }
 
     @FXML
     void delete(ActionEvent event) {
     	String table = "route";
-    	AplaneDao.aplaneDao.delete(null, 0);
+    	int pk = route.getRnum();
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setHeaderText("정말 삭제하시겠습니까?");
+    	Optional<ButtonType> optional = alert.showAndWait();
+    	if(optional.get()==ButtonType.OK) {
+    		boolean result = AplaneDao.aplaneDao.delete(table, pk);
+        	if(result) {
+        		Alert alert2 = new Alert(AlertType.INFORMATION);
+        		alert2.setHeaderText("삭제가 완료되었습니다.");
+        		alert2.showAndWait();
+        		Admin_main.instance.loadpage("/view/admin/routeadd.fxml");
+        	}
+    	}
     }
 	
 }
