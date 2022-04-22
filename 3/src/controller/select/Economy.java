@@ -8,6 +8,7 @@ import controller.main.Mainpage;
 import controller.main.Searchpage;
 import dao.AplaneDao;
 import dao.RouteDao;
+import dao.TicketDao;
 import dto.Aplane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +46,7 @@ public class Economy implements Initializable {
 				ToggleButton button = new ToggleButton(null,imageView);
 				button.setText((i+1)+"");
 				button.setId(i+"");
-				ArrayList<String> seatlist = RouteDao.routeDao.getseat(Searchpage.route.getRnum());
+				ArrayList<String> seatlist = TicketDao.ticketDao.getseat(Searchpage.route.getRnum());
 				if(seatlist!=null) {
 					for(String temp : seatlist) {
 						if(("E-"+button.getText()).equals(temp) ) {
@@ -107,7 +108,7 @@ public class Economy implements Initializable {
 				ToggleButton button = new ToggleButton(null,imageView);
 				button.setText((i+1)+"");
 				button.setId(i+"");
-				ArrayList<String> seatlist = RouteDao.routeDao.getseat(Searchpage.route.getRnum());
+				ArrayList<String> seatlist = TicketDao.ticketDao.getseat(Searchpage.route.getRnum());
 				if(seatlist!=null) {
 					for(String temp : seatlist) {
 						if(("E-"+button.getText()).equals(temp) ) {

@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class Cadd implements Initializable {
+public class Companyadd implements Initializable {
 
 	public Company company;
 	
@@ -95,7 +95,7 @@ public class Cadd implements Initializable {
     		if(result) {
         		alert.setHeaderText("항공사 수정이 완료되었습니다.");
         		alert.showAndWait();
-        		Admin_main.instance.loadpage("/view/admin/cadd.fxml");
+        		Admin_main.instance.loadpage("/view/admin/companyadd.fxml");
 
         	}else {
         		alert.setHeaderText("항공사 수정 실패 - DB 오류");
@@ -106,7 +106,7 @@ public class Cadd implements Initializable {
         	if(result) {
         		alert.setHeaderText("항공사 추가가 완료되었습니다.");
         		alert.showAndWait();
-        		Admin_main.instance.loadpage("/view/admin/cadd.fxml");
+        		Admin_main.instance.loadpage("/view/admin/companyadd.fxml");
         		
         	}else {
         		alert.setHeaderText("항공사 추가 실패 - DB 오류");
@@ -129,7 +129,7 @@ public class Cadd implements Initializable {
         		Alert alert2 = new Alert(AlertType.INFORMATION);
         		alert2.setHeaderText("삭제가 완료되었습니다.");
         		alert2.showAndWait();
-        		Admin_main.instance.loadpage("/view/admin/cadd.fxml");
+        		Admin_main.instance.loadpage("/view/admin/companyadd.fxml");
         	}
     	}
     	

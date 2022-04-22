@@ -66,13 +66,13 @@ public class Admin_main implements Initializable {
     @FXML
     void cadd(MouseEvent event) {
     	update = false;
-    	loadpage("/view/admin/cadd.fxml");
+    	loadpage("/view/admin/companyadd.fxml");
     }
 
     @FXML
     void cupdate(MouseEvent event) {
     	update = true;
-    	loadpage("/view/admin/cadd.fxml");
+    	loadpage("/view/admin/companyadd.fxml");
     }
 
     @FXML
@@ -82,12 +82,14 @@ public class Admin_main implements Initializable {
 
     @FXML
     void radd(MouseEvent event) {
-
+    	update=false;
+    	loadpage("/view/admin/routeadd.fxml");
     }
 
     @FXML
     void rupdate(MouseEvent event) {
-
+    	update=true;
+    	loadpage("/view/admin/routeadd.fxml");
     }
     
     public void loadpage(String page) {

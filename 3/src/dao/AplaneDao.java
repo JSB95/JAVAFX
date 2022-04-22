@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashSet;
 
 import dto.Aplane;
@@ -126,7 +127,7 @@ public class AplaneDao extends Dao {
 			}
 			return clist;
 		
-		} catch(Exception e) {System.out.println("항공사 정보 불러오기 오류 : "+e);}
+		} catch(Exception e) {System.out.println("모든 항공사 정보 불러오기 오류 : "+e);}
 		return null;
 	}
 	
@@ -163,19 +164,20 @@ public class AplaneDao extends Dao {
 	
 	// 10. 모든 비행기 불러오기
 	public ObservableList<Aplane> getairplane(){
+		ObservableList<Aplane> alist = FXCollections.observableArrayList();
 		try {
-			ObservableList<Aplane> alist = FXCollections.observableArrayList();
+			
 			String sql = "select * from airplane";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				String cname = RouteDao.routeDao.getcname(rs.getString(1));
-				Aplane aplane = new Aplane(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), cname);
+				Aplane aplane = new Aplane(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),cname );
 				alist.add(aplane);
 			}
 			return alist;
 		
-		} catch(Exception e) {System.out.println("항공사 정보 불러오기 오류 : "+e);}
+		} catch(Exception e) {System.out.println("모든 비행기 불러오기 오류 : "+e);}
 		return null;
 	}
 	// 11. 항공사명 불러오기
@@ -205,6 +207,7 @@ public class AplaneDao extends Dao {
 	
 		return false;
 	}
+	
 	
 	
 	

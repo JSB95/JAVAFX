@@ -43,4 +43,22 @@ public class TicketDao extends Dao {
 		return null;
 	}
 	
+	// 3. 선택된 좌석 불러오기
+		public ArrayList<String> getseat(int rnum){
+			try {
+				ArrayList<String> seatlist = new ArrayList<>();
+				String sql = "select tseatnum from ticket where rnum=?";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, rnum);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					seatlist.add(rs.getString(1));
+				}
+				return seatlist;
+			} catch(Exception e) {
+				System.out.println("좌석 불러오기 오류 : "+e);
+			}
+			return null;
+		}
+	
 }
