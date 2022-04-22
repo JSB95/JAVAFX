@@ -74,27 +74,26 @@ public class Routeadd implements Initializable {
 						}
 						i++;
 					}
+					
 					String year = route.getRdeparturedate().split(" ")[0].split("-")[0];
-					System.out.println(route.getRdeparturedate().split(" ")[0].split("-")[0]);
 					txtyear.setText(year);
 					String month = route.getRdeparturedate().split(" ")[0].split("-")[1];
 					txtmonth.setText(month);
 					String day = route.getRdeparturedate().split(" ")[0].split("-")[2];
 					txtday.setText(day);
+					System.out.println(day);
 					String hour = route.getRdeparturedate().split(" ")[1].split(":")[0];
 					txthour.setText(hour);
+					System.out.println(hour);
 					String min = route.getRdeparturedate().split(" ")[1].split(":")[1];
 					txtmin.setText(min);
-					
+					System.out.println(min);
 				} catch(Exception ee) {}
 			});
 		}
-	
-		
-	}
-	
 
-	
+	}
+
 
     @FXML
     private Label lblmenuname;
@@ -151,7 +150,7 @@ public class Routeadd implements Initializable {
     		
     	}
     }
-
+    
     @FXML
     void delete(ActionEvent event) {
     	String table = "route";
