@@ -26,7 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Boardview implements Initializable {
-	public static Reply reply;
+    public static Reply reply;
 
     @FXML
     private Button btnrewrite;
@@ -45,6 +45,12 @@ public class Boardview implements Initializable {
 
     @FXML
     private Button btnupdate;
+
+    @FXML
+    private Button btnreupdate;
+	
+    @FXML
+    private Button btnredel;
 
     @FXML
     private Label lblwrite;
