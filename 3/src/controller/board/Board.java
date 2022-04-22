@@ -30,7 +30,6 @@ public class Board implements Initializable {
     
     public static dto.Board board; // 테이블에서 클릭한 객체를 저장하는 객체
     
-    public static dto.Reply reply; // 테이블에서 클릭한 객체를 저장하는 객체
     @FXML
     void accwrite(ActionEvent event) {
     	// * Home클래스내 borderpane center 변경
