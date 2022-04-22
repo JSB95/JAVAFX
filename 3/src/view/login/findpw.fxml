@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.login.Findpw">
+   <children>
+      <Label layoutX="509.0" layoutY="94.0" text="비밀번호 찾기">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtname" layoutX="452.0" layoutY="193.0" prefHeight="36.0" prefWidth="376.0" promptText="이름" />
+      <TextField fx:id="txtid" layoutX="453.0" layoutY="262.0" prefHeight="36.0" prefWidth="376.0" promptText="아이디" />
+      <TextField fx:id="txtphone" layoutX="453.0" layoutY="332.0" prefHeight="36.0" prefWidth="376.0" promptText="전화번호" />
+      <Button fx:id="btnfindpw" layoutX="453.0" layoutY="410.0" mnemonicParsing="false" onAction="#findpw" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="비밀번호 찾기" />
+      <Button fx:id="btnback" layoutX="744.0" layoutY="94.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #02BE6E;" text="뒤로가기" />
+   </children>
+</AnchorPane>

@@ -1,11 +1,11 @@
 package dto;
 
 public class Price {
-	private int pnum;	// pk
-	private int pseatClass;
-	private int cnum;	// fk, Company cnum
-	private double pfirstSeatRatio;
-	private double pbusinessSeatRatio;
+	private int pnum;					// 가격 번호 pk
+	private int pseatClass;				// 좌석 등급
+	private int cnum;					// 항공사 번호 fk, Company cnum
+	private double pfirstSeatRatio;		// 퍼스트클래스 배율
+	private double pbusinessSeatRatio;	// 비즈니스클래스 배율
 	
 	public Price() {}
 

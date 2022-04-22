@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="back" prefHeight="820.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <ImageView blendMode="SRC_ATOP" fitHeight="849.0" fitWidth="1034.0" layoutX="-13.0" layoutY="-12.0" opacity="0.79" pickOnBounds="true">
+         <image>
+            <Image url="@../img/chart.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="25.0" layoutY="63.0" prefHeight="748.0" prefWidth="764.0" styleClass="graph">
+         <children>
+            <StackedAreaChart fx:id="lineChart" blendMode="SRC_ATOP" layoutX="-9.0" layoutY="22.0" prefHeight="704.0" prefWidth="700.0">
+              <xAxis>
+                <NumberAxis autoRanging="false" forceZeroInRange="false" side="BOTTOM" tickLabelFill="WHITE">
+                     <tickLabelFont>
+                        <Font size="17.0" />
+                     </tickLabelFont>
+                  </NumberAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis forceZeroInRange="false" side="LEFT" tickLabelFill="WHITE">
+                     <tickLabelFont>
+                        <Font size="15.0" />
+                     </tickLabelFont>
+                  </NumberAxis>
+              </yAxis>
+            </StackedAreaChart>
+         </children>
+      </Pane>
+      <Label layoutX="25.0" layoutY="14.0" prefHeight="70.0" prefWidth="364.0" text="환율계산기 (매매기준율 기준)" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button id="button" blendMode="SCREEN" layoutX="820.0" layoutY="560.0" mnemonicParsing="false" onAction="#getData" prefHeight="30.0" prefWidth="80.0" text="BUTTON" />
+      <TextField fx:id="input1" alignment="CENTER_RIGHT" blendMode="SRC_ATOP" cache="true" layoutX="783.0" layoutY="279.0" prefHeight="41.0" prefWidth="116.0" styleClass="inputs">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="input2" alignment="CENTER_RIGHT" blendMode="SCREEN" editable="false" layoutX="783.0" layoutY="460.0" prefHeight="41.0" prefWidth="116.0" styleClass="inputs">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="840.0" layoutY="345.0" text="=" textFill="WHITE">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="box1" blendMode="LIGHTEN" layoutX="783.0" layoutY="247.0" prefHeight="23.0" prefWidth="153.0" />
+      <ComboBox fx:id="box2" blendMode="SCREEN" layoutX="783.0" layoutY="426.0" prefHeight="23.0" prefWidth="153.0" />
+      <Label fx:id="Label1" layoutX="909.0" layoutY="279.0" prefHeight="41.0" prefWidth="40.0" text="Label" textFill="WHITE" />
+      <Label fx:id="Label2" layoutX="909.0" layoutY="460.0" prefHeight="41.0" prefWidth="40.0" text="Label" textFill="WHITE" />
+   </children>
+</AnchorPane>
