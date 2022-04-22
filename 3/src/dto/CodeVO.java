@@ -1,16 +1,16 @@
 package dto;
 
-public class NationVO {
+public class CodeVO {
 	
 	  private String name;
 	  
 	  private String code;
 	  
-	  public NationVO() {
+	  public CodeVO() {
 		  
 	  }
 	  
-	  public NationVO(String name, String code) {
+	  public CodeVO(String name, String code) {
 	    this.name = name;
 	    this.code = code;
 	  }
@@ -32,10 +32,6 @@ public class NationVO {
 	  }
 	  
 	  public String toString() {
-	    return this.name;
-	  }
-	  
-	  public String toString2() {
-		  return this.code;
+	    return this.code;
 	  }
 	}
