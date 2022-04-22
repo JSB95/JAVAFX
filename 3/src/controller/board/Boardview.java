@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import controller.login.Login;
 import controller.main.Mainpage;
 import dao.BoardDao;
+import dao.ReplyDao;
 import dto.Board;
 import dto.Reply;
 import javafx.collections.ObservableList;
@@ -59,11 +60,11 @@ public class Boardview implements Initializable {
 
     @FXML
     private TableView<Reply> replytable;
-    		// Å×ÀÌºíºä¿¡ ³ÖÀ» ÀÚ·áÇü 
+    		// í…Œì´ë¸”ë·°ì— ë„£ì„ ìë£Œí˜• 
     
-    // ** ´ñ±Û Å×ÀÌºí ¸Ş¼Òµå [ ¸Ş¼ÒµåÈ­ ½ÃÅ² ÀÌÀ¯ : ¿©·¯¹ø Å×ÀÌºí È£ÃâÇÏ±â À§ÇØ ]
+    // ** ëŒ“ê¸€ í…Œì´ë¸” ë©”ì†Œë“œ [ ë©”ì†Œë“œí™” ì‹œí‚¨ ì´ìœ  : ì—¬ëŸ¬ë²ˆ í…Œì´ë¸” í˜¸ì¶œí•˜ê¸° ìœ„í•´ ]
     public void replytableshow() {
-    	// 1. ÇöÀç °Ô½Ã¹° ¹øÈ£ 
+    	// 1. í˜„ì¬ ê²Œì‹œë¬¼ ë²ˆí˜¸ 
     	int bnum = controller.board.Board.board.getBnum();
     	// 2.
     	ObservableList<Reply> replylist = BoardDao.boardDao.replylist( bnum );
@@ -77,58 +78,58 @@ public class Boardview implements Initializable {
     	 tc = replytable.getColumns().get(3);
     	tc.setCellValueFactory( new PropertyValueFactory<>("rcontent") );
     	
-    	// 4. Å×ÀÌºíºä¿¡ ¸®½ºÆ® ³Ö¾îÁÖ±â 
+    	// 4. í…Œì´ë¸”ë·°ì— ë¦¬ìŠ¤íŠ¸ ë„£ì–´ì£¼ê¸° 
     	replytable.setItems(replylist);
     }
 
  
     @FXML
-    void rewrite(ActionEvent event) { // ´ñ±Û ÀÛ¼º ¹öÆ° ´­·¶À»‹š
+    void rewrite(ActionEvent event) { // ëŒ“ê¸€ ì‘ì„± ë²„íŠ¼ ëˆŒë €ì„Â‹Âš
     	
-    	// 1. ÄÁÆ®·Ñ¿¡ ÀÔ¹µÈ µ¥ÀÌÅÍ °¡Á®¿À±â
+    	// 1. ì»¨íŠ¸ë¡¤ì— ì…ë­‡ ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
     	String rcontent = txtrecontent.getText();
-    	// 2. ÇöÀç ·Î±×ÀÎµÈ Á¤º¸¿¡¼­ ¾ÆÀÌµğ °¡Á®¿À±â
+    	// 2. í˜„ì¬ ë¡œê·¸ì¸ëœ ì •ë³´ì—ì„œ ì•„ì´ë”” ê°€ì ¸ì˜¤ê¸°
     	String rwrite = Login.member.getMid();
-    	// 3. ÇöÀç Å×ÀÌºíºä¿¡¼­ Å¬¸¯µÈ °Ô½Ã¹°ÀÇ °Ô½Ã¹°¹øÈ£ °¡Á®¿À±â
+    	// 3. í˜„ì¬ í…Œì´ë¸”ë·°ì—ì„œ í´ë¦­ëœ ê²Œì‹œë¬¼ì˜ ê²Œì‹œë¬¼ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
     	int bnum = controller.board.Board.board.getBnum();
-    	// °´Ã¼È­
+    	// ê°ì²´í™”
     	Reply reply = new Reply(0, rcontent, rwrite, null , bnum);
-    	// db Ã³¸®
+    	// db ì²˜ë¦¬
     	boolean result = BoardDao.boardDao.rwrite(reply);
     	if( result ) {
     		Alert alert = new Alert( AlertType.INFORMATION);
-    			alert.setHeaderText("´ñ±Û µî·Ï ¼º°ø");
+    			alert.setHeaderText("ëŒ“ê¸€ ë“±ë¡ ì„±ê³µ");
     		alert.showAndWait();
-    		// ´ñ±Û ÀÔ·ÂÃ¢ ÃÊ±âÈ­
+    		// ëŒ“ê¸€ ì…ë ¥ì°½ ì´ˆê¸°í™”
     		txtrecontent.setText("");
-    		// ´ñ±Û ÀÛ¼ºÈÄ Å×ÀÌºí »õ·Î°íÄ§
+    		// ëŒ“ê¸€ ì‘ì„±í›„ í…Œì´ë¸” ìƒˆë¡œê³ ì¹¨
     		replytableshow();
     	}
     }
 
-    boolean upcheck = true; // ¼öÁ¤ ¹öÆ° ½ºÀ§Ä¡ º¯¼ö
+    boolean upcheck = true; // ìˆ˜ì • ë²„íŠ¼ ìŠ¤ìœ„ì¹˜ ë³€ìˆ˜
     @FXML
     void update(ActionEvent event) {
     	Alert alert = new Alert( AlertType.INFORMATION );
-    	if( upcheck  ) { // ¼öÁ¤ ½ÃÀÛ
-	    	alert.setHeaderText("°Ô½Ã±Û ¼öÁ¤ÈÄ ¼öÁ¤ ¿Ï·á ¹öÆ° ´­·¯ÁÖ¼¼¿ä");
+    	if( upcheck  ) { // ìˆ˜ì • ì‹œì‘
+	    	alert.setHeaderText("ê²Œì‹œê¸€ ìˆ˜ì •í›„ ìˆ˜ì • ì™„ë£Œ ë²„íŠ¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 	    	alert.showAndWait();
 	    	txttitle.setEditable(true);
 			txtcontent.setEditable(true);
-			btnupdate.setText("¼öÁ¤¿Ï·á");
+			btnupdate.setText("ìˆ˜ì •ì™„ë£Œ");
 			upcheck = false;
-    	}else { // ¼öÁ¤ ¿Ï·á
-    		// dbÃ³¸®
+    	}else { // ìˆ˜ì • ì™„ë£Œ
+    		// dbì²˜ë¦¬
     		BoardDao.boardDao.update(
     				controller.board.Board.board.getBnum() ,
     				txttitle.getText() ,
     				txtcontent.getText() );
     		
-    		alert.setHeaderText("¼öÁ¤ÀÌ ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+    		alert.setHeaderText("ìˆ˜ì •ì´ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	    	alert.showAndWait();
 	    	txttitle.setEditable(false);
 			txtcontent.setEditable(false);
-			btnupdate.setText("¼öÁ¤");
+			btnupdate.setText("ìˆ˜ì •");
 			upcheck = true;
     	}
     }
@@ -140,16 +141,16 @@ public class Boardview implements Initializable {
 
     @FXML
     void delete(ActionEvent event) {
-    	// 1. °æ°í ¸Ş½ÃÁö ¾Ë¸²
-    	Alert alert = new Alert(AlertType.CONFIRMATION); // È®ÀÎ / Ãë¼Ò°¡ ÀÖ´Â ¹öÆ°
-    		alert.setHeaderText("ÇØ´ç °Ô½Ã¹° »èÁ¦ÇÒ±î¿ä?");
-    	Optional<ButtonType> optional = alert.showAndWait(); // showAndWait() ¸Ş¼ÒµåÀÇ ¹İÈ¯Å¸ÀÔ => ¼±ÅÃÇÑ ¹öÆ°
-    		// Optional Å¬·¡½º : null¸¦ °´Ã¼·Î ÀúÀåÇÏ´Â Å¬·¡½º
-    	if( optional.get() == ButtonType.OK ) {  // 2. È®ÀÎ ¹öÆ° ´­·¶À»¶§
-    		// 3. »èÁ¦ Ã³¸® ÁøÇà
+    	// 1. ê²½ê³  ë©”ì‹œì§€ ì•Œë¦¼
+    	Alert alert = new Alert(AlertType.CONFIRMATION); // í™•ì¸ / ì·¨ì†Œê°€ ìˆëŠ” ë²„íŠ¼
+    		alert.setHeaderText("í•´ë‹¹ ê²Œì‹œë¬¼ ì‚­ì œí• ê¹Œìš”?");
+    	Optional<ButtonType> optional = alert.showAndWait(); // showAndWait() ë©”ì†Œë“œì˜ ë°˜í™˜íƒ€ì… => ì„ íƒí•œ ë²„íŠ¼
+    		// Optional í´ë˜ìŠ¤ : nullë¥¼ ê°ì²´ë¡œ ì €ì¥í•˜ëŠ” í´ë˜ìŠ¤
+    	if( optional.get() == ButtonType.OK ) {  // 2. í™•ì¸ ë²„íŠ¼ ëˆŒë €ì„ë•Œ
+    		// 3. ì‚­ì œ ì²˜ë¦¬ ì§„í–‰
     		BoardDao.boardDao.delete( 
     				controller.board.Board.board.getBnum()   );
-    		// 4. ÆäÀÌÁö ÀüÈ¯
+    		// 4. í˜ì´ì§€ ì „í™˜
         	Mainpage.instance.loadpage("/view/board/board.fxml");
     	}
     }
@@ -158,19 +159,19 @@ public class Boardview implements Initializable {
 		
 		replytableshow();
 		
-		Board board = controller.board.Board.board; // boardÄÁÆ®·Ñ³» Å×ÀÌºí¿¡¼­ ¼±ÅÃµÈ °´Ã¼ È£Ãâ 
-		// °¢ ÄÁÆ®·Ñ¿¡ ¼±ÅÃµÈ boardÀÇ µ¥ÀÌÅÍ ¼³Á¤ÇÏ±â 
-		lblwrite.setText( "ÀÛ¼ºÀÚ : " + board.getBwrite() );
-		lbldate.setText( "ÀÛ¼ºÀÏ : " + board.getBdate() );
-		lblview.setText( "Á¶È¸¼ö : " + board.getBview() );
+		Board board = controller.board.Board.board; // boardì»¨íŠ¸ë¡¤ë‚´ í…Œì´ë¸”ì—ì„œ ì„ íƒëœ ê°ì²´ í˜¸ì¶œ 
+		// ê° ì»¨íŠ¸ë¡¤ì— ì„ íƒëœ boardì˜ ë°ì´í„° ì„¤ì •í•˜ê¸° 
+		lblwrite.setText( "ì‘ì„±ì : " + board.getBwrite() );
+		lbldate.setText( "ì‘ì„±ì¼ : " + board.getBdate() );
+		lblview.setText( "ì¡°íšŒìˆ˜ : " + board.getBview() );
 		txttitle.setText( board.getBtitle() );
 		txtcontent.setText( board.getBcontent() );
-		// ¸¸¾à¿¡ °Ô½Ã¹° ÀÛ¼ºÀÚ ¿Í ÇöÀç·Î±×ÀÎµÈ id¿Í µ¿ÀÏÇÏÁö ¾ÊÀ¸¸é
-		if( ! board.getBwrite().equals( Login.member.getMid() ) ) { // !:ºÎÁ¤
-			btndelete.setVisible(false); // ¹öÆ° ¼û±â±â
-			btnupdate.setVisible(false); // false = ¹öÆ° ¼û±â±â true = ¹öÆ° º¸ÀÌ±â
+		// ë§Œì•½ì— ê²Œì‹œë¬¼ ì‘ì„±ì ì™€ í˜„ì¬ë¡œê·¸ì¸ëœ idì™€ ë™ì¼í•˜ì§€ ì•Šìœ¼ë©´
+		if( ! board.getBwrite().equals( Login.member.getMid() ) ) { // !:ë¶€ì •
+			btndelete.setVisible(false); // ë²„íŠ¼ ìˆ¨ê¸°ê¸°
+			btnupdate.setVisible(false); // false = ë²„íŠ¼ ìˆ¨ê¸°ê¸° true = ë²„íŠ¼ ë³´ì´ê¸°
 		}
-		// Á¦¸ñ °ú ³»¿ëÀ» ¼öÁ¤ ¸øÇÏ°Ô ¼öÁ¤ ±İÁö
+		// ì œëª© ê³¼ ë‚´ìš©ì„ ìˆ˜ì • ëª»í•˜ê²Œ ìˆ˜ì • ê¸ˆì§€
 		txttitle.setEditable(false);
 		txtcontent.setEditable(false);
 	}
