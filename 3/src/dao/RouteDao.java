@@ -1,10 +1,7 @@
 package dao;
 
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 import dto.Route;
@@ -95,13 +92,49 @@ public class RouteDao extends Dao {
 		return null;
 	}
 	
-	// 5. 비행기명으로 항공사이름 가져오기
+	// 5. 항공일지 추가
+	public boolean addroute(Route route) {
+		try {
+			String sql = "insert into route(aname,rdeparture,rdestination,rflightTime,rbaseprice,rdepartureDate) values(?,?,?,?,?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, route.getAname());
+			ps.setString(2, route.getRdeparture());
+			ps.setString(3, route.getRdestination());
+			ps.setString(4, route.getRflightTime());
+			ps.setInt(5, route.getRbaseprice());
+			ps.setString(6, route.getRdeparturedate());
+			ps.executeUpdate();
+			return true;
+		} catch(Exception e) {System.out.println("항공일지 추가 오류 : "+e);}
+		return false;
+	}
+	
+	// 6. 항공일지 수정
+	public boolean updateroute(Route route) {
+		try {
+			String sql = "update route set aname=?, rdeparture=?, rdestination=?, rflightTime=?, rbaseprice=?, rdepartureDate=? where rnum=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, route.getAname());
+			ps.setString(2, route.getRdeparture());
+			ps.setString(3, route.getRdestination());
+			ps.setString(4, route.getRflightTime());
+			ps.setInt(5, route.getRbaseprice());
+			ps.setString(6, route.getRdeparturedate());
+			ps.setInt(7, route.getRnum());
+			ps.executeUpdate();
+			return true;
+		} catch(Exception e) {System.out.println("항공일지 수정 오류 : "+e);}
+		return false;
+	}
+	
+	// 7. 비행기명으로 항공사이름 가져오기
 	public String getcname(String aname) {
 		try {
 			String sql = "select cnum from airplane where aname=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, aname);
 			rs = ps.executeQuery();
+			
 			if(rs.next()) {
 				PreparedStatement ps2;
 				ResultSet rs2;
@@ -118,23 +151,20 @@ public class RouteDao extends Dao {
 		return null;
 	}
 	
-	// 6. 선택된 좌석 불러오기
-	public ArrayList<String> getseat(int rnum){
+	// 8. 모든 항공일지 불러오기
+	public ObservableList<Route> getrlist(){
 		try {
-			ArrayList<String> seatlist = new ArrayList<>();
-			String sql = "select tseatnum from ticket where rnum=?";
+			ObservableList<Route> rlist = FXCollections.observableArrayList();
+			String sql = "select * from route";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, rnum);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				seatlist.add(rs.getString(1));
+				Route route = new Route(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(7), rs.getInt(6));
+				rlist.add(route);
 			}
-			return seatlist;
-		} catch(Exception e) {
-			System.out.println("좌석 불러오기 오류 : "+e);
-		}
+			return rlist;
+		} catch(Exception e) {System.out.println("모든 항공일지 불러오기 오류 : "+e);}
 		return null;
 	}
-	
 	
 }
