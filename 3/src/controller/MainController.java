@@ -64,7 +64,7 @@ public class MainController {
     
     nationList = FXCollections.observableArrayList(); // ±¹°¡ ¸®½ºÆ® ÀúÀå¿ë
     
-    codeList = FXCollections.observableArrayList();
+    codeList = FXCollections.observableArrayList();	// ÅëÈ­ ´ÜÀ§ ÀúÀå¿ë
 
     try {
     	
@@ -159,7 +159,7 @@ public class MainController {
                     parser.getGraphData(graphUrl).forEach(graphItem -> graphList.add(graphItem));	// ÆÄ½ÌÇÏ¿© ³¯Â¥, bias ÆÛ¼¾Æ®¸¦ GraphVO¿¡ ÀúÀå
                 }
                 
-            	for (int i = 0; i < nationList.size(); i++) {
+            	for (int i = 0; i < nationList.size(); i++) {		// Label1¿¡ ÄŞº¸¹Ú½º¿¡¼­ ¼±ÅÃÇÑ ³ª¶óÀÇ ÅëÈ­±âÈ£ ³ëÃâ
             		if (box1.getValue().toString().equals(nationList.get(i).toString())) {
             			Label1.setText(codeList.get(i).toString());
             			Label2.setText("");
@@ -174,7 +174,7 @@ public class MainController {
             }
             
         }
-        if( sw==false ) {
+        if( sw==false ) { // Label1¿¡ ÄŞº¸¹Ú½º¿¡¼­ ¼±ÅÃÇÑ ³ª¶óÀÇ ÅëÈ­±âÈ£ ³ëÃâ / ÀÌ°÷¿¡µµ ³Ö¾îÁÖ´Â ÀÌÀ¯´Â ÄŞº¸¹Ú½º¿¡¼­ ÇÑ±¹À» ¼±ÅÃÇßÀ» ¶§µµ ÅëÈ­ ±âÈ£°¡ ³ë­‹µÇ¾î¾ß ÇÏ±â ¶§¹®
         	
         	for (int i = 0; i < nationList.size(); i++) {
         		if (box1.getValue().toString().equals(nationList.get(i).toString())) {
@@ -212,42 +212,42 @@ public class MainController {
         	
         }); // ¹İº¹¹® Á¾·á
         
-        lineChart.getData().add(series);
-        double yTickSpace = Math.floor(dblMinMax[0]) / 100.0;
-        NumberAxis yAxis = (NumberAxis)lineChart.getYAxis();
-        yAxis.setForceZeroInRange(false);
-        yAxis.setAutoRanging(false);
-        yAxis.setTickUnit(yTickSpace);
-        yAxis.setTickLength(yTickSpace);
-        yAxis.setLowerBound(dblMinMax[0] - yTickSpace);
-        yAxis.setUpperBound(dblMinMax[1] + yTickSpace);
-        NumberAxis xAxis = (NumberAxis)lineChart.getXAxis();
-        xAxis.setTickUnit(1.0);
-        xAxis.setTickLength(1.0);
-        xAxis.setUpperBound((double)(graphList.size() - 1));
-        xAxis.setTickLabelFormatter((StringConverter<Number>)new NumberAxis.DefaultFormatter(xAxis) {
+        lineChart.getData().add(series);		// Â÷Æ® ÃÊ±âÈ­
+        double yTickSpace = Math.floor(dblMinMax[0]) / 100.0; // yÃà ÃÖ´ë ÃÖ¼ÒÈ­ ¼³Á¤
+        NumberAxis yAxis = (NumberAxis)lineChart.getYAxis();	// Â÷Æ®¿¡ yÃà ÁöÁ¤
+        yAxis.setForceZeroInRange(false);			
+        yAxis.setAutoRanging(false);		// yÃà ÀÚµ¿Á¶Á¤ ÇØÁ¦
+        yAxis.setTickUnit(yTickSpace);		// yÃà µ¥ÀÌÅÍ ÁöÁ¤
+        yAxis.setTickLength(yTickSpace);	// yÃà ±æÀÌ ÁöÁ¤
+        yAxis.setLowerBound(dblMinMax[0] - yTickSpace);	// yÃà lowerbound ¼³Á¤
+        yAxis.setUpperBound(dblMinMax[1] + yTickSpace);	// yÃà upperbound ¼³Á¤
+        NumberAxis xAxis = (NumberAxis)lineChart.getXAxis();	// xÃà ÁöÁ¤
+        xAxis.setTickUnit(1.0);		// xÃà °ª ÁöÁ¤
+        xAxis.setTickLength(1.0);	// xÃà ±æÀÌ ÁöÁ¤
+        xAxis.setUpperBound((double)(graphList.size() - 1));	// upper bound¸¦ ±×·¡ÇÁ ¸®½ºÆ® -1 ±îÁö ÁöÁ¤
+        xAxis.setTickLabelFormatter((StringConverter<Number>)new NumberAxis.DefaultFormatter(xAxis) { // xÃà °ªÀÎ ³¯Â¥¸¦ °¡Á®¿À±â À§ÇØ Æ÷¸ËÅÍ ¼±¾ğ
         	
         	public String toString(Number object) {
         		String tickDate;
         		@SuppressWarnings("unused")
-				String string = tickDate = graphList.size() > 0 ? (graphList.get(object.intValue())).getDate() : "";
-        		if (tickDate.length() == 10) {
-        			return tickDate.substring(5).replace('.', '/');
+				String string = tickDate = graphList.size() > 0 ? (graphList.get(object.intValue())).getDate() : "";	// ³¯Â¥¸¦ ±×·¡ÇÁ ¸®½ºÆ®ÀÇ ³¯Â¥·Î ÁöÁ¤
+        		if (tickDate.length() == 10) {	// ³¯Â¥ ±æÀÌ°¡ 10ÀÌ µÇ¸é
+        			return tickDate.substring(5).replace('.', '/');	// ³¯Â¥ÀÇ "."À» "/"·Î
         		}
-        		return tickDate;
+        		return tickDate;	// ³¯Â¥°ª ¹İÈ¯
         	}
         });
 
 
     };
     
-    input1.textProperty().addListener((observable, oldValue, newValue) -> {
+    input1.textProperty().addListener((observable, oldValue, newValue) -> {	// Listener Ãß°¡
     	if (!newValue.matches("\\d*") && newValue.charAt(newValue.length() - 1) != '.'){
-    		input1.setText(newValue.replaceAll("[^\\d]",""));
+    		input1.setText(newValue.replaceAll("[^\\d]",""));	// input1ÀÇ °ª ¼³Á¤ (È¯À² °è»êÇÒ °ª)
     	}
     });
-    box1.valueProperty().addListener(funcBox1Changed);
-    funcBox1Changed.changed(null, nationList.get(0), nationList.get(1));
+    box1.valueProperty().addListener(funcBox1Changed);	// box1(±¹°¡¸®½ºÆ®)ÀÇ °ª ¼³Á¤
+    funcBox1Changed.changed(null, nationList.get(0), nationList.get(1));	// ÃÊ±â°ªÀ» ÇÑ±¹, ¹Ì±¹À¸·Î ¼³Á¤ÇÏ¿© ´Ş·¯ È¯À² Â÷Æ®¸¦ È£Ãâ
     
 
     
@@ -261,30 +261,30 @@ public class MainController {
     
 	
   
-  public void getData() {
+  public void getData() {		// È¯À² °è»ê ¸Ş¼Òµå
 	  
 	  try {
 	  
-		  List<CashVO> list = parser.getCashData();
-		  NationVO value = box1.getValue();
-		  NationVO value2 = box2.getValue();
+		  List<CashVO> list = parser.getCashData();	// CashVOÀÇ ¸®½ºÆ®¸¦ parser¸¦ ÀÌ¿ëÇÏ¿© ÀÚ¸¥´Ù
+		  NationVO value = box1.getValue();		// box1ÀÇ °ª ¼±¾ğ
+		  NationVO value2 = box2.getValue();	// box2ÀÇ °ª ¼±¾ğ
 		  
-		  if (value == null || value2 == null || input1.getCharacters().length() == 0) {
+		  if (value == null || value2 == null || input1.getCharacters().length() == 0) {	// ºñ¾îÀÖ´Â Ä­ÀÌ Á¸ÀçÇßÀ»¶§
 			  Alert alert = new Alert(AlertType.WARNING);
-			  alert.setTitle("WARNING");
+			  alert.setTitle("WARNING");			// °æ°íÃ¢ Ãâ·Â
 			  alert.setHeaderText("ºñ¾îÀÖ´Â ÀÔ·ÂÄ­ÀÌ ÀÖ½À´Ï´Ù.");
 			  alert.setContentText("´Ù½Ã ÇÑ¹ø È®ÀÎÇØÁÖ¼¼¿ä.");
 			  alert.showAndWait();
 		  } else {
-			  List<String> nationNames = Arrays.asList(new String[] {value.getName(), value2.getName()});
-			  double[] dblsBias = new double[] {1.0,1.0};
-			  for (CashVO data : list) {
-				  nationNames.forEach(nationName ->{
-					  String dataName = data.getName().substring(0, nationName.length());
-					  if (dataName.equals(nationName)) {
-						  int idx = nationNames.indexOf(nationName);
-						  dblsBias[idx] = Double.parseDouble(data.getBias().replaceAll(",", ""));
-						  if (nationName.equals("ÀÏº»")) {
+			  List<String> nationNames = Arrays.asList(new String[] {value.getName(), value2.getName()});	// ÀÔ·Â¹ŞÀº °ªÀ» ÀúÀåÇÏ´Â ¸®½ºÆ® ¼±¾ğ
+			  double[] dblsBias = new double[] {1.0,1.0};		// ¸Å¸Å±âÁØÀ²À» ±âÁØÀ¸·Î °è»êÇÒ bias ¼±¾ğ
+			  for (CashVO data : list) {						// CashVO¸¦ ¹İº¹ 
+				  nationNames.forEach(nationName ->{			// ÀÔ·Â¹ŞÀº °ªÀ» ÀúÀåÇÑ ¸®½ºÆ®¸¦ ¹İº¹
+					  String dataName = data.getName().substring(0, nationName.length());	// ±¹°¡ ÀÌ¸§À» ¼±¾ğÇÏ¿© ÄŞº¸¹Ú½º¿¡¼­ ÁöÁ¤ÇÑ °ªÀ» ÃßÃâ
+					  if (dataName.equals(nationName)) {		// ¹İº¹¹®À» µ¹·Á ÀÏÄ¡ÇÏ´Â ±¹°¡°¡ Á¸ÀçÇÑ´Ù¸é
+						  int idx = nationNames.indexOf(nationName);	// ÀÎµ¦½º ÁöÁ¤
+						  dblsBias[idx] = Double.parseDouble(data.getBias().replaceAll(",", ""));	// bias°ªÀ» ÆÄ½ÌÈÄ ÀúÀå
+						  if (nationName.equals("ÀÏº»")) {	// ÀÏº»Àº 1/10ÀÌ´Ï µû·Î ÁöÁ¤ÇÔ (bias°¡ Á¸ÀçÇÏÁö ¾ÊÀ½)
 							  int n = idx;
 							  dblsBias[n] = dblsBias[n] / 100.0;
 						  }
@@ -292,11 +292,11 @@ public class MainController {
 					  }
 				  });
 			  }
-			  int inputValue1= Integer.parseInt(input1.getText());
-			  double krMoney = inputValue1 * dblsBias[0];
-			  input2.setText(String.format("%.2f", new Object[] { Double.valueOf(krMoney / dblsBias[1]) }));
+			  int inputValue1= Integer.parseInt(input1.getText());	// ÀÔ·Â¹ŞÀº °ªÀ» ÀúÀåÇÏ´Â int º¯¼ö ÀúÀå
+			  double krMoney = inputValue1 * dblsBias[0];	// bias¸¦ ÀúÀåÇÑ ¹è¿­ÀÇ Ã¹¹øÂ° °ª°ú ÀÔ·Â¹ŞÀº °ªÀ» °öÇÏ¿© ÀúÀå
+			  input2.setText(String.format("%.2f", new Object[] { Double.valueOf(krMoney / dblsBias[1]) })); // µÎ¹øÂ° ¹Ú½º¿¡ È¯À²À» °è»êÇÑ °ªÀ» ³ëÃâ½ÃÅ´
 			  
-			  for (int i = 0; i < nationList.size(); i++) {
+			  for (int i = 0; i < nationList.size(); i++) {		// È¯À²À» °è»êÇÒ ³ª¶óÀÇ ÅëÈ­±âÈ£¸¦ Label2¿¡ ³ëÃâ
           		if (box2.getValue().toString().equals(nationList.get(i).toString())) {
           			Label2.setText(codeList.get(i).toString());
           		} 
