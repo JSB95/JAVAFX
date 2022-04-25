@@ -3,7 +3,7 @@ package controller.board;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.mainpage.Mainpage;
+import controller.main.Mainpage;
 import dao.BoardDao;
 import dto.Board;
 import javafx.collections.ObservableList;
@@ -86,7 +86,7 @@ public class Boardcon implements Initializable{
 
     @FXML
     void accwrite(ActionEvent event) {
-    	Mainpage.instance.loadmainmenu("/view/board/board_write.fxml");
+    	Mainpage.instance.loadpage("/view/board/board_write.fxml");
     }
 
     @FXML
@@ -156,7 +156,7 @@ public class Boardcon implements Initializable{
     	if(boards[0].getBimgurl()!=null) imghotphoto1.setImage(new Image(boards[0].getBimgurl()));
     	panehot1.setOnMouseClicked( e -> {
     		boardinstance = boards[0];
-    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_read.fxml");
     	});
     	
     	lblhottitle2.setText(boards[1].getBtitle());
@@ -164,7 +164,7 @@ public class Boardcon implements Initializable{
     	if(boards[1].getBimgurl()!=null) imghotphoto2.setImage(new Image(boards[1].getBimgurl()));
     	panehot2.setOnMouseClicked( e -> {
     		boardinstance = boards[1];
-    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_read.fxml");
     	});
     	
     	setboardlist(list);
@@ -178,7 +178,7 @@ public class Boardcon implements Initializable{
     			// 2-2) 있으면 3번으로 바로 넘어감.
     			
     		// 3. 클릭하면 화면 전환
-    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_read.fxml");
     	});
     	
     }

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import controller.mainpage.Mainpage;
+import controller.login.Login;
+import controller.main.Mainpage;
 import controller.webview.Gmaps;
 import controller.webview.Gmaps.Mapsearchfield;
 import dao.BoardDao;
@@ -73,9 +74,9 @@ public class Boardwrite implements Initializable{
     	if(result.get() == ButtonType.OK) {
     		System.out.println(calledforupdate);
     		if(calledforupdate) {	// 
-    			Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    			Mainpage.instance.loadpage("/view/board/board_read.fxml");
     		}else {
-    			Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+    			Mainpage.instance.loadpage("/view/board/board.fxml");
     		}
     	}else {
     		return;		// 사용자가 뒤로 가시겠습니까?? ->> 취소 버튼 눌렀을 때
@@ -161,7 +162,7 @@ public class Boardwrite implements Initializable{
         			}
         			if(file==null) pimage = Boardcon.boardinstance.getBimgurl();	// 사용자가 글 수정때 이미지를 변경하지 않았다면
         			
-        			board = new Board(Boardcon.boardinstance.getBnum(), 0, txttitle.getText(), txtcontent.getText(), 
+        			board = new Board(Boardcon.boardinstance.getBnum(), Login.member.getMnum(), txttitle.getText(), txtcontent.getText(), 
                 			blocation, bsnapshoturl, pimage, null, 0);
     				BoardDao.boardDao.update(board);
     				alert = new Alert(AlertType.INFORMATION);
@@ -169,7 +170,7 @@ public class Boardwrite implements Initializable{
             		alert.setHeaderText("글 수정이 완료되었습니다.");
             		
         		}else {
-	        		board = new Board(0, 0, txttitle.getText(), txtcontent.getText(), 
+	        		board = new Board(0, Login.member.getMnum() , txttitle.getText(), txtcontent.getText(), 
 	            			blocation, bsnapshoturl, pimage, null, 0);		
 	            		// 코드 병합할 때 로그인 한 사용자의 회원번호 따와야함.
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,7 +180,7 @@ public class Boardwrite implements Initializable{
 	        		alert.setHeaderText("글 게시가 완료되었습니다.");
         		}
         		alert.showAndWait();
-            	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+        		Mainpage.instance.loadpage("/view/board/board.fxml");
         		
     		}
     		    	}else {
@@ -197,7 +198,6 @@ public class Boardwrite implements Initializable{
 	    	pimage = file.toURI().toString();	// 여기에선 사용자의 위치가 저장됨. ->> 절대경로
 	    	Image image = new Image(pimage);	// 이미지 클래스 객체를 선언하면서 파일 경로를 넣어줌.
 	    	imgshow.setImage(image);	// 이미지 컨트롤에 이미지 객체를 설정해줌.
-//	    	txtimglocation.setText(pimage);
     	}else
     		return;
     }

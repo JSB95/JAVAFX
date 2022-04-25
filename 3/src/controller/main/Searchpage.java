@@ -92,6 +92,9 @@ public class Searchpage implements Initializable {
     }
     
     void searchtableshow() {
+    	try {
+			
+		
     	String departure = cbbstartplace.getValue();
     	String destination = cbbdestination.getValue();
     	ObservableList<Route> searchlist = FXCollections.observableArrayList();
@@ -128,6 +131,10 @@ public class Searchpage implements Initializable {
     	tc.setCellValueFactory(new PropertyValueFactory<>("rbaseprice"));
     	
     	searchtable.setItems(searchlist);
+    	
+    	} catch (Exception e) {System.out.println("searchtableshow : "+e);
+		}
     }
+    	
 	
 }

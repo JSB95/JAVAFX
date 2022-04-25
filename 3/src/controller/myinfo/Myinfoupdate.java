@@ -61,6 +61,7 @@ public class Myinfoupdate implements Initializable {
             		txtpassword.setText(null);
             		txtpasswordconfirm.setText(null);
             		alert.showAndWait();
+            		Main.instance.loadpage("/view/main/Mainpage.fxml");
             		
             		
         		}else {

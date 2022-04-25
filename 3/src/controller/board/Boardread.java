@@ -4,7 +4,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import controller.mainpage.Mainpage;
+import controller.login.Login;
+import controller.main.Mainpage;
 import dao.BoardDao;
 import dao.ReplyDao;
 import dto.Board;
@@ -73,7 +74,7 @@ public class Boardread implements Initializable{
 
     @FXML
     void accback(ActionEvent event) {
-    	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+    	Mainpage.instance.loadpage("/view/board/board.fxml");
     }
 
     @FXML
@@ -85,11 +86,12 @@ public class Boardread implements Initializable{
     		alert.showAndWait();
     	}else {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    		Reply reply = new Reply(0, board.getBnum(), 0, txtreply.getText(), "사용자아이디", null);		// 사용자 아이디 지우고 메모리에서 mid, mnum 따와야함.
+    		Reply reply = new Reply(0, board.getBnum(), Login.member.getMnum(), txtreply.getText(), Login.member.getMid(), null);		// 사용자 아이디 지우고 메모리에서 mid, mnum 따와야함.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////    		
     		ReplyDao.replyDao.replywrite(reply);
     		alert.setTitle("알림");
     		alert.setHeaderText("덧글을 게시했습니다.");
+    		txtreply.setText("");
     		alert.showAndWait();
     		initialize(null, null);
     	}
@@ -98,8 +100,7 @@ public class Boardread implements Initializable{
     @FXML
     void accdeletereply(ActionEvent event) {
     	
-//		if(로그인 한 사용자의 mnum ==  selectedreply.getMnum()) {
-    	if(0 ==  selectedreply.getMnum()) {
+    	if(Login.member.getMnum() ==  selectedreply.getMnum()) {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("확인");
 			alert.setHeaderText("덧글을 삭제하시겠습니까?");
@@ -131,7 +132,7 @@ public class Boardread implements Initializable{
     		alert.setTitle("완료");
     		alert.setHeaderText("글 삭제가 완료되었습니다.");
     		alert.showAndWait();
-        	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+    		Mainpage.instance.loadpage("/view/board/board.fxml");
 
     	}
     }
@@ -143,7 +144,7 @@ public class Boardread implements Initializable{
     	alert.setHeaderText("글을 수정하시겠습니까?");
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
-    		Mainpage.instance.loadmainmenu("/view/board/board_write.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_write.fxml");
     	}else return;
     	
     }
@@ -196,7 +197,7 @@ public class Boardread implements Initializable{
 	
     public void setreplylist(ObservableList<Reply> reply) {
     	TableColumn tc = tablereply.getColumns().get(0);
-    	tc.setCellValueFactory(new PropertyValueFactory<>("mnum"));	
+    	tc.setCellValueFactory(new PropertyValueFactory<>("replyid"));	
 //////////////////////////////////////////////////////////////////////////////////////////    	
     	tc = tablereply.getColumns().get(1);	// 테이블에서 두번째 열 가져오기
     	tc.setCellValueFactory( new PropertyValueFactory<>("replycontent"));		
@@ -223,7 +224,7 @@ public class Boardread implements Initializable{
 //		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
 //		alert.showAndWait();
 //		}
-//		reply = ReplyDao.replyDao.replylist(board.getBnum());
+		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.
 		
 		
@@ -234,7 +235,13 @@ public class Boardread implements Initializable{
     	
 		if(board.getBsnapshoturl()!=null) 	
 			imgsnaphot.setImage(new Image(board.getBsnapshoturl()));
-		
+		if(Login.member.getMnum()!=board.getMnum()) {
+			btndelete.setDisable(true);
+			btnupdate.setDisable(true);
+		}else {
+			btndelete.setDisable(false);
+			btnupdate.setDisable(false);
+		}
 		
 		
 		txtcontent.setEditable(false);
