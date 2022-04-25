@@ -6,7 +6,6 @@ public class MyinfoDao extends Dao {
 	
 	public static MyinfoDao myinfodao = new MyinfoDao();	// MypageDao를 메모리에 정적형태로 상주시킴
 
-<<<<<<< HEAD
 	public MyinfoDao() {}	// 빈 생성자, 필요없으면 나중에 지울것
 	
 	// 1. 내 정보 조회		// db에서 가져올 필요가 있으려나
@@ -28,9 +27,6 @@ public class MyinfoDao extends Dao {
 	}
 	
 	// 2. 회원 삭제
-=======
-	// 1. 회원 삭제
->>>>>>> parent of 0c620d7 (board.fxml)
 		// 회원 탈퇴시 사용
 	public void delete(int mnum) {
 		try {
@@ -41,11 +37,7 @@ public class MyinfoDao extends Dao {
 		} catch (Exception e) {System.out.println("MyinfoDao - delete exception : "+e);}
 	}
 	
-<<<<<<< HEAD
 	// 3. 회원 정보 업데이트
-=======
-	// 2. 회원 정보 업데이트
->>>>>>> parent of 0c620d7 (board.fxml)
 		// Myinfoupdate_accupdate
 	public void update(Member member) {
 		try {

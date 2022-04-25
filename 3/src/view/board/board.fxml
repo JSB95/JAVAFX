@@ -4,17 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<<<<<<< HEAD
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-=======
->>>>>>> parent of 0c620d7 (board.fxml)
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #e1e1f0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.board.Boardcon">
    <children>
       <Label layoutX="25.0" layoutY="29.0" prefHeight="47.0" prefWidth="331.0" text="이용 후기" textFill="#222842">
@@ -66,28 +62,6 @@
       <Button fx:id="btnsearch" layoutX="736.0" layoutY="24.0" mnemonicParsing="false" onAction="#accsearch" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="검색" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
-=======
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.board.Board">
-   <children>
-      <Label layoutX="85.0" layoutY="26.0" prefHeight="63.0" prefWidth="188.0" text="후기 게시판">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Label>
-      <Line endX="172.0" layoutX="143.0" layoutY="92.0" startX="-100.0" stroke="#0873ff" strokeWidth="5.0" />
-      <TableView fx:id="boardtable" layoutX="30.0" layoutY="186.0" prefHeight="610.0" prefWidth="941.0">
-        <columns>
-          <TableColumn prefWidth="68.0" text="번호" />
-          <TableColumn prefWidth="502.0" text="제목" />
-            <TableColumn prefWidth="109.0" text="작성자" />
-            <TableColumn minWidth="7.0" prefWidth="127.0" text="작성일" />
-            <TableColumn prefWidth="63.0" text="조회수" />
-        </columns>
-      </TableView>
-      <Button fx:id="btnwrite" layoutX="875.0" layoutY="119.0" mnemonicParsing="false" onAction="#accwrite" prefHeight="45.0" prefWidth="96.0" style="-fx-background-color: #0873ff;" text="글 작성" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
->>>>>>> parent of 0c620d7 (board.fxml)
          </font>
       </Button>
    </children>
