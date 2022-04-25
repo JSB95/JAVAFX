@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 132569e (Delete .gitignore)
 # Created by https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,eclipse
 
@@ -126,4 +129,8 @@ $RECYCLE.BIN/
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
+=======
+# End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
+>>>>>>> parent of 132569e (Delete .gitignore)
