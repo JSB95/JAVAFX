@@ -84,13 +84,13 @@ public class Boardread implements Initializable{
     		alert.setTitle("알림");
     		alert.setHeaderText("덧글 내용을 입력해 주세요.");
     		alert.showAndWait();
-    	}else if(Login.member.getMnum()==selectedreply.getMnum()){
+    	}else if(btnreply.getText().equals("수정")){
     		ReplyDao.replyDao.replymodify(selectedreply.getReplynum(), txtreply.getText());
     		alert.setTitle("알림");
     		alert.setHeaderText("덧글 내용을 수정했습니다.");
     		alert.showAndWait();
     		initialize(null, null);
-    	}else {
+    	}else if(btnreply.getText().equals("입력")){
     		Reply reply = new Reply(0, board.getBnum(), Login.member.getMnum(), txtreply.getText(), Login.member.getMid(), null);
     		ReplyDao.replyDao.replywrite(reply);
     		alert.setTitle("알림");
@@ -137,7 +137,6 @@ public class Boardread implements Initializable{
     		alert.setHeaderText("글 삭제가 완료되었습니다.");
     		alert.showAndWait();
     		Mainpage.instance.loadpage("/view/board/board.fxml");
-
     	}
     }
 
@@ -215,11 +214,23 @@ public class Boardread implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		if ( !(ReplyDao.replyDao.nullreplycheck( board.getBnum(), Login.member.getMnum() ) ) ) {
+		ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	
+		board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
+		Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid() , null);	// null리플(=플래그 역할) 작성하기 위해 객체화
+		ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
+		alert.showAndWait();
+		}
+		
 		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.
 		
 		lbltitle.setText(board.getBtitle());
 		txtcontent.setText(board.getBcontent());
+		
 		if(board.getBimgurl()!=null) 
 			imgshow.setImage(new Image(board.getBimgurl()));
     	
@@ -238,7 +249,17 @@ public class Boardread implements Initializable{
 		txtcontent.setEditable(false);
 		
 		tablereply.setOnMouseClicked( e -> {
-			if(tablereply.getItems().toString().equals("[]")) {
+			Boolean blankselectcheck = false;
+			String[] tmp=e.toString().split("',",2);
+			tmp=tmp[0].split("]'",2);
+			if(tmp[1]==null) blankselectcheck=false;	// 정상적으로 리플을 선택했을떄는 스플릿이 되지 않아서 tmp[1]에 null값이 을어감.
+			else if(tmp[1].equals("null")) blankselectcheck=true;	// 빈 칸을 선택했을때는 스플릿 후 tmp[1]에 "null"문자열이 저장됨. 
+			
+			if(tablereply.getItems().toString().equals("[]") || blankselectcheck) {
+				tablereply.getSelectionModel().clearSelection();
+				selectedreply=null;
+				btnreply.setText("입력");
+				btndeletereply.setVisible(false);
 				return;
 			}else{
 				selectedreply = tablereply.getSelectionModel().getSelectedItem();

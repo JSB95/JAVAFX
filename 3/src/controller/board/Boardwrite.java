@@ -163,7 +163,7 @@ public class Boardwrite implements Initializable{
         			if(file==null) pimage = Boardcon.boardinstance.getBimgurl();	// 사용자가 글 수정때 이미지를 변경하지 않았다면
         			
         			board = new Board(Boardcon.boardinstance.getBnum(), Login.member.getMnum(), txttitle.getText(), txtcontent.getText(), 
-                			blocation, bsnapshoturl, pimage, null, 0);
+                			blocation, bsnapshoturl, pimage, null, Login.member.getMid(), 0);
     				BoardDao.boardDao.update(board);
     				alert = new Alert(AlertType.INFORMATION);
             		alert.setTitle("완료");
@@ -171,7 +171,7 @@ public class Boardwrite implements Initializable{
             		
         		}else {
 	        		board = new Board(0, Login.member.getMnum() , txttitle.getText(), txtcontent.getText(), 
-	            			blocation, bsnapshoturl, pimage, null, 0);		
+	            			blocation, bsnapshoturl, pimage, null, Login.member.getMid(), 0);		
 	            		// 코드 병합할 때 로그인 한 사용자의 회원번호 따와야함.
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	        		BoardDao.boardDao.wrtite(board);
