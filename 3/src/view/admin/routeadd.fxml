@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.Routeadd">
    <children>
-      <Label fx:id="lblmenuname" layoutX="359.0" layoutY="87.0" prefHeight="36.0" prefWidth="213.0" text="항공일지 추가">
+      <Label fx:id="lblmenuname" layoutX="342.0" layoutY="89.0" prefHeight="36.0" prefWidth="317.0" text="항공일지 추가">
          <font>
             <Font size="30.0" />
          </font>
@@ -23,9 +23,9 @@
       <ComboBox fx:id="cbbaname" layoutX="124.0" layoutY="158.0" prefHeight="36.0" prefWidth="194.0" promptText="비행기 이름" />
       <TextField fx:id="txtyear" layoutX="124.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="연도" />
       <TextField fx:id="txtmonth" layoutX="255.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="월" />
-      <TextField fx:id="txtftime12" layoutX="384.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="일" />
-      <TextField fx:id="txtftime13" layoutX="529.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="시" />
-      <TextField fx:id="txtftime14" layoutX="660.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="분" />
+      <TextField fx:id="txtday" layoutX="384.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="일" />
+      <TextField fx:id="txthour" layoutX="529.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="시" />
+      <TextField fx:id="txtmin" layoutX="660.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="분" />
       <Label layoutX="126.0" layoutY="262.0" prefHeight="27.0" prefWidth="131.0" text="출발시간" />
       <Button fx:id="btnadd" layoutX="278.0" layoutY="353.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="추가" />
       <Button fx:id="btndelete" layoutX="278.0" layoutY="410.0" mnemonicParsing="false" onAction="#delete" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="삭제" />
