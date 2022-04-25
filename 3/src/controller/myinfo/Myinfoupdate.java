@@ -85,20 +85,26 @@ public class Myinfoupdate implements Initializable {
 		dialog.setHeaderText("Á¤¸» Å»ÅðÇÏ½Ã°Ú½À´Ï±î?");
 		dialog.setContentText("Å»ÅðÇÏ½Ã·Á¸é 'Å»Åð' ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä->");
 		Optional<String> result = dialog.showAndWait();
-		if(result.get().equals("Å»Åð")) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Å»Åð ¿Ï·á");
-			alert.setHeaderText("Å»ÅðÃ³¸®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
-			MyinfoDao.myinfodao.delete(Login.member.getMnum());		
-			alert.showAndWait();
-			Login.member=null;
-			Main.instance.loadpage("/view/login/login.fxml");
-		}else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("ºÒÀÏÄ¡");
-			alert.setHeaderText("Å»Åð ¹®ÀÚ¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
-			alert.showAndWait();
+		
+		System.out.println(result);
+		try {
+			if(result.get().equals("Å»Åð")) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Å»Åð ¿Ï·á");
+				alert.setHeaderText("Å»ÅðÃ³¸®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+				MyinfoDao.myinfodao.delete(Login.member.getMnum());		
+				alert.showAndWait();
+				Login.member=null;
+				Main.instance.loadpage("/view/login/login.fxml");
+			}else if(!(result.get().equals("Å»Åð"))){
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("ºÒÀÏÄ¡");
+				alert.setHeaderText("Å»Åð ¹®ÀÚ¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+				alert.showAndWait();
+			}
+		} catch (Exception e) {System.out.println("Myinfoupdate_TextInputDialog_exception : "+e+"result : "+result);
 		}
+		
 	}
 	
 	@Override
