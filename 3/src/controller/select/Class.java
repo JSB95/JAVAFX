@@ -4,8 +4,11 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
+import controller.mainpage.Mainpage;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 public class Class implements Initializable {
@@ -19,6 +22,13 @@ public class Class implements Initializable {
 		}
 
 	}
+    @FXML
+    private Button btnback;
+
+    @FXML
+    void back(ActionEvent event) {
+    	controller.main.Mainpage.instance.loadpage("/view/main/Searchpage.fxml");
+    }
 	
     @FXML
     void business(MouseEvent event) {

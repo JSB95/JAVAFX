@@ -1,7 +1,7 @@
 package controller.main;
 
 import java.net.URL;
-import java.text.ParseException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-import dao.AplaneDao;
 import dao.RouteDao;
 import dao.TimeDao;
 import dto.Route;
@@ -117,14 +116,16 @@ public class Searchpage implements Initializable {
     		calendar.setTime(date);
     		calendar.add(Calendar.MINUTE,m);
     		calendar.add(Calendar.HOUR,tm);
+    		
+    		DecimalFormat decimalFormat = new DecimalFormat("#,###¿ø");
+    		String price = decimalFormat.format(slist.get(i).getRbaseprice()); 
     		String etime = dateFormat.format(calendar.getTime());
-    		Route route = new Route(
-    				slist.get(i).getRnum(), 
+    		Route route = new Route(slist.get(i).getRnum(), 
         			slist.get(i).getAname(), 
         			cname, etime, 
         			slist.get(i).getRflightTime(), 
         			slist.get(i).getRdeparturedate(), 
-        			slist.get(i).getRbaseprice());
+        			price);
     		searchlist.add(route);
     	}
 
@@ -144,7 +145,7 @@ public class Searchpage implements Initializable {
     	tc.setCellValueFactory(new PropertyValueFactory<>("rflightTime"));
     	
     	tc = searchtable.getColumns().get(5);
-    	tc.setCellValueFactory(new PropertyValueFactory<>("rbaseprice"));
+    	tc.setCellValueFactory(new PropertyValueFactory<>("price"));
     	
     	searchtable.setItems(searchlist);
     	} catch (Exception e) {}
