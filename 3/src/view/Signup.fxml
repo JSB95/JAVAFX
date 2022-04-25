@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="580.0" layoutY="94.0" text="회원가입">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtid" layoutX="452.0" layoutY="158.0" onAction="#id" prefHeight="36.0" prefWidth="273.0" promptText="아이디" />
+      <TextField fx:id="txtname" layoutX="452.0" layoutY="336.0" onAction="#name" prefHeight="36.0" prefWidth="376.0" promptText="이름" />
+      <TextField fx:id="txtphone" layoutX="452.0" layoutY="394.0" onAction="#phone" prefHeight="36.0" prefWidth="273.0" promptText="전화번호" />
+      <TextField fx:id="txtcardname" layoutX="452.0" layoutY="455.0" onAction="#cardname" prefHeight="36.0" prefWidth="376.0" promptText="카트번호" />
+      <TextField fx:id="txtpassportnum" layoutX="452.0" layoutY="511.0" onAction="#passportnum" prefHeight="36.0" prefWidth="376.0" promptText="여권번호" />
+      <PasswordField fx:id="txtpassword" layoutX="452.0" layoutY="227.0" onAction="#password" prefHeight="36.0" prefWidth="376.0" promptText="비밀번호" />
+      <PasswordField fx:id="txtconfirmpw" layoutX="452.0" layoutY="275.0" onAction="#confirmpw" prefHeight="36.0" prefWidth="376.0" promptText="비밀번호 확인" />
+      <Button fx:id="btnidcheck" layoutX="744.0" layoutY="158.0" mnemonicParsing="false" onAction="#idcheck" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #02BE6E;" text="중복체크" />
+      <Button fx:id="btnphonecheck" layoutX="744.0" layoutY="394.0" mnemonicParsing="false" onAction="#phonecheck" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: #02BE6E;" text="중복체크" />
+      <Button fx:id="btnsignup" layoutX="452.0" layoutY="581.0" mnemonicParsing="false" onAction="#signup" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="회원가입" />
+   </children>
+</AnchorPane>
