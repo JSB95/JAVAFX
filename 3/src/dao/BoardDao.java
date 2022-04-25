@@ -12,7 +12,7 @@ public class BoardDao extends Dao{
 	// 1. 글쓰기 메서드
 	public boolean wrtite(Board board) {
 		try {
-			sql = "insert board(mnum, btitle, bcontent, blocation, bsnapshoturl, bimgurl) values(?, ?, ?, ?, ?, ?)";
+			sql = "insert board(mnum, btitle, bcontent, blocation, bsnapshoturl, bimgurl, mid) values(?, ?, ?, ?, ?, ?, ?)";
 			
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, board.getBnum());
@@ -21,6 +21,7 @@ public class BoardDao extends Dao{
 			ps.setString(4, board.getBlocation());
 			ps.setString(5, board.getBsnapshoturl());
 			ps.setString(6, board.getBimgurl());
+			ps.setString(7, board.getMid());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {System.out.println("BoardDao_wrtite_method_exception : "+e);}
@@ -39,7 +40,7 @@ public class BoardDao extends Dao{
 				rs = ps.executeQuery();
 				while(rs.next()) {	// 다음 레코드가 없을 때 까지 반복
 					Board board = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), 
-							rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
+							rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
 					boardlist.add(board);
 				}
 			}else {
@@ -48,7 +49,7 @@ public class BoardDao extends Dao{
 				rs = ps.executeQuery();
 				while(rs.next()) {	// 다음 레코드가 없을 때 까지 반복
 					Board board = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), 
-							rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
+							rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
 					boardlist.add(board);
 				}
 			}
@@ -82,10 +83,8 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	
-	// 5. 글 찾기 메서드
+	// 5. 글 찾기 메서드	-> 전체 글 찾기 메서드에 인수로 던져주면 찾아줌
 	
-	
-	// 7. 핫게시글 2개 뽑아내기 메서드
 	
 	
 	
