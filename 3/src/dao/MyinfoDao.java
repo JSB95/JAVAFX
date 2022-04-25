@@ -11,15 +11,15 @@ public class MyinfoDao extends Dao {
 	// 1. 내 정보 조회		// db에서 가져올 필요가 있으려나
 		// 마이페이지 - 회원정보 조회(내정보 보기) 페이지
 		// 또 있나??
-	public Member myinfopage (int mnum) {
+	public Member myinfopage (String mid) {
 		try {
-			String sql = "select * from member where mnum=?";
+			String sql = "select * from member where mid=?";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, mnum);
+			ps.setString(1, mid);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
 				return member;
 			}
 		} catch (Exception e) {System.out.println("MyinfoDao - myinfopage exception : "+e);}
