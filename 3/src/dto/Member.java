@@ -1,36 +1,48 @@
 package dto;
 
-/*
- * 
- */
-
 public class Member {
 
 	private int mnum;		// pk
 	private String mid;
 	private String mpassword;
-	private String mname;
 	private String mphone;
-	private String mpassport;
 	private String mcard;
+	private String mname;
+	private String mpassport;
 	private int mpoint;
+	private String msince;
 	
 	public Member() {}
 
 	
-
-	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String mpassport, String mcard,
-			int mpoint) {
+	
+	public Member(int mnum, String mid, String mpassword, String mphone, String mcard, String mname, String mpassport,
+		String msince) {
+		super();
 		this.mnum = mnum;
 		this.mid = mid;
 		this.mpassword = mpassword;
-		this.mname = mname;
 		this.mphone = mphone;
-		this.mpassport = mpassport;
 		this.mcard = mcard;
-		this.mpoint = mpoint;
+		this.mname = mname;
+		this.mpassport = mpassport;
+		this.msince = msince;
 	}
 
+
+	public Member(int mnum, String mid, String mpassword, String mphone, String mcard, String mname, String mpassport,
+			int mpoint, String msince) {
+		super();
+		this.mnum = mnum;
+		this.mid = mid;
+		this.mpassword = mpassword;
+		this.mphone = mphone;
+		this.mcard = mcard;
+		this.mname = mname;
+		this.mpassport = mpassport;
+		this.mpoint = mpoint;
+		this.msince = msince;
+	}
 
 
 	public int getMnum() {
@@ -96,5 +108,14 @@ public class Member {
 	public void setMpoint(int mpoint) {
 		this.mpoint = mpoint;
 	}
+
+	public String getMsince() {
+		return msince;
+	}
+
+	public void setMsince(String msince) {
+		this.msince = msince;
+	}
+	
 	
 }

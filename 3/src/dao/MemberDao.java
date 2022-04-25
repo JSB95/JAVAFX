@@ -62,8 +62,8 @@ public class MemberDao extends Dao {
 			ps.setInt(1, mnum);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(6), 
-						rs.getString(4), rs.getString(7), rs.getString(5),rs.getString(8),rs.getInt(9));
+				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+						rs.getString(5), rs.getString(6), rs.getString(7),rs.getInt(8),rs.getString(9));
 				return member;
 			}
 		} catch(Exception e) { System.out.println("회원정보 호출 오류 : "+ e); }
@@ -78,8 +78,8 @@ public class MemberDao extends Dao {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(6), 
-						rs.getString(4), rs.getString(7), rs.getString(5),rs.getString(8),rs.getInt(9));
+				Member member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+						rs.getString(5), rs.getString(6), rs.getString(7),rs.getInt(8),rs.getString(9));
 				return member;
 			}
 		} catch(Exception e) { System.out.println("회원정보 호출 오류 : "+ e); }

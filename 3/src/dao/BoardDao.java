@@ -1,6 +1,7 @@
 package dao;
 
 import dto.Board;
+import dto.Reply;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -80,6 +81,33 @@ public class BoardDao extends Dao{
 			return true;
 		} catch (Exception e) {System.out.println("BoardDao_update_method_exception : "+e);}
 		return false;
+	}
+	
+	// 6. 해당 게시물의 댓글들 호출 메소드 
+	public ObservableList<Reply> replylist( int bnum ){
+
+		ObservableList<Reply> replylist = FXCollections.observableArrayList();
+
+		try {
+			String sql = "select * from reply where bnum =? order by rnum desc";
+			ps = con.prepareStatement(sql);
+			ps.setInt( 1 , bnum);
+			rs = ps.executeQuery();
+
+			while( rs.next() ) {
+				Reply reply = new Reply(
+						rs.getInt(1), 
+						rs.getInt(2), 
+						rs.getString(3), 
+						rs.getString(4), 
+						rs.getString(5));
+				replylist.add(reply);
+			}
+
+			return replylist;
+
+		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
+			return null;
 	}
 	
 	// 5. 글 찾기 메서드

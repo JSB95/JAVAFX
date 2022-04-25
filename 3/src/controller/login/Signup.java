@@ -200,7 +200,7 @@ public class Signup implements Initializable {
 //    		return;
 //    	}
     	///////// 여권번호 유효성 체크 추후 추가 /////////////
-    	Member member = new Member(0, id, password, name, phone, passport, card, since, 0);
+    	Member member = new Member(0, id, password, phone, card, name, passport, 0, since);
     	boolean result = MemberDao.memberDao.signup(member);
     	if(result) {
     		alert.setHeaderText("회원가입이 완료되었습니다.");

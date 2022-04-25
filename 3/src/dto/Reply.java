@@ -8,7 +8,7 @@ public class Reply {
 	private String replyid;
 	private String replydate;
 	
-	public Reply(int replynum, int bnum, int mnum, String replycontent, String replyid, String replydate) {
+	public Reply( int bnum, int replynum, int mnum, String replycontent, String replyid, String replydate) {
 		this.replynum = replynum;
 		this.bnum = bnum;
 		this.mnum = mnum;
@@ -16,6 +16,15 @@ public class Reply {
 		this.replyid = replyid;
 		this.replydate = replydate;
 	}
+	
+	public Reply(  int replynum, int mnum, String replycontent, String replyid, String replydate) {
+		this.replynum = replynum;
+		this.mnum = mnum;
+		this.replycontent = replycontent;
+		this.replyid = replyid;
+		this.replydate = replydate;
+	}
+	
 
 	public int getReplynum() {
 		return replynum;
