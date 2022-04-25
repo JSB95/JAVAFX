@@ -106,7 +106,7 @@ public class Boardcon implements Initializable{
     	tc.setCellValueFactory( new PropertyValueFactory<>("btitle"));		
 
     	tc = boardtable.getColumns().get(2);	// 테이블에서 세번째 열 가져오기
-    	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));
+    	tc.setCellValueFactory( new PropertyValueFactory<>("mid"));
 			// fk로 테이블 들어가서 id 따와야함. 일단은 mnum 출력하는 걸로. ->> 나중에 수정해야 함.
 //////////////////////////////////////////////////////////////////////////////////////////
     	tc = boardtable.getColumns().get(3);	// 테이블에서 네번째 열 가져오기
@@ -125,11 +125,10 @@ public class Boardcon implements Initializable{
     	System.out.println("Boardcon_initialized");
     	ObservableList<Board> list = BoardDao.boardDao.list(null);
     	
-    	
     	// 핫게시글 셋팅용 반복문. 정렬 기준 : 조회수 높은 순
     	Board[] boards = new Board[2];
     	for(int i = 0; i<2; i++) {
-    		boards[i] = new Board(0, 0, null, null, null, null, null, null, 0);
+    		boards[i] = new Board(0, 0, null, null, null, null, null, null, null, 0);
     	}
     	
     	for(int i=0; i<list.size(); i++) {
