@@ -21,7 +21,7 @@
         <columns>
           <TableColumn prefWidth="126.0" text="번호" />
           <TableColumn prefWidth="584.0" text="제목" />
-            <TableColumn minWidth="0.0" prefWidth="102.0" text="작성자" />
+            <TableColumn minWidth="0.0" prefWidth="102.0" text="작성자 ID" />
             <TableColumn prefWidth="77.0" text="작성일" />
             <TableColumn minWidth="0.0" prefWidth="60.0" text="조회수" />
         </columns>
