@@ -6,37 +6,50 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.Routeadd">
    <children>
-      <Label fx:id="lblmenuname" layoutX="359.0" layoutY="87.0" prefHeight="36.0" prefWidth="343.0" text="항공일지 추가">
+      <ImageView fitHeight="873.0" fitWidth="1280.0" layoutX="-274.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/love-3061483_1280.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblmenuname" alignment="CENTER" layoutX="369.0" layoutY="88.0" prefHeight="47.0" prefWidth="267.0" text="항공일지 추가" textFill="#f8f8f8">
          <font>
-            <Font size="30.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="txtstart" layoutX="365.0" layoutY="158.0" prefHeight="36.0" prefWidth="194.0" promptText="출발지" />
-      <TextField fx:id="txtend" layoutX="605.0" layoutY="158.0" prefHeight="36.0" prefWidth="194.0" promptText="도착지" />
-      <TextField fx:id="txtftime" layoutX="124.0" layoutY="214.0" prefHeight="36.0" prefWidth="194.0" promptText="비행시간" />
-      <TextField fx:id="txtprice" layoutX="365.0" layoutY="214.0" prefHeight="36.0" prefWidth="194.0" promptText="이코노미 가격" />
-      <ComboBox fx:id="cbbaname" layoutX="124.0" layoutY="158.0" prefHeight="36.0" prefWidth="194.0" promptText="비행기 이름" />
-      <TextField fx:id="txtyear" layoutX="124.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="연도" />
-      <TextField fx:id="txtmonth" layoutX="255.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="월" />
-      <TextField fx:id="txtftime12" layoutX="384.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="일" />
-      <TextField fx:id="txtftime13" layoutX="529.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="시" />
-      <TextField fx:id="txtftime14" layoutX="660.0" layoutY="296.0" prefHeight="36.0" prefWidth="104.0" promptText="분" />
-      <Label layoutX="126.0" layoutY="262.0" prefHeight="27.0" prefWidth="131.0" text="출발시간" />
-      <Button fx:id="btnadd" layoutX="278.0" layoutY="353.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="추가" />
-      <Button fx:id="btndelete" layoutX="278.0" layoutY="410.0" mnemonicParsing="false" onAction="#delete" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="삭제" />
-      <TableView fx:id="rtable" layoutX="126.0" layoutY="471.0" prefHeight="285.0" prefWidth="779.0">
+      <TextField fx:id="txtstart" layoutX="381.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="출발지" />
+      <TextField fx:id="txtend" layoutX="675.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="도착지" />
+      <TextField fx:id="txtftime" layoutX="86.0" layoutY="240.0" prefHeight="47.0" prefWidth="243.0" promptText="비행시간" />
+      <TextField fx:id="txtprice" layoutX="380.0" layoutY="240.0" prefHeight="47.0" prefWidth="243.0" promptText="이코노미 가격" />
+      <ComboBox fx:id="cbbaname" layoutX="86.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="비행기 이름" />
+      <TextField fx:id="txtyear" layoutX="86.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="연도" />
+      <TextField fx:id="txtmonth" layoutX="257.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="월" />
+      <TextField fx:id="txtftime12" layoutX="432.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="일" />
+      <TextField fx:id="txtftime13" layoutX="605.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="시" />
+      <TextField fx:id="txtftime14" layoutX="787.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="분" />
+      <Label layoutX="86.0" layoutY="299.0" prefHeight="27.0" prefWidth="131.0" text="출발시간" />
+      <Button fx:id="btnadd" layoutX="86.0" layoutY="410.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="추가" textFill="#f8f8f8">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="btndelete" layoutX="551.0" layoutY="410.0" mnemonicParsing="false" onAction="#delete" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="삭제" textFill="#f8f8f8">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TableView fx:id="rtable" layoutX="47.0" layoutY="476.0" prefHeight="312.0" prefWidth="909.0">
         <columns>
-          <TableColumn prefWidth="96.0" text="비행기 이름" />
-          <TableColumn prefWidth="77.0" text="출발지" />
-            <TableColumn prefWidth="92.0" text="도착지" />
-            <TableColumn prefWidth="123.0" text="비행시간" />
-            <TableColumn prefWidth="160.0" text="이코노미 가격" />
-            <TableColumn prefWidth="230.0" text="출발 시간" />
+          <TableColumn prefWidth="165.0" text="비행기 이름" />
+          <TableColumn prefWidth="113.0" text="출발지" />
+            <TableColumn prefWidth="107.0" text="도착지" />
+            <TableColumn prefWidth="209.0" text="비행시간" />
+            <TableColumn prefWidth="175.0" text="이코노미 가격" />
+            <TableColumn prefWidth="139.0" text="출발 시간" />
         </columns>
       </TableView>
    </children>
