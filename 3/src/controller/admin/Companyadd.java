@@ -85,32 +85,9 @@ public class Companyadd implements Initializable {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	String cname = txtcname.getText();
     	String cphone = txtcphone.getText();
-    	double fratio;
-    	if(txtfratio.getText().isEmpty()) {
-    		fratio=0;
-    	}else {
-    		fratio = Double.parseDouble(txtfratio.getText());
-    	}
-    	double bratio;
-    	if(txtbratio.getText().isEmpty()) {
-    		bratio=0;
-    	}else {
-    		bratio = Double.parseDouble(txtbratio.getText());
-    	}
+    	double fratio = Double.parseDouble(txtfratio.getText());
+    	double bratio = Double.parseDouble(txtbratio.getText());
     	
-    	if(txtcname.getText().length()<1 || txtcphone.getText().length()<1 || fratio==0 || bratio==0) {
-    		alert.setHeaderText("입력하지 않은 값이 있습니다.");
-    		alert.showAndWait();
-    		return;
-    	}
-    	ObservableList<Company> list = AplaneDao.aplaneDao.getcompany();
-    	for(Company temp : list) {
-    		if(temp.getCname().equals(cname)) {
-    			alert.setHeaderText("동일한 항공사명이 존재합니다.");
-        		alert.showAndWait();
-        		return;
-    		}
-    	}
     	if(Admin_main.instance.update) {
     		int cnum = company.getCnum();
     		Company company = new Company(cnum, cname, cphone, fratio, bratio);

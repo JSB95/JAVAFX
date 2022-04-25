@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 import dao.AplaneDao;
 import dao.RouteDao;
@@ -109,48 +108,13 @@ public class Airplaneadd implements Initializable {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	String cname = cbbcname.getValue();
     	String aname = txtaname.getText();
-    	int fcount;
-    	if(txtfseatcount.getText().isEmpty()) {
-    		fcount=0;
-    	}else {
-    		fcount = Integer.parseInt(txtfseatcount.getText());
-    	}
-    	int bcount;
-    	if(txtbseatcount.getText().isEmpty()) {
-    		bcount=0;
-    	}else {
-    		bcount = Integer.parseInt(txtbseatcount.getText());
-    	}
-    	int ecount;
-    	if(txteseatcount.getText().isEmpty()) {
-    		ecount=0;
-    	}else {
-    		ecount = Integer.parseInt(txteseatcount.getText());
-    	}
+    	int fcount = Integer.parseInt(txtfseatcount.getText());
+    	int bcount = Integer.parseInt(txtbseatcount.getText());
+    	int ecount = Integer.parseInt(txteseatcount.getText());
     	int cnum = AplaneDao.aplaneDao.getcnum(cname);
-    	ObservableList<Aplane> aplanes = AplaneDao.aplaneDao.getairplane();
-    	
-    	
-    	if(txtaname.getText().length()<1 || fcount==0 || bcount==0 || ecount==0) {
-        		alert.setHeaderText("입력하지 않은 값이 있습니다.");
-        		alert.showAndWait();
-        		return;
-        }
+    	System.out.println(cnum+"\t"+aname+"\t"+fcount+"\t"+bcount+"\t"+ecount);
     	if(cnum==0) {
     		alert.setHeaderText("일치하는 항공사명이 없습니다.");
-    		alert.showAndWait();
-    		return;
-    	}
-    	for(Aplane temp : aplanes) {
-    		if(temp.getAname().equals(aname)) {
-    			alert.setHeaderText("동일한 비행기명이 있습니다.");
-        		alert.showAndWait();
-        		return;
-    		}
-    	}
-    	String pattern2 = "^[0-9]*$";
-    	if(!(Pattern.matches(pattern2, txtbseatcount.getText()) || Pattern.matches(pattern2, txteseatcount.getText()) || Pattern.matches(pattern2, txtfseatcount.getText()) )) {
-    		alert.setHeaderText("좌석수는 숫자만 입력가능합니다.");
     		alert.showAndWait();
     		return;
     	}
