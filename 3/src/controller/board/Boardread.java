@@ -200,6 +200,7 @@ public class Boardread implements Initializable{
     }
 	
     public void setreplylist(ObservableList<Reply> reply) {
+    		
     	TableColumn tc = tablereply.getColumns().get(0);
     	tc.setCellValueFactory(new PropertyValueFactory<>("replyid"));	
 //////////////////////////////////////////////////////////////////////////////////////////    	
@@ -214,23 +215,8 @@ public class Boardread implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
-		// 리플 테이블에 오늘 날짜로 로그인 한 사용자의 내용이 null인 리플이 없으면 조회수 올리고, 있으면 아무것도 안하는 코드.
-			// 대부분 수정했음. 멤버쪽만 연결해주면 됨.
-    	if ( !(ReplyDao.replyDao.nullreplycheck( board.getBnum(), Login.member.getMnum() ) ) ) {
-			// NOT 게이트를 붙였음으로 반대로 해석할것 ->  리플중에 내용이 null AND 작성자ID=사용자 AND 작성날짜=curdate() => if문 미실행
-		ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	// DB에 조회수 1 올려주기
-		board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
-		Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid() , null);	// null리플(=플래그 역할) 작성하기 위해 객체화
-		ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
-		alert.showAndWait();
-		}
 		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.
-		
 		
 		lbltitle.setText(board.getBtitle());
 		txtcontent.setText(board.getBcontent());
@@ -239,7 +225,8 @@ public class Boardread implements Initializable{
     	
 		if(board.getBsnapshoturl()!=null) 	
 			imgsnaphot.setImage(new Image(board.getBsnapshoturl()));
-		if(Login.member.getMnum()!=board.getMnum()) {
+		
+		if(Login.member.getMnum()!=board.getMnum()) {	// 글쓴이의 mnum과 로그인한 사람의 mnum이 같지 않으면 글 수정, 삭제버튼 숨김처리
 			btndelete.setVisible(false);
 			btnupdate.setVisible(false);
 		}else {
@@ -247,31 +234,19 @@ public class Boardread implements Initializable{
 			btnupdate.setVisible(true);
 		}
 		btndeletereply.setVisible(false);
-		
-		
+		btnreply.setText("입력");
 		txtcontent.setEditable(false);
 		
 		tablereply.setOnMouseClicked( e -> {
-			System.out.println(e);
-			
 			if(tablereply.getItems().toString().equals("[]")) {
-				System.out.println("1234");
 				return;
-			}
-			
+			}else{
 				selectedreply = tablereply.getSelectionModel().getSelectedItem();
-				if(Login.member.getMnum()==selectedreply.getMnum()) {
+				if(selectedreply!=null && Login.member.getMnum()==selectedreply.getMnum()) {
 					btndeletereply.setVisible(true);
 					btnreply.setText("수정");
-				}else {
-					btndeletereply.setVisible(false);
-					btnreply.setText("입력");
 				}
-
+			}
 		});
-		
-//////////////////////////////////////////////////////////////////////////////////////////		
-//		로그인한 사용자의 mnum과 글의 mnum이 같을때만 글수정 버튼, 글삭제, 리플 수정, 리플 삭제 활성화. 코드 작성해야함.
-//////////////////////////////////////////////////////////////////////////////////////////			
 	}
 }
