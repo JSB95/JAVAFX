@@ -13,10 +13,10 @@
    <children>
       <ImageView fitHeight="820.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/KakaoTalk_20220415_171847371.jpg" />
+            <Image url="/img/KakaoTalk_20220415_171847371.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="640.0" layoutY="89.0" text="사이트 이름">
+      <Label layoutX="742.0" layoutY="149.0" text="Ezen Airplane " textFill="#44b3b8">
          <font>
             <Font name="Sitka Heading Bold" size="56.0" />
          </font>
@@ -28,12 +28,12 @@
             <Font name="Sitka Small Bold" size="25.0" />
          </font>
       </Button>
-      <Label fx:id="lblfindid" onMouseClicked="#findid" layoutX="728.0" layoutY="579.0" text="Find ID" textFill="WHITE">
+      <Label fx:id="lblfindid" layoutX="728.0" layoutY="579.0" onMouseClicked="#findid" text="Find ID" textFill="WHITE">
          <font>
             <Font name="Sitka Small Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblfindpassword" onMouseClicked="#findpw" layoutX="859.0" layoutY="579.0" text="Find Password" textFill="WHITE">
+      <Label fx:id="lblfindpassword" layoutX="859.0" layoutY="579.0" onMouseClicked="#findpw" text="Find Password" textFill="WHITE">
          <font>
             <Font name="Sitka Small Bold" size="13.0" />
          </font>
