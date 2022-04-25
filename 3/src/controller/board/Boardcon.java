@@ -114,8 +114,8 @@ public class Boardcon implements Initializable{
     	
     	tc = boardtable.getColumns().get(4);	// 테이블에서 다섯번째 열 가져오기
     	tc.setCellValueFactory( new PropertyValueFactory<>("bview"));
-    	
-    	boardtable.setItems(list);
+    	if(list!=null)
+    		boardtable.setItems(list);
     }
     
     
@@ -134,22 +134,14 @@ public class Boardcon implements Initializable{
     	
     	for(int i=0; i<list.size(); i++) {
     		for(int j=i+1; j<list.size(); j++) {
-    			System.out.println("i값 : "+i);
-    			System.out.println("j값 : "+j);
-    			System.out.println("--1--");
     			if(list.get(i).getBview()<list.get(j).getBview()) {
-        			System.out.println("--2--");
-
-    				if(boards[0].getBview()<list.get(j).getBview()) boards[0] = list.get(j);
-        			System.out.println("--3--");
-
-    				if(boards[1].getBview()<list.get(i).getBview()) boards[1] = list.get(i);
-        			System.out.println("--4--");
-
+    				if(boards[0].getBview()<list.get(j).getBview()) 
+    					boards[0] = list.get(j);
+    				if(boards[1].getBview()<list.get(i).getBview()) 
+    					boards[1] = list.get(i);
     			}
     		}
     	}
-    	
     	
     	lblhottitle1.setText(boards[0].getBtitle());
     	lblhotviewcount1.setText("조회수 : "+boards[0].getBview());

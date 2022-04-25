@@ -8,8 +8,20 @@ public class Route {
 	private String rflightTime;		// 비행시간
 	private String rdeparturedate;	// 비행 출발 날짜
 	private int rbaseprice;			// 이코노미 가격
+	private String price;
 	
 	public Route() {}
+	
+	public Route(int rnum, String aname, String rdeparture, String rdestination, String rflightTime,
+			String rdeparturedate, String price) {
+		this.rnum = rnum;
+		this.aname = aname;
+		this.rdeparture = rdeparture;
+		this.rdestination = rdestination;
+		this.rflightTime = rflightTime;
+		this.rdeparturedate = rdeparturedate;
+		this.price = price;
+	}
 
 	public Route(int rnum, String aname, String rdeparture, String rdestination, String rflightTime,
 			String rdeparturedate, int rbaseprice) {
@@ -21,8 +33,6 @@ public class Route {
 		this.rdeparturedate = rdeparturedate;
 		this.rbaseprice = rbaseprice;
 	}
-
-
 
 	public int getRnum() {
 		return rnum;
@@ -80,9 +90,4 @@ public class Route {
 		this.rbaseprice = rbaseprice;
 	}
 
-
-	
-	
-	
-	
 }

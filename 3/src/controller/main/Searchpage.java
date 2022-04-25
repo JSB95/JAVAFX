@@ -1,12 +1,16 @@
 package controller.main;
 
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-import dao.AplaneDao;
 import dao.RouteDao;
+import dao.TimeDao;
 import dto.Route;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -93,22 +97,35 @@ public class Searchpage implements Initializable {
     
     void searchtableshow() {
     	try {
-			
-		
     	String departure = cbbstartplace.getValue();
     	String destination = cbbdestination.getValue();
     	ObservableList<Route> searchlist = FXCollections.observableArrayList();
     	ObservableList<Route> slist = RouteDao.routeDao.getroute(departure, destination);
     	for(int i=0; i<slist.size(); i++) {
     		String cname = RouteDao.routeDao.getcname(slist.get(i).getAname());
-    		Route route = new Route(
-    				slist.get(i).getRnum(), 
+    		int sgmt = TimeDao.timeDao.gettime(slist.get(i).getRdeparture());
+    		int egmt = TimeDao.timeDao.gettime(slist.get(i).getRdestination());
+    		int h = Integer.parseInt(slist.get(i).getRflightTime().split(":")[0]);
+    		int m = Integer.parseInt(slist.get(i).getRflightTime().split(":")[1]);
+    		int tm = egmt-sgmt+h;
+    		Calendar calendar = Calendar.getInstance();
+    		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    		Date date;
+			date = dateFormat.parse(slist.get(i).getRdeparturedate());
+			
+    		calendar.setTime(date);
+    		calendar.add(Calendar.MINUTE,m);
+    		calendar.add(Calendar.HOUR,tm);
+    		
+    		DecimalFormat decimalFormat = new DecimalFormat("#,###¿ø");
+    		String price = decimalFormat.format(slist.get(i).getRbaseprice()); 
+    		String etime = dateFormat.format(calendar.getTime());
+    		Route route = new Route(slist.get(i).getRnum(), 
         			slist.get(i).getAname(), 
-        			cname, 
-        			"µµÂø½Ã°£", 
+        			cname, etime, 
         			slist.get(i).getRflightTime(), 
         			slist.get(i).getRdeparturedate(), 
-        			slist.get(i).getRbaseprice());
+        			price);
     		searchlist.add(route);
     	}
 
@@ -128,13 +145,10 @@ public class Searchpage implements Initializable {
     	tc.setCellValueFactory(new PropertyValueFactory<>("rflightTime"));
     	
     	tc = searchtable.getColumns().get(5);
-    	tc.setCellValueFactory(new PropertyValueFactory<>("rbaseprice"));
+    	tc.setCellValueFactory(new PropertyValueFactory<>("price"));
     	
     	searchtable.setItems(searchlist);
-    	
-    	} catch (Exception e) {System.out.println("searchtableshow : "+e);
-		}
+    	} catch (Exception e) {}
     }
-    	
 	
 }
