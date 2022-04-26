@@ -74,6 +74,8 @@ public class Airplaneadd implements Initializable {
 				} catch(Exception ee) {}
 				
 			});
+		}else {
+			return;
 		}
 	}
 	
@@ -161,7 +163,7 @@ public class Airplaneadd implements Initializable {
     		if(result) {
     			alert.setHeaderText("수정이 완료되었습니다.");
     			alert.showAndWait();
-    			Admin_main.instance.loadpage("/view/admin/airplaneadd.fxml");
+    			Admin_main.instance.loadpage("/view/admin/admin_main.fxml");
     		}
     	}
     	else {

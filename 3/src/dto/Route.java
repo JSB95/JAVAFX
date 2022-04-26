@@ -90,4 +90,14 @@ public class Route {
 		this.rbaseprice = rbaseprice;
 	}
 
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	
+	
+
 }
