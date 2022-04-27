@@ -182,7 +182,14 @@ public class Economy implements Initializable {
 
     @FXML
     void select(ActionEvent event) {
-    	Mainpage.instance.loadpage("/view/select/pay.fxml");
+    	if(Searchpage.person>j) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setHeaderText((Searchpage.person-j)+"개의 좌석을 더 선택해야 합니다.");
+    		alert.showAndWait();
+    		return;
+    	}else {
+    		Mainpage.instance.loadpage("/view/select/pay.fxml");
+    	}
     }
 
 	
