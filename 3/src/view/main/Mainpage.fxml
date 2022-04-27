@@ -57,16 +57,16 @@
          </font>
       </Label>
       <BorderPane fx:id="boderpane" layoutX="294.0" layoutY="14.0" prefHeight="820.0" prefWidth="1000.0" />
-      <Label layoutX="32.0" layoutY="126.0" prefHeight="25.0" prefWidth="209.0" text="oooo님! 환영합니다." textFill="#f5f5f5">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="174.0" prefHeight="25.0" prefWidth="209.0" text="oooo님 포인트 :" textFill="#f5f5f5">
+      <Label fx:id="lblmname" layoutX="40.0" layoutY="110.0" prefHeight="25.0" prefWidth="198.0" text="이름" textFill="#f5f5f5">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <Line endX="174.0" layoutX="102.0" layoutY="252.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
+      <Label fx:id="lblmpoint" layoutX="40.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" text="포인트" textFill="#f5f5f5">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

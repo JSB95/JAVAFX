@@ -20,8 +20,16 @@ public class Mainpage implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		lblmname.setText(Login.member.getMid() + "님 환영합니다.");
+		lblmpoint.setText(Login.member.getMpoint() + "점");
 	}
+	
+
+    @FXML
+    private Label lblmname;
+
+    @FXML
+    private Label lblmpoint;
 	
     @FXML
     private Label mypage;
