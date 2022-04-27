@@ -14,7 +14,8 @@ public class Dao {
 	public Dao() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC","root","1234");
+			con = DriverManager.getConnection("jdbc:mysql://cirrus.cpfogy2aejex.ap-northeast-2.rds.amazonaws.com:3306/test?serverTime=UTC", "root", "rladydwns1");
+//			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC","root","1234");
 		} catch (Exception e) { System.out.println("Dao con initializing Exception : "+e);}
 	}
 }
