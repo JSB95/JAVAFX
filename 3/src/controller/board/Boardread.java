@@ -216,13 +216,10 @@ public class Boardread implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if ( !(ReplyDao.replyDao.nullreplycheck( board.getBnum(), Login.member.getMnum() ) ) ) {
-		ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	
-		board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
-		Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid() , null);	// null리플(=플래그 역할) 작성하기 위해 객체화
-		ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
-		alert.showAndWait();
+			ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	
+			board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
+			Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid() , null);	// null리플(=플래그 역할) 작성하기 위해 객체화
+			ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
 		}
 		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.

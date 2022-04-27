@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -22,9 +24,12 @@ public class Mainpage implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lblmname.setText(Login.member.getMid() + "님 환영합니다.");
 		lblmpoint.setText(Login.member.getMpoint() + "점");
+		
 	}
 	
-
+    @FXML
+    private Label lblhome;
+    
     @FXML
     private Label lblmname;
 
@@ -92,6 +97,15 @@ public class Mainpage implements Initializable {
     @FXML
     void mat(MouseEvent e) {
     	loadpage("/view/main/myticket.fxml");
+    }
+    
+    @FXML
+    void home(MouseEvent event) {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("알림");
+    	alert.setHeaderText("초기 페이지로 돌아갑니다.");
+    	alert.showAndWait();
+    	Main.instance.loadpage("/view/main/Mainpage.fxml");
     }
 	
 	public void loadpage(String page) {
