@@ -77,8 +77,6 @@ public class Mainpage implements Initializable {
     @FXML
     void exchange(MouseEvent e) {
     	
-    	loadpage("/view/exchange/Exchange.fxml");
-    	
     }
     
     @FXML
