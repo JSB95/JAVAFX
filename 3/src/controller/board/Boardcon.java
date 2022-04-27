@@ -3,6 +3,7 @@ package controller.board;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controller.login.Login;
 import controller.main.Mainpage;
 import dao.BoardDao;
 import dto.Board;
@@ -121,6 +122,8 @@ public class Boardcon implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println("member number : "+Login.member.getMnum());
+
     	Boardcon.boardinstance = null;
     	System.out.println("Boardcon_initialized");
     	ObservableList<Board> list = BoardDao.boardDao.list(null);

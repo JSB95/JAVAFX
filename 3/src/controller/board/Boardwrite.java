@@ -172,8 +172,6 @@ public class Boardwrite implements Initializable{
         		}else {
 	        		board = new Board(0, Login.member.getMnum() , txttitle.getText(), txtcontent.getText(), 
 	            			blocation, bsnapshoturl, pimage, null, Login.member.getMid(), 0);		
-	            		// 코드 병합할 때 로그인 한 사용자의 회원번호 따와야함.
-////////////////////////////////////////////////////////////////////////////////////////////////////
 	        		BoardDao.boardDao.wrtite(board);
 	        		alert = new Alert(AlertType.INFORMATION);
 	        		alert.setTitle("완료");
