@@ -23,7 +23,7 @@ public class Mainpage implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lblmname.setText(Login.member.getMid() + "님 환영합니다.");
-		lblmpoint.setText(Login.member.getMpoint() + "점");
+		lblmpoint.setText("누적 포인트 : "+Login.member.getMpoint() + "점");
 		
 	}
 	
