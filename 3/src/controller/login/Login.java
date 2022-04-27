@@ -67,6 +67,7 @@ public class Login implements Initializable {
 			boolean result = MemberDao.memberDao.login(id, password);
 	    	if(result) {
 	    		member = MemberDao.memberDao.getMember(id);
+	    		System.out.println("member number : "+member.getMnum());
 	    		Main.instance.loadpage("/view/main/Mainpage.fxml");
 	    	}else {
 	    		Alert alert = new Alert(AlertType.INFORMATION);

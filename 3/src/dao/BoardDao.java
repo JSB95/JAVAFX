@@ -15,7 +15,7 @@ public class BoardDao extends Dao{
 			sql = "insert board(mnum, btitle, bcontent, blocation, bsnapshoturl, bimgurl, mid) values(?, ?, ?, ?, ?, ?, ?)";
 			
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, board.getBnum());
+			ps.setInt(1, board.getMnum());
 			ps.setString(2, board.getBtitle());
 			ps.setString(3, board.getBcontent());
 			ps.setString(4, board.getBlocation());
