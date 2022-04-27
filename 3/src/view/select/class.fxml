@@ -8,15 +8,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.select.Class">
    <children>
-      <ImageView fitHeight="330.0" fitWidth="588.0" layoutY="370.0" onMouseClicked="#business" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="330.0" fitWidth="588.0" layoutY="370.0" onMouseClicked="#business" onMouseEntered="#drag_business" onMouseExited="#exit_business" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="img/business_class.jpg" />
          </image></ImageView>
-      <ImageView fitHeight="316.0" fitWidth="316.0" layoutX="587.0" layoutY="384.0" onMouseClicked="#economy" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="316.0" fitWidth="316.0" layoutX="587.0" layoutY="384.0" onMouseClicked="#economy" onMouseEntered="#drag_economy" onMouseExited="#exit_economy" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="img/economy_class.jpg" />
          </image></ImageView>
-      <ImageView fitHeight="300.0" fitWidth="609.0" layoutX="-1.0" layoutY="70.0" onMouseClicked="#first" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="300.0" fitWidth="609.0" layoutX="-1.0" layoutY="70.0" onMouseClicked="#first" onMouseEntered="#drag" onMouseExited="#release" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="img/first_class.jpg" />
          </image>
@@ -25,5 +25,20 @@
          <font>
             <Font size="30.0" />
          </font></Label>
+      <Label fx:id="drag_business" layoutX="130.0" layoutY="500.0" prefHeight="86.0" prefWidth="269.0" text="business" textFill="WHITE">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
+      <Label fx:id="drag_first" layoutX="120.0" layoutY="182.0" prefHeight="86.0" prefWidth="269.0" text="First" textFill="WHITE" visible="false">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
+      <Label fx:id="drag_economy" layoutX="645.0" layoutY="492.0" prefHeight="86.0" prefWidth="269.0" text="economy" textFill="WHITE" visible="false">
+         <font>
+            <Font size="49.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

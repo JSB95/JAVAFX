@@ -205,7 +205,7 @@ public class Boardwrite implements Initializable{
     	// 1. 파일 입력 스트림 [ 이돈 단위 : byte ] 
     	FileInputStream fileInputStream = new FileInputStream(file);	// file : fileChooser에서 선택된 파일 객체.
     	// 2. 파일 출력 스트림
-    	File copyfile = new File("C:\\JAVAlibrary\\img"+file.getName());
+    	File copyfile = new File("C:\\JAVAlibrary\\img\\"+file.getName());
     		// 새로운 경로 설정의 용도.
     	FileOutputStream fileOutputStream = new FileOutputStream(copyfile);
     	// 3. 바이트 배열 선언
