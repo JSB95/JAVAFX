@@ -48,7 +48,7 @@ public class ReplyDao extends Dao{
 	// 3. 리플 수정
 	public void replymodify(int replynum, String replycontent) {
 		try {
-			String sql = "update reply set replycontent=? where reply=?";
+			String sql = "update reply set replycontent=? where replynum=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, replycontent);
 			ps.setInt(2, replynum);
@@ -59,7 +59,7 @@ public class ReplyDao extends Dao{
 	
 	// 4. 게시글 조회수 올릴지 말지 결졍하기 위해 리플테이블에서 플래그 찾기
 	public boolean nullreplycheck(int bnum, int mnum){
-		String sql = "select * from reply where rcontent is null and bnum=? and substring_index(rdate, ' ', 1)=curdate() and mnum = ?";
+		String sql = "select * from reply where replycontent is null and bnum=? and substring_index(replydate, ' ', 1)=curdate() and mnum = ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, bnum);
@@ -74,7 +74,6 @@ public class ReplyDao extends Dao{
 	
 	// 5. 조회수 카운트 업
 	public void viewcountup(int count, int bnum) {
-		System.out.println("카운트 업!");
 		try {
 			String sql = "update board set bview=? where bnum=?";
 			ps = con.prepareStatement(sql);

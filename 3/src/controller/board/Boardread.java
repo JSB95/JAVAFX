@@ -4,7 +4,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import controller.mainpage.Mainpage;
+import controller.login.Login;
+import controller.main.Mainpage;
 import dao.BoardDao;
 import dao.ReplyDao;
 import dto.Board;
@@ -73,7 +74,7 @@ public class Boardread implements Initializable{
 
     @FXML
     void accback(ActionEvent event) {
-    	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
+    	Mainpage.instance.loadpage("/view/board/board.fxml");
     }
 
     @FXML
@@ -83,13 +84,18 @@ public class Boardread implements Initializable{
     		alert.setTitle("알림");
     		alert.setHeaderText("덧글 내용을 입력해 주세요.");
     		alert.showAndWait();
-    	}else {
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    		Reply reply = new Reply(0, board.getBnum(), 0, txtreply.getText(), "사용자아이디", null);		// 사용자 아이디 지우고 메모리에서 mid, mnum 따와야함.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////    		
+    	}else if(btnreply.getText().equals("수정")){
+    		ReplyDao.replyDao.replymodify(selectedreply.getReplynum(), txtreply.getText());
+    		alert.setTitle("알림");
+    		alert.setHeaderText("덧글 내용을 수정했습니다.");
+    		alert.showAndWait();
+    		initialize(null, null);
+    	}else if(btnreply.getText().equals("입력")){
+    		Reply reply = new Reply(0, board.getBnum(), Login.member.getMnum(), txtreply.getText(), Login.member.getMid(), null);
     		ReplyDao.replyDao.replywrite(reply);
     		alert.setTitle("알림");
     		alert.setHeaderText("덧글을 게시했습니다.");
+    		txtreply.setText("");
     		alert.showAndWait();
     		initialize(null, null);
     	}
@@ -98,8 +104,7 @@ public class Boardread implements Initializable{
     @FXML
     void accdeletereply(ActionEvent event) {
     	
-//		if(로그인 한 사용자의 mnum ==  selectedreply.getMnum()) {
-    	if(0 ==  selectedreply.getMnum()) {
+    	if(Login.member.getMnum() ==  selectedreply.getMnum()) {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("확인");
 			alert.setHeaderText("덧글을 삭제하시겠습니까?");
@@ -131,8 +136,7 @@ public class Boardread implements Initializable{
     		alert.setTitle("완료");
     		alert.setHeaderText("글 삭제가 완료되었습니다.");
     		alert.showAndWait();
-        	Mainpage.instance.loadmainmenu("/view/board/board.fxml");
-
+    		Mainpage.instance.loadpage("/view/board/board.fxml");
     	}
     }
 
@@ -143,7 +147,7 @@ public class Boardread implements Initializable{
     	alert.setHeaderText("글을 수정하시겠습니까?");
     	Optional<ButtonType> result = alert.showAndWait();
     	if(result.get() == ButtonType.OK) {
-    		Mainpage.instance.loadmainmenu("/view/board/board_write.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_write.fxml");
     	}else return;
     	
     }
@@ -195,8 +199,9 @@ public class Boardread implements Initializable{
     }
 	
     public void setreplylist(ObservableList<Reply> reply) {
+    		
     	TableColumn tc = tablereply.getColumns().get(0);
-    	tc.setCellValueFactory(new PropertyValueFactory<>("mnum"));	
+    	tc.setCellValueFactory(new PropertyValueFactory<>("replyid"));	
 //////////////////////////////////////////////////////////////////////////////////////////    	
     	tc = tablereply.getColumns().get(1);	// 테이블에서 두번째 열 가져오기
     	tc.setCellValueFactory( new PropertyValueFactory<>("replycontent"));		
@@ -210,40 +215,59 @@ public class Boardread implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		if ( !(ReplyDao.replyDao.nullreplycheck( board.getBnum(), Login.member.getMnum() ) ) ) {
+		ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	
+		board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
+		Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid() , null);	// null리플(=플래그 역할) 작성하기 위해 객체화
+		ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
+		alert.showAndWait();
+		}
 		
-		// 리플 테이블에 오늘 날짜로 로그인 한 사용자의 내용이 null인 리플이 없으면 조회수 올리고, 있으면 아무것도 안하는 코드.
-			// 대부분 수정했음. 멤버쪽만 연결해주면 됨.
-//    	if ( !(ReplyDao.replyDao.nullreplycheck( board.getBnum(), Login.member.getMnum() ) ) ) {
-//			// NOT 게이트를 붙였음으로 반대로 해석할것 ->  리플중에 내용이 null AND 작성자ID=사용자 AND 작성날짜=curdate() => if문 미실행
-//		ReplyDao.replyDao.viewcountup(board.getBview()+1, board.getBnum());	// DB에 조회수 1 올려주기
-//		board.setBview(board.getBview()+1);	// 객체 내 메모리에 조회수 1 올려주기
-//		Reply writeNullReply = new Reply(0, board.getBnum(), Login.member.getMnum(), null, Login.member.getMid, null);	// null리플(=플래그 역할) 작성하기 위해 객체화
-//		ReplyDao.replyDao.replywrite(writeNullReply);// 리플 작성
-//		Alert alert = new Alert(AlertType.INFORMATION);
-//		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
-//		alert.showAndWait();
-//		}
-//		reply = ReplyDao.replyDao.replylist(board.getBnum());
+		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.
-		
 		
 		lbltitle.setText(board.getBtitle());
 		txtcontent.setText(board.getBcontent());
+		
 		if(board.getBimgurl()!=null) 
 			imgshow.setImage(new Image(board.getBimgurl()));
     	
 		if(board.getBsnapshoturl()!=null) 	
 			imgsnaphot.setImage(new Image(board.getBsnapshoturl()));
 		
-		
-		
+		if(Login.member.getMnum()!=board.getMnum()) {	// 글쓴이의 mnum과 로그인한 사람의 mnum이 같지 않으면 글 수정, 삭제버튼 숨김처리
+			btndelete.setVisible(false);
+			btnupdate.setVisible(false);
+		}else {
+			btndelete.setVisible(true);
+			btnupdate.setVisible(true);
+		}
+		btndeletereply.setVisible(false);
+		btnreply.setText("입력");
 		txtcontent.setEditable(false);
-		tablereply.setOnMouseClicked( e -> {
-			selectedreply = tablereply.getSelectionModel().getSelectedItem();
-		});
 		
-//////////////////////////////////////////////////////////////////////////////////////////		
-//		로그인한 사용자의 mnum과 글의 mnum이 같을때만 글수정 버튼, 글삭제, 리플 수정, 리플 삭제 활성화. 코드 작성해야함.
-//////////////////////////////////////////////////////////////////////////////////////////			
+		tablereply.setOnMouseClicked( e -> {
+			Boolean blankselectcheck = false;
+			String[] tmp=e.toString().split("',",2);
+			tmp=tmp[0].split("]'",2);
+			if(tmp[1]==null) blankselectcheck=false;	// 정상적으로 리플을 선택했을떄는 스플릿이 되지 않아서 tmp[1]에 null값이 을어감.
+			else if(tmp[1].equals("null")) blankselectcheck=true;	// 빈 칸을 선택했을때는 스플릿 후 tmp[1]에 "null"문자열이 저장됨. 
+			
+			if(tablereply.getItems().toString().equals("[]") || blankselectcheck) {
+				tablereply.getSelectionModel().clearSelection();
+				selectedreply=null;
+				btnreply.setText("입력");
+				btndeletereply.setVisible(false);
+				return;
+			}else{
+				selectedreply = tablereply.getSelectionModel().getSelectedItem();
+				if(selectedreply!=null && Login.member.getMnum()==selectedreply.getMnum()) {
+					btndeletereply.setVisible(true);
+					btnreply.setText("수정");
+				}
+			}
+		});
 	}
 }

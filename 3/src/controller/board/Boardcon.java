@@ -3,7 +3,7 @@ package controller.board;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.mainpage.Mainpage;
+import controller.main.Mainpage;
 import dao.BoardDao;
 import dto.Board;
 import javafx.collections.ObservableList;
@@ -86,7 +86,7 @@ public class Boardcon implements Initializable{
 
     @FXML
     void accwrite(ActionEvent event) {
-    	Mainpage.instance.loadmainmenu("/view/board/board_write.fxml");
+    	Mainpage.instance.loadpage("/view/board/board_write.fxml");
     }
 
     @FXML
@@ -106,7 +106,7 @@ public class Boardcon implements Initializable{
     	tc.setCellValueFactory( new PropertyValueFactory<>("btitle"));		
 
     	tc = boardtable.getColumns().get(2);	// 테이블에서 세번째 열 가져오기
-    	tc.setCellValueFactory( new PropertyValueFactory<>("mnum"));
+    	tc.setCellValueFactory( new PropertyValueFactory<>("mid"));
 			// fk로 테이블 들어가서 id 따와야함. 일단은 mnum 출력하는 걸로. ->> 나중에 수정해야 함.
 //////////////////////////////////////////////////////////////////////////////////////////
     	tc = boardtable.getColumns().get(3);	// 테이블에서 네번째 열 가져오기
@@ -114,8 +114,8 @@ public class Boardcon implements Initializable{
     	
     	tc = boardtable.getColumns().get(4);	// 테이블에서 다섯번째 열 가져오기
     	tc.setCellValueFactory( new PropertyValueFactory<>("bview"));
-    	
-    	boardtable.setItems(list);
+    	if(list!=null)
+    		boardtable.setItems(list);
     }
     
     
@@ -125,38 +125,29 @@ public class Boardcon implements Initializable{
     	System.out.println("Boardcon_initialized");
     	ObservableList<Board> list = BoardDao.boardDao.list(null);
     	
-    	
     	// 핫게시글 셋팅용 반복문. 정렬 기준 : 조회수 높은 순
     	Board[] boards = new Board[2];
     	for(int i = 0; i<2; i++) {
-    		boards[i] = new Board(0, 0, null, null, null, null, null, null, 0);
+    		boards[i] = new Board(0, 0, null, null, null, null, null, null, null, 0);
     	}
     	
     	for(int i=0; i<list.size(); i++) {
     		for(int j=i+1; j<list.size(); j++) {
-    			System.out.println("i값 : "+i);
-    			System.out.println("j값 : "+j);
-    			System.out.println("--1--");
     			if(list.get(i).getBview()<list.get(j).getBview()) {
-        			System.out.println("--2--");
-
-    				if(boards[0].getBview()<list.get(j).getBview()) boards[0] = list.get(j);
-        			System.out.println("--3--");
-
-    				if(boards[1].getBview()<list.get(i).getBview()) boards[1] = list.get(i);
-        			System.out.println("--4--");
-
+    				if(boards[0].getBview()<list.get(j).getBview()) 
+    					boards[0] = list.get(j);
+    				if(boards[1].getBview()<list.get(i).getBview()) 
+    					boards[1] = list.get(i);
     			}
     		}
     	}
-    	
     	
     	lblhottitle1.setText(boards[0].getBtitle());
     	lblhotviewcount1.setText("조회수 : "+boards[0].getBview());
     	if(boards[0].getBimgurl()!=null) imghotphoto1.setImage(new Image(boards[0].getBimgurl()));
     	panehot1.setOnMouseClicked( e -> {
     		boardinstance = boards[0];
-    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_read.fxml");
     	});
     	
     	lblhottitle2.setText(boards[1].getBtitle());
@@ -164,7 +155,7 @@ public class Boardcon implements Initializable{
     	if(boards[1].getBimgurl()!=null) imghotphoto2.setImage(new Image(boards[1].getBimgurl()));
     	panehot2.setOnMouseClicked( e -> {
     		boardinstance = boards[1];
-    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_read.fxml");
     	});
     	
     	setboardlist(list);
@@ -178,7 +169,7 @@ public class Boardcon implements Initializable{
     			// 2-2) 있으면 3번으로 바로 넘어감.
     			
     		// 3. 클릭하면 화면 전환
-    		Mainpage.instance.loadmainmenu("/view/board/board_read.fxml");
+    		Mainpage.instance.loadpage("/view/board/board_read.fxml");
     	});
     	
     }

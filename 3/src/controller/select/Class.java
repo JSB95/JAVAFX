@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-import controller.mainpage.Mainpage;
+import controller.main.Mainpage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

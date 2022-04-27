@@ -20,10 +20,10 @@
       <TableView fx:id="boardtable" layoutX="25.0" layoutY="229.0" prefHeight="577.0" prefWidth="950.0" style="-fx-background-color: #ecf8ff;">
         <columns>
           <TableColumn prefWidth="126.0" text="번호" />
-          <TableColumn prefWidth="584.0" text="제목" />
-            <TableColumn minWidth="0.0" prefWidth="102.0" text="작성자" />
-            <TableColumn prefWidth="77.0" text="작성일" />
-            <TableColumn minWidth="0.0" prefWidth="60.0" text="조회수" />
+          <TableColumn prefWidth="473.0" text="제목" />
+            <TableColumn minWidth="0.0" prefWidth="135.0" text="작성자 ID" />
+            <TableColumn prefWidth="145.0" text="작성일" />
+            <TableColumn minWidth="0.0" prefWidth="70.0" text="조회수" />
         </columns>
       </TableView>
       <Line endX="822.0" layoutX="153.0" layoutY="76.0" startX="-126.0" stroke="#4085f9" />

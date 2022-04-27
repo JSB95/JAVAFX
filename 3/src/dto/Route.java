@@ -11,6 +11,17 @@ public class Route {
 	private String price;
 	
 	public Route() {}
+	
+	public Route(int rnum, String aname, String rdeparture, String rdestination, String rflightTime,
+			String rdeparturedate, String price) {
+		this.rnum = rnum;
+		this.aname = aname;
+		this.rdeparture = rdeparture;
+		this.rdestination = rdestination;
+		this.rflightTime = rflightTime;
+		this.rdeparturedate = rdeparturedate;
+		this.price = price;
+	}
 
 	public Route(int rnum, String aname, String rdeparture, String rdestination, String rflightTime,
 			String rdeparturedate, int rbaseprice) {
@@ -21,18 +32,6 @@ public class Route {
 		this.rflightTime = rflightTime;
 		this.rdeparturedate = rdeparturedate;
 		this.rbaseprice = rbaseprice;
-	}
-
-	public Route(int rnum, String aname, String rdeparture, String rdestination, String rflightTime,
-			String rdeparturedate, String price) {
-		super();
-		this.rnum = rnum;
-		this.aname = aname;
-		this.rdeparture = rdeparture;
-		this.rdestination = rdestination;
-		this.rflightTime = rflightTime;
-		this.rdeparturedate = rdeparturedate;
-		this.price = price;
 	}
 
 	public int getRnum() {
@@ -98,10 +97,6 @@ public class Route {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	
 
-
-	
-	
-	
-	
 }

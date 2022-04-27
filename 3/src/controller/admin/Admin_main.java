@@ -21,7 +21,7 @@ public class Admin_main implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+//		loadpage("/view/admin/admin_main.fxml");
 	}
 	
     @FXML
@@ -53,14 +53,20 @@ public class Admin_main implements Initializable {
 
     @FXML
     void apadd(MouseEvent event) {
+    	try {
     	update = false;
     	loadpage("/view/admin/airplaneadd.fxml");
+    	} catch (Exception e) {
+			// TODO: handle exception
+    		e.printStackTrace();
+		}
     }
 
     @FXML
     void apupdate(MouseEvent event) {
     	update = true;
     	loadpage("/view/admin/airplaneadd.fxml");
+
     }
 
     @FXML
@@ -71,6 +77,7 @@ public class Admin_main implements Initializable {
 
     @FXML
     void cupdate(MouseEvent event) {
+    	
     	update = true;
     	loadpage("/view/admin/companyadd.fxml");
     }
@@ -94,8 +101,13 @@ public class Admin_main implements Initializable {
     
     public void loadpage(String page) {
 		try {
+			System.out.println("체크");
 			Parent parent = FXMLLoader.load(getClass().getResource(page));
+			System.out.println("2");
+
 			boderpane.setCenter(parent);
+			System.out.println("3");
+
 		} catch(Exception e) { System.out.println("admin 페이지 불러오기 실패 :" + e); }
 		
 	}

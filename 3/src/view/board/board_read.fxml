@@ -18,18 +18,18 @@
          <font>
             <Font size="32.0" />
          </font></Label>
-      <Line endX="822.0" layoutX="153.0" layoutY="76.0" startX="-126.0" />
-      <Button fx:id="btndelete" layoutX="596.0" layoutY="34.0" mnemonicParsing="false" onAction="#accdelete" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #f29330;" text="삭제하기" textFill="WHITE">
+      <Line endX="822.0" layoutX="153.0" layoutY="76.0" startX="-126.0" stroke="#4085f9" />
+      <Button fx:id="btndelete" layoutX="608.0" layoutY="24.0" mnemonicParsing="false" onAction="#accdelete" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #f29330;" text="삭제하기" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnback" layoutX="864.0" layoutY="34.0" mnemonicParsing="false" onAction="#accback" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="목록보기" textFill="WHITE">
+      <Button fx:id="btnback" layoutX="864.0" layoutY="24.0" mnemonicParsing="false" onAction="#accback" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="목록보기" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnupdate" layoutX="730.0" layoutY="34.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="수정하기" textFill="WHITE">
+      <Button fx:id="btnupdate" layoutX="736.0" layoutY="24.0" mnemonicParsing="false" onAction="#accupdate" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4085f9;" text="수정하기" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -37,11 +37,11 @@
       <TextArea fx:id="txtcontent" layoutX="25.0" layoutY="95.0" prefHeight="455.0" prefWidth="683.0" />
       <ImageView fx:id="imgshow" fitHeight="213.0" fitWidth="220.0" layoutX="751.0" layoutY="95.0" onMouseClicked="#imgclicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/uploadplz.png" />
+            <Image url="/img/noimg.png" />
          </image></ImageView>
       <ImageView fx:id="imgsnaphot" fitHeight="226.0" fitWidth="213.0" layoutX="751.0" layoutY="329.0" onMouseClicked="#snapshotsclicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/uploadplz.png" />
+            <Image url="/img/noimg.png" />
          </image>
       </ImageView>
       <TextField fx:id="txtreply" layoutX="25.0" layoutY="560.0" prefHeight="40.0" prefWidth="683.0" promptText="덧글을 달아 보세요!" />

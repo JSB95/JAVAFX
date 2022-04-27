@@ -13,12 +13,9 @@ public class Member {
 	private String msince;
 	
 	public Member() {}
-
 	
-	
-	public Member(int mnum, String mid, String mpassword, String mphone, String mcard, String mname, String mpassport,
-		String msince) {
-		super();
+	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String mpassport, String mcard,
+			String msince, int mpoint) {
 		this.mnum = mnum;
 		this.mid = mid;
 		this.mpassword = mpassword;
@@ -27,8 +24,8 @@ public class Member {
 		this.mname = mname;
 		this.mpassport = mpassport;
 		this.msince = msince;
+		this.mpoint = mpoint;
 	}
-
 
 	public Member(int mnum, String mid, String mpassword, String mphone, String mcard, String mname, String mpassport,
 			int mpoint, String msince) {
@@ -43,7 +40,6 @@ public class Member {
 		this.mpoint = mpoint;
 		this.msince = msince;
 	}
-
 
 	public int getMnum() {
 		return mnum;
@@ -116,6 +112,5 @@ public class Member {
 	public void setMsince(String msince) {
 		this.msince = msince;
 	}
-	
 	
 }
