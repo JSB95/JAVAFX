@@ -15,7 +15,7 @@
             <Image url="@../../img/main.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="mypage" layoutX="59.0" layoutY="56.0" text="마이페이지" textFill="#f5f5f5">
+      <Label fx:id="mypage" layoutX="95.0" layoutY="52.0" prefHeight="36.0" prefWidth="127.0" text="MENU" textFill="#f5f5f5">
          <font>
             <Font size="30.0" />
          </font>
@@ -51,21 +51,26 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lbllogout" layoutX="190.0" layoutY="213.0" onMouseClicked="#logout" prefHeight="25.0" prefWidth="64.0" text="Log_out" textFill="#f5f5f5">
+      <Label fx:id="lbllogout" layoutX="183.0" layoutY="213.0" onMouseClicked="#logout" prefHeight="25.0" prefWidth="71.0" text="LOGOUT" textFill="#f5f5f5">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
       <BorderPane fx:id="boderpane" layoutX="294.0" layoutY="14.0" prefHeight="820.0" prefWidth="1000.0" />
-      <Label fx:id="lblmname" layoutX="40.0" layoutY="110.0" prefHeight="25.0" prefWidth="198.0" text="이름" textFill="#f5f5f5">
+      <Label fx:id="lblmname" layoutX="55.0" layoutY="110.0" prefHeight="25.0" prefWidth="169.0" text="이름" textAlignment="CENTER" textFill="#f5f5f5">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <Line endX="174.0" layoutX="102.0" layoutY="252.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
-      <Label fx:id="lblmpoint" layoutX="40.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" text="포인트" textFill="#f5f5f5">
+      <Label fx:id="lblmpoint" layoutX="55.0" layoutY="148.0" prefHeight="25.0" prefWidth="169.0" text="포인트" textAlignment="CENTER" textFill="#f5f5f5">
          <font>
             <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblhome" layoutX="35.0" layoutY="213.0" onMouseClicked="#home" prefHeight="25.0" prefWidth="51.0" text="HOME" textFill="#f5f5f5">
+         <font>
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
    </children>

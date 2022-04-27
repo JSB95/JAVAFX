@@ -16,16 +16,16 @@
             <Font size="40.0" />
          </font>
       </Label>
+      <ComboBox fx:id="cbbaname" layoutX="86.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="비행기 이름" />
       <TextField fx:id="txtstart" layoutX="381.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="출발지" />
       <TextField fx:id="txtend" layoutX="675.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="도착지" />
       <TextField fx:id="txtftime" layoutX="86.0" layoutY="240.0" prefHeight="47.0" prefWidth="243.0" promptText="비행시간" />
       <TextField fx:id="txtprice" layoutX="380.0" layoutY="240.0" prefHeight="47.0" prefWidth="243.0" promptText="이코노미 가격" />
-      <ComboBox fx:id="cbbaname" layoutX="86.0" layoutY="173.0" prefHeight="47.0" prefWidth="243.0" promptText="비행기 이름" />
       <TextField fx:id="txtyear" layoutX="86.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="연도" />
       <TextField fx:id="txtmonth" layoutX="257.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="월" />
-      <TextField fx:id="txtftime12" layoutX="432.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="일" />
-      <TextField fx:id="txtftime13" layoutX="605.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="시" />
-      <TextField fx:id="txtftime14" layoutX="787.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="분" />
+      <TextField fx:id="txtday" layoutX="432.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="일" />
+      <TextField fx:id="txthour" layoutX="605.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="시" />
+      <TextField fx:id="txtmin" layoutX="787.0" layoutY="336.0" prefHeight="47.0" prefWidth="140.0" promptText="분" />
       <Label layoutX="86.0" layoutY="299.0" prefHeight="27.0" prefWidth="131.0" text="출발시간" />
       <Button fx:id="btnadd" layoutX="86.0" layoutY="410.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="376.0" style="-fx-background-color: #02BE6E;" text="추가" textFill="#f8f8f8">
          <font>
