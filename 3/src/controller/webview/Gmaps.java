@@ -71,7 +71,8 @@ public class Gmaps {
 	
 	public String getAPIkey() {
 		try {
-			FileInputStream fileInputStream = new FileInputStream("C:\\JAVAlibrary\\gmapsKEY.txt");
+//			FileInputStream fileInputStream = new FileInputStream("C:\\JAVAlibrary\\gmapsKEY.txt");
+			FileInputStream fileInputStream = new FileInputStream("C:\\gmapsKEY.txt");
 			byte[] bytes = new byte[fileInputStream.available()];
 			fileInputStream.read(bytes);
 			String key = new String(bytes);

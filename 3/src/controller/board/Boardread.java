@@ -224,7 +224,6 @@ public class Boardread implements Initializable{
 		alert.setHeaderText(Login.member.getMid()+"님은 "+board.getBtitle()+" 글을 오늘 처음 조회하셨습니다.");
 		alert.showAndWait();
 		}
-		
 		reply = ReplyDao.replyDao.replylist(board.getBnum());
 		setreplylist(reply);	// 테이블뷰 리플 내용 뿌려주기.
 		
@@ -250,11 +249,17 @@ public class Boardread implements Initializable{
 		
 		tablereply.setOnMouseClicked( e -> {
 			Boolean blankselectcheck = false;
-			String[] tmp=e.toString().split("',",2);
+			String[] tmp=e.toString().split("', ",2);
 			tmp=tmp[0].split("]'",2);
-			if(tmp[1]==null) blankselectcheck=false;	// 정상적으로 리플을 선택했을떄는 스플릿이 되지 않아서 tmp[1]에 null값이 을어감.
-			else if(tmp[1].equals("null")) blankselectcheck=true;	// 빈 칸을 선택했을때는 스플릿 후 tmp[1]에 "null"문자열이 저장됨. 
+
+			if(tmp.length==1 || tmp[1]==null || ! (tmp[1].equals("null")) ) {
+				blankselectcheck=false;	// 정상적으로 리플을 선택했을떄는 스플릿이 되지 않아서 tmp[1]에 null값이 을어감.
+				btnreply.setText("입력");
+				btndeletereply.setVisible(false);
+			}
+			else blankselectcheck=true;	// 빈 칸을 선택했을때는 스플릿 후 tmp[1]에 "null"문자열이 저장됨. 
 			
+
 			if(tablereply.getItems().toString().equals("[]") || blankselectcheck) {
 				tablereply.getSelectionModel().clearSelection();
 				selectedreply=null;
