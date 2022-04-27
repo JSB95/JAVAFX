@@ -4,23 +4,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.select.Class">
    <children>
-      <ImageView fitHeight="300.0" fitWidth="300.0" layoutY="193.0" onMouseClicked="#first" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="330.0" fitWidth="588.0" layoutY="370.0" onMouseClicked="#business" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/카카오톡%20받은%20파일/first.png" />
+            <Image url="img/business_class.jpg" />
          </image></ImageView>
-      <Label layoutX="99.0" layoutY="121.0" prefHeight="59.0" prefWidth="102.0" text="First" />
-      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="300.0" layoutY="180.0" onMouseClicked="#business" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="316.0" fitWidth="316.0" layoutX="587.0" layoutY="384.0" onMouseClicked="#economy" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/카카오톡%20받은%20파일/business.png" />
+            <Image url="img/economy_class.jpg" />
          </image></ImageView>
-      <Label layoutX="371.0" layoutY="121.0" prefHeight="59.0" prefWidth="102.0" text="Business" />
-      <ImageView fitHeight="308.0" fitWidth="300.0" layoutX="600.0" layoutY="165.0" onMouseClicked="#economy" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="300.0" fitWidth="609.0" layoutX="-1.0" layoutY="70.0" onMouseClicked="#first" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/카카오톡%20받은%20파일/economy.png" />
-         </image></ImageView>
-      <Label layoutX="684.0" layoutY="121.0" prefHeight="59.0" prefWidth="102.0" text="Economy" />
+            <Image url="img/first_class.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="645.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #eeeeee;" text="좌석 등급을&#10;선택하세요." textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
    </children>
 </AnchorPane>
